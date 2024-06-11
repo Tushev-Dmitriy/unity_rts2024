@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 [System.Serializable]
 public class SettingsData
@@ -20,14 +20,34 @@ public class WorkUI : MonoBehaviour
 {
     public AudioMixer am;
     public Slider volumeSlider;
-    
+    public GameObject resDropdown;
+    public Toggle windowToggle;
+    public Toggle soundToggle;
+    public GameObject windowOff;
+    public GameObject soundOff;
+    public TMP_Text windowToggleText;
+    public TMP_Text soundToggleText;
+
     private string filepath;
     private SettingsData data;
-
+    private int width;
+    private int height;
+    private bool isWindow = false;
+    private bool isSound = false;
 
     private void Start()
     {
         filepath = Path.Combine(Application.streamingAssetsPath, "settings.json");
+    }
+
+    private void Update()
+    {
+        CheckBool();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     public void LoadSettings()
@@ -48,11 +68,66 @@ public class WorkUI : MonoBehaviour
 
     public void SaveField()
     {
-        File.WriteAllText(filepath, JsonUtility.ToJson(data));
-        data.width = Screen.width;
-        data.height = Screen.height;
-        data.window = false;
-        data.sounds = true;
+        ResController();
+        data.width = width;
+        data.height = height;
+        data.window = isWindow;
+        data.sounds = isSound;
         data.volume = volumeSlider.value;
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(filepath, json);
+    }
+
+    private void CheckBool()
+    {
+        if (windowToggle.isOn)
+        {
+            isWindow = true;
+            windowOff.SetActive(false);
+            windowToggleText.text = "ON";
+        } else
+        {
+            isWindow = false;
+            windowOff.SetActive(true);
+            windowToggleText.text = "OFF";
+        }
+
+        if (soundToggle.isOn)
+        {
+            isSound = true;
+            soundOff.SetActive(false);
+            windowToggleText.text = "ON";
+        }
+        else
+        {
+            isSound = false;
+            soundOff.SetActive(true);
+            soundToggleText.text = "OFF";
+        }
+    }
+
+    private void ResController()
+    {
+        int a = resDropdown.GetComponent<TMP_Dropdown>().value; 
+        
+        switch (a)
+        {
+            case 0:
+                width = 1920;
+                height = 1080;
+                break;
+            case 1:
+                width = 1600;
+                height = 900;
+                break;
+            case 2:
+                width = 1366;
+                height = 768;
+                break;
+            case 3:
+                width = 1280;
+                height = 720;
+                break;
+        }
     }
 }
