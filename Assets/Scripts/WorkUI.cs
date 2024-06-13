@@ -55,7 +55,7 @@ public class WorkUI : MonoBehaviour
         if (File.Exists(filepath))
         {
             data = JsonUtility.FromJson<SettingsData>(File.ReadAllText(filepath));
-            Screen.SetResolution(data.width, data.height, data.window);
+            Screen.SetResolution(data.width, data.height, !data.window);
             am.SetFloat("MainSound", data.volume);
             volumeSlider.value = data.volume;
         }
@@ -76,6 +76,7 @@ public class WorkUI : MonoBehaviour
         data.volume = volumeSlider.value;
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(filepath, json);
+        LoadSettings();
     }
 
     private void CheckBool()
