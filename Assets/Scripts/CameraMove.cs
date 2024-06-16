@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    private Camera camera;
-    private bool isDown = false;
-    private void Start()
+    public float camSpeed = 5f;
+    public float rotationSpeed = 200f;
+
+    void Update()
     {
-        camera = Camera.main;
-    }
-    private void Update()
-    {
-        Debug.Log(Input.GetAxis("Vertical"));
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        Vector3 movement = Vector3.zero;
+
+        if (Input.GetKey(KeyCode.W))
         {
-            isDown = true;
+            movement.z += 1;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            movement.z -= 1;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            movement.x -= 1;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            movement.x += 1;
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse2))
+        if (Input.GetMouseButton(0))
         {
-            isDown = false;
+            float mouseX = Input.GetAxis("Mouse X");
+            transform.Rotate(Vector3.up, mouseX * rotationSpeed * Time.deltaTime, Space.World);
         }
 
-        if (isDown)
-        {
-            camera.transform.position = new Vector3(0, Input.GetAxis("Vertical"), -31.3f);
-        }
+        movement = movement.normalized * camSpeed * Time.deltaTime;
+
+        Vector3 newPosition = transform.position + Quaternion.Euler(0, transform.eulerAngles.y, 0) * movement;
+        newPosition.y = transform.position.y;
+
+        transform.position = newPosition;
     }
 }

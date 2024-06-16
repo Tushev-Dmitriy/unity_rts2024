@@ -2,39 +2,36 @@ using UnityEngine;
 
 public class Noise : MonoBehaviour
 {
-    public int mapWidth = 100;
-    public int mapHeight = 100;
-    public float scale = 20f;
-    public float heightMultiplier = 5f;
-    public float noiseThreshold = 0.5f;
+    public GameObject stonePrefab; 
+    public GameObject treePrefab;
 
-    public GameObject objectPrefab1;
-    public GameObject objectPrefab2;
+    public int width = 100; 
+    public int height = 100; 
+    public float scale = 20f; 
+    public float objectDensity = 0.1f; 
 
     void Start()
     {
-        GenerateMap();
+        GenerateObjects();
     }
 
-    void GenerateMap()
+    void GenerateObjects()
     {
-        for (int x = 0; x < mapWidth; x++)
+        for (int x = 0; x < width; x++)
         {
-            for (int y = 0; y < mapHeight; y++)
+            for (int z = 0; z < height; z++)
             {
-                float xCoord = (float)x / mapWidth * scale;
-                float yCoord = (float)y / mapHeight * scale;
-                float noiseValue = Mathf.PerlinNoise(xCoord, yCoord);
+                float perlinValue = Mathf.PerlinNoise(x / scale, z / scale);
 
-                Vector3 position = new Vector3(x, noiseValue * heightMultiplier, y);
-
-                if (noiseValue > noiseThreshold)
+                if (perlinValue > 0.5f && Random.value < objectDensity)
                 {
-                    Instantiate(objectPrefab1, position, Quaternion.identity);
+                    Vector3 position = new Vector3(x, 0, z);
+                    Instantiate(stonePrefab, position, Quaternion.identity, transform);
                 }
-                else
+                else if (perlinValue <= 0.5f && Random.value < objectDensity)
                 {
-                    Instantiate(objectPrefab2, position, Quaternion.identity);
+                    Vector3 position = new Vector3(x, 0, z);
+                    Instantiate(treePrefab, position, Quaternion.identity, transform);
                 }
             }
         }
