@@ -97,7 +97,7 @@ public class WorkUI : MonoBehaviour
         {
             isSound = true;
             soundOff.SetActive(false);
-            windowToggleText.text = "ON";
+            soundToggleText.text = "ON";
         }
         else
         {
