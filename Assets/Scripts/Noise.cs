@@ -14,6 +14,8 @@ public class Noise : MonoBehaviour
     public GameObject treePrefab;
     public GameObject townCenter;
 
+    public GameObject[] units;
+
     public GameObject startCanvas;
 
     public float width; 
@@ -24,6 +26,9 @@ public class Noise : MonoBehaviour
     private float f;
     private float sqrt;
 
+    private Vector3[] posToUnits = new Vector3[5] {new Vector3(12, -8, 23), new Vector3(5, -8, 23), new Vector3(-2, -8, 23),
+                                                   new Vector3(-9, -8, 23), new Vector3(-16, -8, 23)};
+
     public void StartGame()
     {
         f = float.Parse(inputField.text);
@@ -31,7 +36,7 @@ public class Noise : MonoBehaviour
         {
             startCanvas.SetActive(false);
             SetMapScale();
-            GenerateObjects();
+            //GenerateObjects();
             StartCoroutine(GenerateBuilds());
         }
     }
@@ -68,6 +73,26 @@ public class Noise : MonoBehaviour
             Vector3 pos = new Vector3(UnityEngine.Random.Range(0, sqrt), 0.97f, UnityEngine.Random.Range(0, sqrt));
             GameObject tempGO = Instantiate(townCenter, pos, Quaternion.identity);
             tempGO.name = $"town center {i+1}";
+
+            GameObject tempParent = GameObject.Find($"town center {i + 1}/Units");
+
+            for (int j = 0; j < 3; j++)
+            {
+                GameObject tempUnit = Instantiate(units[0]);
+                tempUnit.transform.SetParent(tempParent.transform);
+                tempUnit.transform.localPosition = posToUnits[j];
+                tempUnit.transform.localScale = Vector3.one;
+                
+                Debug.Log(posToUnits[j]);   
+            }
+
+            for (int k = 3; k < 5; k++)
+            {
+                GameObject tempUnit = Instantiate(units[1]);
+                tempUnit.transform.SetParent(tempParent.transform);
+                tempUnit.transform.localPosition = posToUnits[k];
+                tempUnit.transform.localScale = Vector3.one;
+            }
         }
     }
 
