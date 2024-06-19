@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public float camSpeed = 5f;
-    public float rotationSpeed = 200f;
+    public float rotationSpeed = 300f;
 
     void Update()
     {
@@ -32,6 +32,30 @@ public class CameraMove : MonoBehaviour
         {
             float mouseX = Input.GetAxis("Mouse X");
             transform.Rotate(Vector3.up, mouseX * rotationSpeed * Time.deltaTime, Space.World);
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            if (transform.position.y > 5 && transform.position.y < 25)
+            {
+                if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+                }
+
+                if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+                }
+            }
+
+            if (transform.position.y == 5)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+            } else if (transform.position.y == 25)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+            }
         }
 
         movement = movement.normalized * camSpeed * Time.deltaTime;

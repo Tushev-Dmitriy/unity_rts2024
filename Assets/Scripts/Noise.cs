@@ -18,6 +18,8 @@ public class Noise : MonoBehaviour
 
     public GameObject startCanvas;
 
+    public Material[] materials;
+
     public float width; 
     public float height; 
     public float scale = 20f; 
@@ -74,6 +76,19 @@ public class Noise : MonoBehaviour
             GameObject tempGO = Instantiate(townCenter, pos, Quaternion.identity);
             tempGO.name = $"town center {i+1}";
 
+            if (i == 0)
+            {
+                tempGO.transform.GetChild(2).GetComponent<Renderer>().material = materials[0];
+                Camera cam = Camera.main;
+                cam.transform.SetParent(tempGO.transform);
+                cam.transform.localPosition = new Vector3(3.4f, 95, -90);
+                cam.transform.parent = null;
+                cam.transform.position = new Vector3(cam.transform.position.x, 12, cam.transform.position.z);
+            } else
+            {
+                tempGO.transform.GetChild(2).GetComponent<Renderer>().material = materials[1];
+            }
+
             GameObject tempParent = GameObject.Find($"town center {i + 1}/Units");
 
             for (int j = 0; j < 3; j++)
@@ -82,8 +97,6 @@ public class Noise : MonoBehaviour
                 tempUnit.transform.SetParent(tempParent.transform);
                 tempUnit.transform.localPosition = posToUnits[j];
                 tempUnit.transform.localScale = Vector3.one;
-                
-                Debug.Log(posToUnits[j]);   
             }
 
             for (int k = 3; k < 5; k++)
