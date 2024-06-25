@@ -27,6 +27,8 @@ public class WorkUI : MonoBehaviour
     public GameObject soundOff;
     public TMP_Text windowToggleText;
     public TMP_Text soundToggleText;
+    public GameObject settings;
+    public GameObject checkSettings;
 
     private string filepath;
     private SettingsData data;
@@ -34,6 +36,7 @@ public class WorkUI : MonoBehaviour
     private int height;
     private bool isWindow = false;
     private bool isSound = false;
+    private bool saveInfo = false;
 
     private void Start()
     {
@@ -50,8 +53,20 @@ public class WorkUI : MonoBehaviour
         Application.Quit();
     }
 
+    public void ExitFromSettings()
+    {
+        if (saveInfo)
+        {
+            settings.SetActive(false);
+        } else
+        {
+            checkSettings.SetActive(true);
+        }
+    }
+
     public void LoadSettings()
     {
+        saveInfo = false;
         if (File.Exists(filepath))
         {
             data = JsonUtility.FromJson<SettingsData>(File.ReadAllText(filepath));
@@ -77,6 +92,7 @@ public class WorkUI : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(filepath, json);
         LoadSettings();
+        saveInfo = true;
     }
 
     private void CheckBool()
