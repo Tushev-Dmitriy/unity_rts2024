@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 6333948533724591266}
   - component: {fileID: 2867103516945225592}
   - component: {fileID: 3379926605013602392}
+  - component: {fileID: -3661366662676690752}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Unit
@@ -234,6 +235,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.86, y: 5.44, z: 2.6076171}
   m_Center: {x: 0, y: 2.64, z: 0}
+--- !u!114 &-3661366662676690752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2706859132802945023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7621305d5c06fb4c909be73e04555c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Archer
+  movementSpeed: 6
+  health: 15
+  maxHealth: 15
+  trainingCost:
+  - resourceName: Metal
+    amount: 10
+  detectionRadius: 6
+  icon: {fileID: 21300000, guid: 18b3e586b942b6548bb07ff2451b8535, type: 3}
+  minRange: 1
+  maxRange: 6
+  attackDelay: 1.25
+  damage: 3
 --- !u!1 &5596121558915164264
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4715961099044962827}
   - component: {fileID: 4707704461966255259}
   - component: {fileID: 4160277258297056040}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: model_uncollected
-  m_TagString: Untagged
+  m_TagString: MapResource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

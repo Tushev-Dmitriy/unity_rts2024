@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Healer : Entity
 {
-    public int minDist;
-    public int maxDist;
-    public int healDelay;
+    public float minDist;
+    public float maxDist;
+    public float healDelay;
     public int heal;
 }

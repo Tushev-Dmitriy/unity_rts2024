@@ -11,13 +11,14 @@ public class UnitController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 clickPos = Vector3.zero;
     private Vector3 click2Pos = Vector3.zero;
+    public PanelController panelController;
 
     void Update()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             if (Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Unit")
             {
@@ -29,10 +30,13 @@ public class UnitController : MonoBehaviour
                 isMove = false;
                 tempUnit = hit.collider.gameObject;
                 clickPos = hit.point;
+
+                panelController.unit = tempUnit;
+                panelController.SetUnitInfo();
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out hit))
             {

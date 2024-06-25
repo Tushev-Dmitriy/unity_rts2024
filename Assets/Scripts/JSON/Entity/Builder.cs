@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Builder : Entity
 {
-    public int timeToExtraction;
-    public int timeToRepair;
-    public int effectiveness;
+    public float resourceGatheringSpeed;
+    public float repairSpeed;
+    public int repairEfficiency;
 }

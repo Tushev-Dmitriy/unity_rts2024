@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 7c77c455beaeee649bd54f8df5f3af77, type: 3}
+      propertyPath: m_TagString
+      value: MapResource
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7c77c455beaeee649bd54f8df5f3af77, type: 3}
       propertyPath: m_Name
       value: Rock

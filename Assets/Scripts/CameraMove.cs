@@ -28,7 +28,7 @@ public class CameraMove : MonoBehaviour
             movement.x += 1;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(2))
         {
             float mouseX = Input.GetAxis("Mouse X");
             transform.Rotate(Vector3.up, mouseX * rotationSpeed * Time.deltaTime, Space.World);

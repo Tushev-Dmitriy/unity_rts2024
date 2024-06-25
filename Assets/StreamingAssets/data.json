@@ -1,0 +1,129 @@
+{
+    "units": [
+      {
+        "name": "Archer",
+        "speed": 5,
+        "health": 50,
+        "trainingCost": {
+          "wood": 20,
+          "gold": 10
+        },
+        "detectionRange": 15,
+        "attack": {
+          "minDistance": 3,
+          "maxDistance": 25,
+          "attackDelay": 1.5,
+          "damage": 15
+        }
+      },
+      {
+        "name": "Catapult",
+        "speed": 2,
+        "health": 150,
+        "trainingCost": {
+          "wood": 50,
+          "stone": 30
+        },
+        "detectionRange": 20,
+        "attack": {
+          "minDistance": 5,
+          "maxDistance": 30,
+          "attackDelay": 5,
+          "damage": 50
+        }
+      },
+      {
+        "name": "HeavyWarrior",
+        "speed": 3,
+        "health": 100,
+        "trainingCost": {
+          "iron": 30,
+          "gold": 20
+        },
+        "detectionRange": 10,
+        "attack": {
+          "minDistance": 1,
+          "maxDistance": 5,
+          "attackDelay": 2,
+          "damage": 20
+        }
+      },
+      {
+        "name": "Spearman",
+        "speed": 4,
+        "health": 60,
+        "trainingCost": {
+          "wood": 10,
+          "iron": 15
+        },
+        "detectionRange": 12,
+        "attack": {
+          "minDistance": 2,
+          "maxDistance": 10,
+          "attackDelay": 1,
+          "damage": 10
+        }
+      },
+      {
+        "name": "Builder",
+        "speed": 5,
+        "health": 50,
+        "trainingCost": {
+          "wood": 15,
+          "stone": 10
+        },
+        "detectionRange": 10,
+        "gathering": {
+          "gatheringSpeed": 2
+        },
+        "repair": {
+          "repairSpeed": 1,
+          "repairEfficiency": 5
+        }
+      },
+      {
+        "name": "Healer",
+        "speed": 5,
+        "health": 40,
+        "trainingCost": {
+          "gold": 20,
+          "herbs": 10
+        },
+        "detectionRange": 10,
+        "healing": {
+          "minDistance": 2,
+          "maxDistance": 15,
+          "healDelay": 3,
+          "healAmount": 10
+        }
+      },
+      {
+        "name": "SiegeTower",
+        "speed": 1,
+        "health": 200,
+        "trainingCost": {
+          "wood": 100,
+          "iron": 50
+        },
+        "detectionRange": 25,
+        "attack": {
+          "minDistance": 2,
+          "maxDistance": 8,
+          "attackDelay": 2,
+          "damage": 5
+        },
+        "capacity": 10
+      },
+      {
+        "name": "Scout",
+        "speed": 10,
+        "health": 30,
+        "trainingCost": {
+          "wood": 5,
+          "gold": 5
+        },
+        "detectionRange": 20
+      }
+    ]
+  }
+  
