@@ -5,11 +5,14 @@ using UnityEngine;
 public class UnitSelection : MonoBehaviour
 {
     public RectTransform selectionBox;
+    public GameObject unitsInTownCenter;
+
     private Vector2 startPos;
     private Camera cam;
+
     private void Start()
     {
-        cam = Camera.main;   
+        cam = Camera.main;
     }
 
     private void Update()
@@ -46,12 +49,16 @@ public class UnitSelection : MonoBehaviour
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
-        //Vector3 screenPos = cam.WorldToScreenPoint(unit.transform.position);
+        for (int i = 0; i < unitsInTownCenter.transform.childCount; i++)
+        {
+            GameObject unit = unitsInTownCenter.transform.GetChild(i).gameObject;
 
-        //if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
-        //{
-        //    selectionUnits.Add(unit);
-        //    unit.ToggleSelectionVisual(true);
-        //}
+            Vector3 screenPos = cam.WorldToScreenPoint(unit.transform.position);
+
+            if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
+            {
+                unit.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
     }
 }

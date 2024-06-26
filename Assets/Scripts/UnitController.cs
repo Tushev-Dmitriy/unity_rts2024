@@ -12,37 +12,48 @@ public class UnitController : MonoBehaviour
     private Vector3 clickPos = Vector3.zero;
     private Vector3 click2Pos = Vector3.zero;
     public PanelController panelController;
+    public bool isGame = false;
+    public GameObject boxUI;
 
     void Update()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Input.GetMouseButtonDown(1))
+        if (isGame)
         {
-            if (Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Unit")
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Input.GetMouseButtonDown(1))
             {
-                if (rb != null)
+                if (Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Unit")
                 {
-                    rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-                    tempUnit = null;
+                    if (rb != null)
+                    {
+                        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+                        tempUnit = null;
+                    }
+                    isMove = false;
+                    tempUnit = hit.collider.gameObject;
+                    clickPos = hit.point;
+
+                    panelController.unit = tempUnit;
+                    panelController.SetUnitInfo();
                 }
-                isMove = false;
-                tempUnit = hit.collider.gameObject;
-                clickPos = hit.point;
-
-                panelController.unit = tempUnit;
-                panelController.SetUnitInfo();
             }
-        }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
-                isMove = true;
-                click2Pos = hit.point;
+                //if (Physics.Raycast(ray, out hit))
+                //{
+                //    target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
+                //    isMove = true;
+                //    click2Pos = hit.point;
+                //}
+                boxUI.SetActive(true);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                boxUI.SetActive(false);
             }
         }
     }
