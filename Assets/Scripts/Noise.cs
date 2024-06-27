@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Noise : MonoBehaviour
 {
@@ -131,6 +133,8 @@ public class Noise : MonoBehaviour
                 tempUnit.transform.localScale = Vector3.one;
             }
         }
+
+        plane.GetComponent<NavMeshController>().UpdateNavMesh();
     }
 
     private bool IsPositionValid(Vector3 position)

@@ -6,6 +6,9 @@ public class UnitSelection : MonoBehaviour
 {
     public RectTransform selectionBox;
     public GameObject unitsInTownCenter;
+    public List<GameObject> unitsInSelection;
+    public UnitController unitController;
+    public bool isOneUnit = false;
 
     private Vector2 startPos;
     private Camera cam;
@@ -17,19 +20,33 @@ public class UnitSelection : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (unitController.tempUnit != null)
         {
-            startPos = Input.mousePosition;
+            isOneUnit = true;
+            unitController.tempUnit.transform.GetChild(0).gameObject.SetActive(true);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (!isOneUnit)
         {
-            ReleaseSelectionBox();
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                startPos = Input.mousePosition;
+                for (int i = 0; i < unitsInSelection.Count; i++)
+                {
+                    unitsInSelection[i].transform.GetChild(0).gameObject.SetActive(false);
+                }
+                unitsInSelection.Clear();
+            }
 
-        if (Input.GetMouseButton(0))
-        {
-            UpdateSelectionBox(Input.mousePosition);
+            if (Input.GetMouseButtonUp(0))
+            {
+                ReleaseSelectionBox();
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                UpdateSelectionBox(Input.mousePosition);
+            }
         }
     }
 
@@ -58,6 +75,7 @@ public class UnitSelection : MonoBehaviour
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
             {
                 unit.transform.GetChild(0).gameObject.SetActive(true);
+                unitsInSelection.Add(unit);
             }
         }
     }

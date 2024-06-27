@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 2867103516945225592}
   - component: {fileID: 3379926605013602392}
   - component: {fileID: -3661366662676690752}
+  - component: {fileID: 964619923988267419}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Unit
@@ -261,6 +262,28 @@ MonoBehaviour:
   maxRange: 6
   attackDelay: 1.25
   damage: 3
+--- !u!195 &964619923988267419
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2706859132802945023}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 2.62
+  m_Speed: 6
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 4.42
+  m_BaseOffset: -0.13
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5596121558915164264
 GameObject:
   m_ObjectHideFlags: 0
