@@ -11903,9 +11903,9 @@ GameObject:
   - component: {fileID: 931596707}
   - component: {fileID: 931596702}
   - component: {fileID: 931596708}
-  - component: {fileID: 931596709}
   - component: {fileID: 931596710}
   - component: {fileID: 931596711}
+  - component: {fileID: 931596712}
   m_Layer: 0
   m_Name: ManagerUI
   m_TagString: Untagged
@@ -11981,24 +11981,7 @@ MonoBehaviour:
   scale: 30
   objectDensity: 0.5
   minDistanceBetweenTowns: 15
-  unitSelection: {fileID: 931596710}
---- !u!114 &931596709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931596701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f03671606c0084f86851cfbe0ce0a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tempUnit: {fileID: 0}
-  panelController: {fileID: 931596711}
-  isGame: 0
-  boxUI: {fileID: 1859257808}
-  unitSelection: {fileID: 931596710}
+  unitMovementData: {fileID: 931596712}
 --- !u!114 &931596710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12011,11 +11994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57e8bad231464948b5f0a0b26d997f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionBox: {fileID: 601135445}
-  unitsInTownCenter: {fileID: 0}
-  unitsInSelection: []
-  unitController: {fileID: 931596709}
-  isOneUnit: 0
+  unitMovementData: {fileID: 931596712}
+  tempUnit: {fileID: 0}
+  panelController: {fileID: 931596711}
 --- !u!114 &931596711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12028,10 +12009,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247ebed6032c5584cb7bd305e5aac775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitMovementData: {fileID: 931596712}
+--- !u!114 &931596712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931596701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d995af9084465cf488d0e054bbb08104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGame: 0
+  boxUI: {fileID: 1859257808}
+  selectionBox: {fileID: 601135445}
+  unitsInTownCenter: {fileID: 0}
+  unitsInSelection: []
+  isOneUnit: 0
   unit: {fileID: 0}
   btnBlock: {fileID: 1197509011}
   unitBlock: {fileID: 1694293087}
-  unitSelection: {fileID: 931596710}
 --- !u!1 &933167395
 GameObject:
   m_ObjectHideFlags: 0

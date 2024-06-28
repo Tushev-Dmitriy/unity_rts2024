@@ -22,7 +22,7 @@ public class Noise : MonoBehaviour
     public float scale = 20f;
     public float objectDensity = 0.1f;
     public float minDistanceBetweenTowns = 45f;
-    public UnitSelection unitSelection;
+    public UnitMovementData unitMovementData;
 
     private float f;
     private float sqrt;
@@ -39,7 +39,7 @@ public class Noise : MonoBehaviour
             SetMapScale();
             GenerateObjects();
             StartCoroutine(GenerateBuilds());
-            GetComponent<UnitController>().isGame = true;
+            GetComponent<UnitMovementData>().isGame = true;
         }
     }
 
@@ -99,7 +99,7 @@ public class Noise : MonoBehaviour
                 cam.transform.localPosition = new Vector3(3.4f, 95, -90);
                 cam.transform.parent = null;
                 cam.transform.position = new Vector3(cam.transform.position.x, 12, cam.transform.position.z);
-                unitSelection.unitsInTownCenter = tempGO.transform.GetChild(1).gameObject;
+                unitMovementData.unitsInTownCenter = tempGO.transform.GetChild(1).gameObject;
             }
             else
             {

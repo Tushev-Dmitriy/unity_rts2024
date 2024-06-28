@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UnitSelection : MonoBehaviour
 {
-    public RectTransform selectionBox;
-    public GameObject unitsInTownCenter;
-    public List<GameObject> unitsInSelection;
-    public UnitController unitController;
-    public bool isOneUnit = false;
+    public UnitMovementData unitMovementData;
+    public GameObject tempUnit;
+    public PanelController panelController;
 
+    private Vector3 target;
+    private NavMeshAgent agent;
     private Vector2 startPos;
     private Camera cam;
 
@@ -20,63 +19,121 @@ public class UnitSelection : MonoBehaviour
 
     private void Update()
     {
-        if (unitController.tempUnit != null)
+        if (unitMovementData.isGame)
         {
-            isOneUnit = true;
-            unitController.tempUnit.transform.GetChild(0).gameObject.SetActive(true);
-        }
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (!isOneUnit)
-        {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
-                startPos = Input.mousePosition;
-                for (int i = 0; i < unitsInSelection.Count; i++)
+                if (Physics.Raycast(ray, out hit, 100))
                 {
-                    unitsInSelection[i].transform.GetChild(0).gameObject.SetActive(false);
+                    if (unitMovementData.unitsInSelection.Count <= 1)
+                    {
+                        if (tempUnit != null)
+                        {
+                            tempUnit.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+
+                        if (hit.collider.tag == "Unit")
+                        {
+                            tempUnit = hit.collider.gameObject;
+
+                            unitMovementData.unit = tempUnit;
+                            panelController.SetUnitInfo();
+                            unitMovementData.isOneUnit = true;
+                            tempUnit.transform.GetChild(0).gameObject.SetActive(true);
+                        }
+                    } else
+                    {
+                        for (int i = 0; i < unitMovementData.unitsInSelection.Count; i++)
+                        {
+                            target = new Vector3(hit.point.x, unitMovementData.unitsInSelection[i].transform.position.y,
+                                hit.point.z);
+                            agent = unitMovementData.unitsInSelection[i].GetComponent<NavMeshAgent>();
+                            agent.SetDestination(target);
+                        }
+                    }
                 }
-                unitsInSelection.Clear();
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (!unitMovementData.isOneUnit)
             {
-                ReleaseSelectionBox();
-            }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        startPos = Input.mousePosition;
+                        if (unitMovementData.unitsInSelection != null)
+                        {
+                            for (int i = 0; i < unitMovementData.unitsInSelection.Count; i++)
+                            {
+                                unitMovementData.unitsInSelection[i].transform.GetChild(0).gameObject.SetActive(false);
+                            }
+                            //unitMovementData.unitsInSelection.Clear();
+                        }
 
-            if (Input.GetMouseButton(0))
+                        unitMovementData.boxUI.SetActive(true);
+                    }
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    ReleaseSelectionBox();
+                    unitMovementData.boxUI.SetActive(false);
+                    panelController.SetMultiUnitInfo();
+                }
+
+                if (Input.GetMouseButton(0))
+                {
+                    UpdateSelectionBox(Input.mousePosition);
+                }
+            }
+            else
             {
-                UpdateSelectionBox(Input.mousePosition);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
+                        agent = tempUnit.GetComponent<NavMeshAgent>();
+                        agent.SetDestination(target);
+                    }
+                }
             }
         }
     }
 
     void UpdateSelectionBox(Vector2 curMousePos)
     {
-        if (!selectionBox.gameObject.activeInHierarchy)
-            selectionBox.gameObject.SetActive(true);
+        if (!unitMovementData.selectionBox.gameObject.activeInHierarchy)
+            unitMovementData.selectionBox.gameObject.SetActive(true);
         float width = curMousePos.x - startPos.x;
         float height = curMousePos.y - startPos.y;
-        selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
-        selectionBox.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
+        unitMovementData.selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
+        unitMovementData.selectionBox.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
     }
 
     void ReleaseSelectionBox()
     {
-        selectionBox.gameObject.SetActive(false);
-        Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
-        Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
+        unitMovementData.selectionBox.gameObject.SetActive(false);
+        Vector2 min = unitMovementData.selectionBox.anchoredPosition - (unitMovementData.selectionBox.sizeDelta / 2);
+        Vector2 max = unitMovementData.selectionBox.anchoredPosition + (unitMovementData.selectionBox.sizeDelta / 2);
 
-        for (int i = 0; i < unitsInTownCenter.transform.childCount; i++)
+        for (int i = 0; i < unitMovementData.unitsInTownCenter.transform.childCount; i++)
         {
-            GameObject unit = unitsInTownCenter.transform.GetChild(i).gameObject;
+            GameObject unit = unitMovementData.unitsInTownCenter.transform.GetChild(i).gameObject;
 
             Vector3 screenPos = cam.WorldToScreenPoint(unit.transform.position);
 
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
             {
                 unit.transform.GetChild(0).gameObject.SetActive(true);
-                unitsInSelection.Add(unit);
+                unitMovementData.unitsInSelection.Add(unit);
+                Debug.Log(unit.name);
             }
         }
+
+        panelController.SetMultiUnitInfo();
     }
 }
