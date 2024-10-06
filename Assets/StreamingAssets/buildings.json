@@ -1,0 +1,49 @@
+[
+    {
+        "type": "Building",
+        "buildingName": "",
+        "durability": 0,
+        "constructionCost": {}
+    },
+    {
+        "type": "ResourceBuilding",
+        "buildingName": "",
+        "durability": 0,
+        "constructionCost": {},
+        "producesResource": ""
+    },
+    {
+        "type": "Storage",
+        "buildingName": "",
+        "durability": 0,
+        "constructionCost": {},
+        "increasesResourceCapacity": false
+    },
+    {
+        "type": "TownHall",
+        "buildingName": "",
+        "durability": 0,
+        "constructionCost": {},
+        "constructionRadius": 0
+    },
+    {
+        "type": "TrainingBuilding",
+        "buildingName": "",
+        "durability": 0,
+        "constructionCost": {},
+        "trainsUnits": []
+    },
+    {
+        "type": "Watchtower",
+        "buildingName": "",
+        "durability": 0,
+        "constructionCost": {},
+        "detectionRadius": 0,
+        "constructionRadius": 0,
+        "archerCapacity": 0,
+        "minRange": 0,
+        "maxRange": 0,
+        "attackDelay": 0,
+        "damagePerArcher": 0
+    }
+]
