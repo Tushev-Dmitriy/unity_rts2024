@@ -16,8 +16,8 @@ MonoBehaviour:
   movementSpeed: 4
   health: 80
   trainingCost:
-  - resourceName: Mana
-    amount: 30
+  - resourceName: Food
+    amount: 5
   detectionRadius: 8
   icon: {fileID: 0}
   minDist: 2

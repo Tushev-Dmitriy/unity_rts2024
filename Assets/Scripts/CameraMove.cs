@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public float camSpeed = 5f;
-    public float rotationSpeed = 75f;
+    public float rotationSpeed = 150f;
 
     void Update()
     {
@@ -36,24 +36,24 @@ public class CameraMove : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
-            if (transform.position.y > 5 && transform.position.y < 25)
+            if (transform.position.y > 5.2f && transform.position.y < 25.2f)
             {
                 if (Input.GetAxis("Mouse ScrollWheel") == -0.1f)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
                 }
 
                 if (Input.GetAxis("Mouse ScrollWheel") == 0.1f)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z);
                 }
             }
 
-            if (transform.position.y == 5.2f)
+            if (transform.position.y == 5.2f || transform.position.y == 5.200001f)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
             }
-            else if (transform.position.y == 25.2f)
+            else if (transform.position.y == 25.2f || transform.position.y == 25.200001f)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
             }

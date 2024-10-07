@@ -1,0 +1,23 @@
+[
+  {
+    "difficultName": "Easy",
+    "enemySpawnInterval": 15,
+    "enemyTypes": [ "warrior" ],
+    "initialArmyLimit": 5,
+    "armyLimitIncrease": 2
+  },
+  {
+    "difficultName": "Medium",
+    "enemySpawnInterval": 10,
+    "enemyTypes": [ "warrior", "archer" ],
+    "initialArmyLimit": 8,
+    "armyLimitIncrease": 4
+  },
+  {
+    "difficultName": "Hard",
+    "enemySpawnInterval": 5,
+    "enemyTypes": [ "warrior", "archer", "catapult" ],
+    "initialArmyLimit": 10,
+    "armyLimitIncrease": 5
+  }
+]

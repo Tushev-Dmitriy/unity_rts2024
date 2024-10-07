@@ -1,51 +1,137 @@
 [
-    {
-      "unitType": "AttackUnit",
-      "unitName": "AttackUnit",
-      "movementSpeed": 5.0,
-      "health": 100,
-      "trainingCost": [{"resourceName": "Gold", "amount": 50}],
-      "detectionRadius": 10.0,
-      "icon": null,
-      "minRange": 1,
-      "maxRange": 10,
-      "attackDelay": 1.5,
-      "damage": 20
-    },
-    {
-      "unitType": "Builder",
-      "unitName": "Builder",
-      "movementSpeed": 3.0,
-      "health": 50,
-      "trainingCost": [{"resourceName": "Wood", "amount": 20}],
-      "detectionRadius": 5.0,
-      "icon": null,
-      "resourceGatheringSpeed": 2.0,
-      "repairSpeed": 1.0,
-      "repairEfficiency": 0.9
-    },
-    {
-      "unitType": "Healer",
-      "unitName": "Healer",
-      "movementSpeed": 4.0,
-      "health": 80,
-      "trainingCost": [{"resourceName": "Mana", "amount": 30}],
-      "detectionRadius": 8.0,
-      "icon": null,
-      "minDist": 2.0,
-      "maxDist": 6.0,
-      "healDelay": 2.0,
-      "heal": 15
-    },
-    {
-      "unitType": "SiegeTower",
-      "unitName": "SiegeTower",
-      "movementSpeed": 2.0,
-      "health": 500,
-      "trainingCost": [{"resourceName": "Iron", "amount": 100}],
-      "detectionRadius": 12.0,
-      "icon": null,
-      "capacity": 10
-    }
-  ]
+  {
+    "unitType": "AttackUnit",
+    "unitName": "Archer",
+    "movementSpeed": 5.0,
+    "health": 100,
+    "trainingCost": [
+      {
+        "resourceName": "Rock",
+        "amount": 5
+      }
+    ],
+    "detectionRadius": 10.0,
+    "icon": null,
+    "minRange": 1,
+    "maxRange": 10,
+    "attackDelay": 1.5,
+    "damage": 20
+  },
+  {
+    "unitType": "AttackUnit",
+    "unitName": "Catapult",
+    "movementSpeed": 3.0,
+    "health": 80,
+    "trainingCost": [
+      {
+        "resourceName": "Rock",
+        "amount": 3
+      },
+      {
+        "resourceName": "Wood",
+        "amount": 5
+      }
+    ],
+    "detectionRadius": 20.0,
+    "icon": null,
+    "minRange": 5,
+    "maxRange": 20,
+    "attackDelay": 3.5,
+    "damage": 60
+  },
+  {
+    "unitType": "AttackUnit",
+    "unitName": "HeavyWarrior",
+    "movementSpeed": 3.0,
+    "health": 150,
+    "trainingCost": [
+      {
+        "resourceName": "Metall",
+        "amount": 10
+      },
+      {
+        "resourceName": "Wood",
+        "amount": 5
+      }
+    ],
+    "detectionRadius": 15.0,
+    "icon": null,
+    "minRange": 1,
+    "maxRange": 10,
+    "attackDelay": 2.0,
+    "damage": 40
+  },
+  {
+    "unitType": "AttackUnit",
+    "unitName": "Spearman",
+    "movementSpeed": 3.0,
+    "health": 150,
+    "trainingCost": [
+      {
+        "resourceName": "Metall",
+        "amount": 5
+      },
+      {
+        "resourceName": "Rock",
+        "amount": 5
+      }
+    ],
+    "detectionRadius": 20.0,
+    "icon": null,
+    "minRange": 1,
+    "maxRange": 15,
+    "attackDelay": 2.0,
+    "damage": 30
+  },
+  {
+    "unitType": "Builder",
+    "unitName": "Builder",
+    "movementSpeed": 3.0,
+    "health": 50,
+    "trainingCost": [
+      {
+        "resourceName": "Wood",
+        "amount": 5
+      }
+    ],
+    "detectionRadius": 5.0,
+    "icon": null,
+    "resourceGatheringSpeed": 2.0,
+    "repairSpeed": 1.0,
+    "repairEfficiency": 0.9
+  },
+  {
+    "unitType": "Healer",
+    "unitName": "Healer",
+    "movementSpeed": 4.0,
+    "health": 80,
+    "trainingCost": [
+      {
+        "resourceName": "Food",
+        "amount": 5
+      }
+    ],
+    "detectionRadius": 8.0,
+    "icon": null,
+    "minDist": 2.0,
+    "maxDist": 6.0,
+    "healDelay": 2.0,
+    "heal": 15
+  },
+  {
+    "unitType": "SiegeTower",
+    "unitName": "SiegeTower",
+    "movementSpeed": 2.0,
+    "health": 500,
+    "trainingCost": [
+      {
+        "resourceName": "Metall",
+        "amount": 10
+      }
+    ],
+    "detectionRadius": 12.0,
+    "icon": null,
+    "capacity": 10
+  }
+]
   

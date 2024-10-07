@@ -9346,7 +9346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camSpeed: 5
-  rotationSpeed: 75
+  rotationSpeed: 150
 --- !u!1 &972072063
 GameObject:
   m_ObjectHideFlags: 0
@@ -13993,9 +13993,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445916312}
+  - component: {fileID: 1445916318}
   - component: {fileID: 1445916311}
+  - component: {fileID: 1445916317}
+  - component: {fileID: 1445916316}
   - component: {fileID: 1445916313}
   - component: {fileID: 1445916314}
+  - component: {fileID: 1445916315}
+  - component: {fileID: 1445916319}
   m_Layer: 0
   m_Name: MapController
   m_TagString: Untagged
@@ -14016,21 +14021,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCam: {fileID: 942437434}
-  baseObject: {fileID: 1397920585}
   mapScaleText: {fileID: 1154414785}
   mapObj: {fileID: 1849102074}
   mapEnemyCountDropdown: {fileID: 432920780}
   mapObjects: {fileID: 1956623968}
-  userBase: {fileID: 208877861}
-  enemyBase: {fileID: 1207772391}
   stonePrefab: {fileID: 4412417125401228052, guid: 1a64972ad17ab9f4c8901e1a961e3a6f, type: 3}
   treePrefab: {fileID: 1382659402361695440, guid: c2c69f8104c371c4a9ff5d159de70649, type: 3}
-  townCenterPrefab: {fileID: 3931184038110116919, guid: 6761c410843c8c047bdf217375134437, type: 3}
-  units:
-  - {fileID: 5209728340417000431, guid: e2d361d46eb2a474da958c76590175b6, type: 3}
-  - {fileID: 1861785189790964152, guid: 822451c3cfcd85c418c521a0c60f16ac, type: 3}
-  - {fileID: 408817030802499377, guid: e0a82d04897f7b74a83b569473647a10, type: 3}
-  - {fileID: 5381656724978838495, guid: a02f5a82d08043a449bb416979e520e2, type: 3}
 --- !u!4 &1445916312
 Transform:
   m_ObjectHideFlags: 0
@@ -14071,6 +14067,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7821e7fccde29aa44a826a1c98b8d4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1445916315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445916310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545e04734632eb748b68318fc5dad498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitSpawn: {fileID: 0}
+--- !u!114 &1445916316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445916310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16575f5984c73b4ea03c23ad6a573b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  units:
+  - {fileID: 5209728340417000431, guid: e2d361d46eb2a474da958c76590175b6, type: 3}
+  - {fileID: 1861785189790964152, guid: 822451c3cfcd85c418c521a0c60f16ac, type: 3}
+  userBase: {fileID: 208877861}
+  enemyBase: {fileID: 1207772391}
+  difficultLevelDropdown: {fileID: 1346777994}
+--- !u!114 &1445916317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445916310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2c55d2bb14f124f94691b5b3cf7d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  townCenterPrefab: {fileID: 3931184038110116919, guid: 6761c410843c8c047bdf217375134437, type: 3}
+  baseObject: {fileID: 1397920585}
+  userBase: {fileID: 208877861}
+  enemyBase: {fileID: 1207772391}
+  mapEnemyCountDropdown: {fileID: 432920780}
+--- !u!114 &1445916318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445916310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697de67a77926b2498f599fe7a076690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapGenerator: {fileID: 1445916311}
+  generateBuilds: {fileID: 1445916317}
+  unitSpawn: {fileID: 1445916316}
+--- !u!114 &1445916319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445916310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d685c7dc65e9d94db43d89a2cbd06d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsScriptableObjects: []
 --- !u!1 &1458106611
 GameObject:
   m_ObjectHideFlags: 0
@@ -16923,7 +16995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 475}
+  m_AnchoredPosition: {x: -550, y: 475}
   m_SizeDelta: {x: 760, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722140097
@@ -20320,9 +20392,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1445916311}
-        m_TargetAssemblyTypeName: MapGenerator, Assembly-CSharp
-        m_MethodName: SetupMapScale
+      - m_Target: {fileID: 1445916318}
+        m_TargetAssemblyTypeName: FullMapSpawn, Assembly-CSharp
+        m_MethodName: StartSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

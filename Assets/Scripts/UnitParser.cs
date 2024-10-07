@@ -91,7 +91,6 @@ public class UnitParser : MonoBehaviour
                         break;
                 }
 
-                // Создание и сохранение ресурса
                 if (scriptableUnit != null)
                 {
                     string assetPath = Path.Combine(assetsPath, unitData.unitName + ".asset");
@@ -100,11 +99,6 @@ public class UnitParser : MonoBehaviour
             }
 
             AssetDatabase.SaveAssets();
-            Debug.Log("Все юниты загружены и сохранены!");
-        }
-        else
-        {
-            Debug.LogError("Файл units.json не найден");
         }
     }
 }
