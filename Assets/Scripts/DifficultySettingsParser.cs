@@ -8,7 +8,7 @@ using UnityEngine;
 public class DifficultySettingsParser : MonoBehaviour
 {
     [Header("Another scripts")]
-    public UnitSpawn unitSpawn;
+    public DifficultSettingsController difficultSettingsController;
 
     private const string settingsFileName = "GameDifficultySettings.json";
 
@@ -32,6 +32,8 @@ public class DifficultySettingsParser : MonoBehaviour
                 AssetDatabase.CreateFolder("Assets/Resources", "Difficult");
             }
 
+            List<GameDifficult> createdSettings = new List<GameDifficult>();
+
             foreach (GameDifficulties gameSetting in settings)
             {
                 ScriptableObject scriptableSettings = null;
@@ -46,12 +48,16 @@ public class DifficultySettingsParser : MonoBehaviour
 
                 if (scriptableSettings != null)
                 {
+                    createdSettings.Add(gameSettings);
+
                     string assetPath = Path.Combine(assetsPath, gameSetting.difficultName + ".asset");
                     AssetDatabase.CreateAsset(scriptableSettings, assetPath);
                 }
             }
 
             AssetDatabase.SaveAssets();
+
+            difficultSettingsController.SetSettings(createdSettings);
         }
     }
 }

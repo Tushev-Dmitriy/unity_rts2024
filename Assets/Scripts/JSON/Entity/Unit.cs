@@ -24,6 +24,7 @@ public class Unit
     public string unitName;
     public float movementSpeed;
     public float health;
+    public float maxHealth;
     public List<ResourceCost> trainingCost;
     public float detectionRadius;
     public Sprite icon;

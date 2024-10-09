@@ -15,6 +15,7 @@ MonoBehaviour:
   unitName: Archer
   movementSpeed: 5
   health: 100
+  maxHealth: 100
   trainingCost:
   - resourceName: Rock
     amount: 5

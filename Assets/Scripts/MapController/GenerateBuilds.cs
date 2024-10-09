@@ -29,7 +29,7 @@ public class GenerateBuilds : MonoBehaviour
     public void GenerateBuildsOnMap()
     {
         int baseCount = mapEnemyCountDropdown.value + 2;
-        float radius = 0.75f;
+        float radius = 1f;
 
         for (int i = 0; i < baseCount; i++)
         {
@@ -61,12 +61,12 @@ public class GenerateBuilds : MonoBehaviour
             basePositions.Add(posR);
             townCenter.transform.localPosition = posR;
 
-            Collider[] colliders = Physics.OverlapSphere(townCenter.transform.position, radius);
-            foreach (Collider collider in colliders)
+            Collider[] objectsInRange = Physics.OverlapSphere(townCenter.transform.position, 0.75f);
+            foreach (Collider col in objectsInRange)
             {
-                if (collider.tag == "MapObject")
+                if (col.CompareTag("MapObject"))
                 {
-                    collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                    Destroy(col.gameObject);
                 }
             }
 

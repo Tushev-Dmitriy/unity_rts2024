@@ -8,11 +8,13 @@ public class FullMapSpawn : MonoBehaviour
     public MapGenerator mapGenerator;
     public GenerateBuilds generateBuilds;
     public UnitSpawn unitSpawn;
+    public DifficultSettingsController difficultSettingsController;
 
     public void StartSpawn()
     {
         mapGenerator.SetupMapScale();
         generateBuilds.GenerateBuildsOnMap();
+        difficultSettingsController.SetupDifficult();
         unitSpawn.UnitSpawner();
     }
 }

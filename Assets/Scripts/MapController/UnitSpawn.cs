@@ -5,20 +5,14 @@ using UnityEngine;
 
 public class UnitSpawn : MonoBehaviour
 {
+    public DifficultSettingsController difficultSettingsController;
+
     [Header("Prefabs")]
     public GameObject[] units;
 
     [Header("Obj in inspector")]
     public GameObject userBase;
     public GameObject enemyBase;
-    public TMP_Dropdown difficultLevelDropdown;
-
-    [Header("Difficulty level")]
-    private string difficultyName;
-    private int spawnInterval;
-    private List<string> enemyTypes;
-    private int initialArmyLimit;
-    private int armyLimitIncrease;
 
     private List<Vector3> unitSpawnPos = new List<Vector3>()
     {
@@ -53,6 +47,6 @@ public class UnitSpawn : MonoBehaviour
 
     private void EnemyBaseUnitSpawn()
     {
-        
+
     }
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   unitName: Builder
   movementSpeed: 3
   health: 50
+  maxHealth: 50
   trainingCost:
   - resourceName: Wood
     amount: 5

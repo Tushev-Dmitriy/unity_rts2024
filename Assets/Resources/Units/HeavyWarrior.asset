@@ -15,6 +15,7 @@ MonoBehaviour:
   unitName: HeavyWarrior
   movementSpeed: 3
   health: 150
+  maxHealth: 150
   trainingCost:
   - resourceName: Metall
     amount: 10

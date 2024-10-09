@@ -15,6 +15,7 @@ MonoBehaviour:
   unitName: Catapult
   movementSpeed: 3
   health: 80
+  maxHealth: 80
   trainingCost:
   - resourceName: Rock
     amount: 3

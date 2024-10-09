@@ -39,6 +39,7 @@ public class UnitParser : MonoBehaviour
                         attackUnit.unitName = unitData.unitName;
                         attackUnit.movementSpeed = unitData.movementSpeed;
                         attackUnit.health = unitData.health;
+                        attackUnit.maxHealth = unitData.maxHealth;
                         attackUnit.trainingCost = unitData.trainingCost;
                         attackUnit.detectionRadius = unitData.detectionRadius;
                         attackUnit.icon = unitData.icon;
@@ -54,6 +55,7 @@ public class UnitParser : MonoBehaviour
                         builderUnit.unitName = unitData.unitName;
                         builderUnit.movementSpeed = unitData.movementSpeed;
                         builderUnit.health = unitData.health;
+                        builderUnit.maxHealth = unitData.maxHealth;
                         builderUnit.trainingCost = unitData.trainingCost;
                         builderUnit.detectionRadius = unitData.detectionRadius;
                         builderUnit.icon = unitData.icon;
@@ -68,6 +70,7 @@ public class UnitParser : MonoBehaviour
                         healerUnit.unitName = unitData.unitName;
                         healerUnit.movementSpeed = unitData.movementSpeed;
                         healerUnit.health = unitData.health;
+                        healerUnit.maxHealth = unitData.maxHealth;
                         healerUnit.trainingCost = unitData.trainingCost;
                         healerUnit.detectionRadius = unitData.detectionRadius;
                         healerUnit.icon = unitData.icon;
@@ -83,6 +86,7 @@ public class UnitParser : MonoBehaviour
                         siegeTower.unitName = unitData.unitName;
                         siegeTower.movementSpeed = unitData.movementSpeed;
                         siegeTower.health = unitData.health;
+                        siegeTower.maxHealth = unitData.maxHealth;
                         siegeTower.trainingCost = unitData.trainingCost;
                         siegeTower.detectionRadius = unitData.detectionRadius;
                         siegeTower.icon = unitData.icon;

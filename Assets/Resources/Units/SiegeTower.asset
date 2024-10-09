@@ -15,6 +15,7 @@ MonoBehaviour:
   unitName: SiegeTower
   movementSpeed: 2
   health: 500
+  maxHealth: 500
   trainingCost:
   - resourceName: Metall
     amount: 10

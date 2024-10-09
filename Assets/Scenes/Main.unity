@@ -14079,7 +14079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545e04734632eb748b68318fc5dad498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitSpawn: {fileID: 0}
+  difficultSettingsController: {fileID: 1445916319}
 --- !u!114 &1445916316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14097,7 +14097,6 @@ MonoBehaviour:
   - {fileID: 1861785189790964152, guid: 822451c3cfcd85c418c521a0c60f16ac, type: 3}
   userBase: {fileID: 208877861}
   enemyBase: {fileID: 1207772391}
-  difficultLevelDropdown: {fileID: 1346777994}
 --- !u!114 &1445916317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14130,6 +14129,7 @@ MonoBehaviour:
   mapGenerator: {fileID: 1445916311}
   generateBuilds: {fileID: 1445916317}
   unitSpawn: {fileID: 1445916316}
+  difficultSettingsController: {fileID: 1445916319}
 --- !u!114 &1445916319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14139,10 +14139,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445916310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d685c7dc65e9d94db43d89a2cbd06d2, type: 3}
+  m_Script: {fileID: 11500000, guid: ff5977bdd0a5ae148a874929ccaa40e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsScriptableObjects: []
+  settingsList: []
+  difficultLevelDropdown: {fileID: 1346777994}
+  difficultName: 
+  spawnInterval: 0
+  enemyTypes: []
+  initialArmyLimit: 0
+  armyLimitIncrease: 0
 --- !u!1 &1458106611
 GameObject:
   m_ObjectHideFlags: 0

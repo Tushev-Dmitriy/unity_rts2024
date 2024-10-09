@@ -15,6 +15,7 @@ MonoBehaviour:
   unitName: Spearman
   movementSpeed: 3
   health: 150
+  maxHealth: 150
   trainingCost:
   - resourceName: Metall
     amount: 5

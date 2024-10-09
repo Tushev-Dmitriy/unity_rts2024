@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 8432377372106062241}
   - component: {fileID: 4325159083289541945}
   - component: {fileID: 2291468719640685953}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2888,7 +2888,7 @@ GameObject:
   - component: {fileID: 6409718063712011123}
   - component: {fileID: 8234458000661779190}
   - component: {fileID: 3077193830862263038}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3118,7 +3118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3928290521851066025}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: town_center_model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4273,7 +4273,7 @@ GameObject:
   - component: {fileID: 4635953737456292328}
   - component: {fileID: 5977451641038440608}
   - component: {fileID: 582014091714157073}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5430,7 +5430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 161033235736081685}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: AnotherParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5889,7 +5889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6708046779207876619}
   - component: {fileID: 466991017124322278}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: MainParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
