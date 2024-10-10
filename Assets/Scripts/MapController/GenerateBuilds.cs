@@ -54,8 +54,8 @@ public class GenerateBuilds : MonoBehaviour
             Vector3 posR;
             do
             {
-                posR = new Vector3(Random.Range(-0.4f, 0.4f), 10,
-                    Random.Range(-0.4f, 0.4f));
+                posR = new Vector3(Random.Range(-0.38f, 0.38f), 10,
+                    Random.Range(-0.38f, 0.38f));
             } while (!IsPositionValid(posR));
 
             basePositions.Add(posR);

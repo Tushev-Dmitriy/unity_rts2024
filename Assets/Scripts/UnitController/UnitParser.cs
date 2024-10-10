@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class UnitParser : MonoBehaviour
 {
+    public UnitDataController unitDataController;
+
     private const string unitsFileName = "units.json";
 
     private void Start()
@@ -28,6 +30,8 @@ public class UnitParser : MonoBehaviour
                 AssetDatabase.CreateFolder("Assets/Resources", "Units");
             }
 
+            List<Object> createdUnits = new List<Object>();
+
             foreach (Unit unitData in units)
             {
                 ScriptableObject scriptableUnit = null;
@@ -47,6 +51,7 @@ public class UnitParser : MonoBehaviour
                         attackUnit.maxRange = unitData.maxRange;
                         attackUnit.attackDelay = unitData.attackDelay;
                         attackUnit.damage = unitData.damage;
+                        createdUnits.Add(attackUnit);
                         scriptableUnit = attackUnit;
                         break;
 
@@ -62,6 +67,7 @@ public class UnitParser : MonoBehaviour
                         builderUnit.resourceGatheringSpeed = unitData.resourceGatheringSpeed;
                         builderUnit.repairSpeed = unitData.repairSpeed;
                         builderUnit.repairEfficiency = unitData.repairEfficiency;
+                        createdUnits.Add(builderUnit);
                         scriptableUnit = builderUnit;
                         break;
 
@@ -78,6 +84,7 @@ public class UnitParser : MonoBehaviour
                         healerUnit.maxDist = unitData.maxDist;
                         healerUnit.healDelay = unitData.healDelay;
                         healerUnit.heal = unitData.heal;
+                        createdUnits.Add(healerUnit);
                         scriptableUnit = healerUnit;
                         break;
 
@@ -91,6 +98,7 @@ public class UnitParser : MonoBehaviour
                         siegeTower.detectionRadius = unitData.detectionRadius;
                         siegeTower.icon = unitData.icon;
                         siegeTower.capacity = unitData.capacity;
+                        createdUnits.Add(siegeTower);
                         scriptableUnit = siegeTower;
                         break;
                 }
@@ -103,6 +111,8 @@ public class UnitParser : MonoBehaviour
             }
 
             AssetDatabase.SaveAssets();
+
+            unitDataController.SetUnits(createdUnits);
         }
     }
 }
