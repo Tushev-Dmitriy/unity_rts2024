@@ -28,6 +28,8 @@ public class UnitController : MonoBehaviour
                 isMove = false;
                 tempUnit = hit.collider.gameObject;
                 clickPos = hit.point;
+
+                hit.collider.gameObject.GetComponent<UnitDataController>().SetUnitsInfoInUI();
             }
         }
 

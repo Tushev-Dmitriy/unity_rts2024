@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class UnitParser : MonoBehaviour
 {
-    public UnitDataController unitDataController;
+    public UnitDataUI unitDataUI;
 
     private const string unitsFileName = "units.json";
 
@@ -30,7 +30,7 @@ public class UnitParser : MonoBehaviour
                 AssetDatabase.CreateFolder("Assets/Resources", "Units");
             }
 
-            List<Object> createdUnits = new List<Object>();
+            List<ScriptableObject> createdUnits = new List<ScriptableObject>();
 
             foreach (Unit unitData in units)
             {
@@ -112,7 +112,7 @@ public class UnitParser : MonoBehaviour
 
             AssetDatabase.SaveAssets();
 
-            unitDataController.SetUnits(createdUnits);
+            unitDataUI.SetUnits(createdUnits);
         }
     }
 }

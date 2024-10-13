@@ -2982,7 +2982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9a1e2190f6c38694ab5b108f9e2659a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4992,6 +4992,7 @@ GameObject:
   - component: {fileID: 412510866}
   - component: {fileID: 412510865}
   - component: {fileID: 412510869}
+  - component: {fileID: 412510870}
   m_Layer: 0
   m_Name: UnitController
   m_TagString: Untagged
@@ -5011,6 +5012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61a191dcba252c4dbfdbb67c61c69cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCanvasController: {fileID: 412510870}
   unitsIcons:
   - {fileID: 21300000, guid: 18b3e586b942b6548bb07ff2451b8535, type: 3}
   - {fileID: 21300000, guid: 2d9f93e1c80a5fa4aaaa6a3e0dfeb5d3, type: 3}
@@ -5019,28 +5021,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8155e2639cd449540ac862478791c54e, type: 3}
   - {fileID: 21300000, guid: 46001833cc5d1254296592bbd19b939b, type: 3}
   - {fileID: 21300000, guid: f1b29190b0ae2bf4693f783debe79c85, type: 3}
-  builderIcons:
-  - {fileID: 21300000, guid: 3bdab9633cf502044bfe0f31278f5105, type: 3}
-  - {fileID: 21300000, guid: ed754c7e98976a44aa4d939c3a9e1d9f, type: 3}
-  - {fileID: 21300000, guid: dc39b5d4bccae7a4784e9c305a6f7cb5, type: 3}
-  - {fileID: 21300000, guid: 42e13815d03e4814fab2ee1beb04d1c1, type: 3}
-  - {fileID: 21300000, guid: fd395689196893e4f9f6c66205a4ac7b, type: 3}
-  - {fileID: 21300000, guid: 9a1e2190f6c38694ab5b108f9e2659a5, type: 3}
-  - {fileID: 21300000, guid: dbdad8c973f51e944ae97f59124817d6, type: 3}
-  - {fileID: 21300000, guid: 226ffb4fde6ab8a49b50f10f2d8df115, type: 3}
-  - {fileID: 21300000, guid: 53710a66670051d4aaa524e133a3525c, type: 3}
-  - {fileID: 21300000, guid: 16e49eb5f3b19eb4fa0a77a2d4b10665, type: 3}
-  - {fileID: 21300000, guid: 7f204d5cb77295248b751d9f36d990a9, type: 3}
-  - {fileID: 21300000, guid: e5b91d946a6712b44bd2fe0ad636f72a, type: 3}
-  - {fileID: 21300000, guid: f3e598d65ec9d89408ca6af1876febc2, type: 3}
+  builderIcons: []
   unitActionsIcons:
   - {fileID: 21300000, guid: a7442078edd58834ba01f9299cf1ccfd, type: 3}
   - {fileID: 21300000, guid: 73c1e5cdb3699004b9ea3efb001984d5, type: 3}
-  - {fileID: 21300000, guid: a93ee83b7e55b1743ab00a6b3c415d03, type: 3}
   - {fileID: 21300000, guid: 77e1083102e229b4fa967a8f4055dc3f, type: 3}
-  - {fileID: 21300000, guid: 2867ab8f546e2d44786f4f63dcc45206, type: 3}
   - {fileID: 21300000, guid: f4ad1584bb2853a4c96db30496bac272, type: 3}
-  - {fileID: 21300000, guid: 95360d9ebe48db748bbf325e76587b0b, type: 3}
+  - {fileID: 21300000, guid: a93ee83b7e55b1743ab00a6b3c415d03, type: 3}
+  - {fileID: 21300000, guid: 2867ab8f546e2d44786f4f63dcc45206, type: 3}
+  unitsList: []
 --- !u!114 &412510866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5053,7 +5042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7821e7fccde29aa44a826a1c98b8d4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitDataController: {fileID: 412510869}
+  unitDataUI: {fileID: 412510865}
 --- !u!114 &412510867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5094,7 +5083,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6f8f03660e68847bec06f33b3ff8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitsList: []
+  unitCanvasController: {fileID: 0}
+  unitType: 0
+  unitIcon: {fileID: 0}
+  unitName: 
+  unitMaxHealth: 0
+  unitHealh: 0
+--- !u!114 &412510870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412510864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400c22d75d7741a439f1366e6734a2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitDataUI: {fileID: 412510865}
+  unitInfoObj: {fileID: 100820970}
+  unitActionObj: {fileID: 1949051000}
 --- !u!1 &422679482
 GameObject:
   m_ObjectHideFlags: 0
@@ -5560,7 +5569,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3bdab9633cf502044bfe0f31278f5105, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8058,7 +8067,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 42e13815d03e4814fab2ee1beb04d1c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8454,7 +8463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 53710a66670051d4aaa524e133a3525c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10605,7 +10614,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ed754c7e98976a44aa4d939c3a9e1d9f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11024,7 +11033,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dbdad8c973f51e944ae97f59124817d6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14234,6 +14243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultSettingsController: {fileID: 555751514}
+  unitDataUI: {fileID: 412510865}
   units:
   - {fileID: 5209728340417000431, guid: e2d361d46eb2a474da958c76590175b6, type: 3}
   - {fileID: 1861785189790964152, guid: 822451c3cfcd85c418c521a0c60f16ac, type: 3}
@@ -15766,7 +15776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dc39b5d4bccae7a4784e9c305a6f7cb5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16767,7 +16777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 226ffb4fde6ab8a49b50f10f2d8df115, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19991,7 +20001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fd395689196893e4f9f6c66205a4ac7b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20143,53 +20153,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074715354}
   m_CullTransparentMesh: 1
---- !u!1 &2078644414
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2078644416}
-  - component: {fileID: 2078644415}
-  m_Layer: 0
-  m_Name: UnitController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2078644415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078644414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7621c4ea01e414097bff7a13f24809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpSliderObj: {fileID: 1892430602}
-  hpNow: 0
-  maxHp: 0
---- !u!4 &2078644416
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078644414}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1395.3168, y: 210.5487, z: 145.54329}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080224106
 GameObject:
   m_ObjectHideFlags: 0
@@ -21002,7 +20965,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1397920586}
   - {fileID: 383679207}
-  - {fileID: 2078644416}
   - {fileID: 271933155}
   - {fileID: 1445916312}
   - {fileID: 412510868}

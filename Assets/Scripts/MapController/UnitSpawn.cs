@@ -7,6 +7,7 @@ public class UnitSpawn : MonoBehaviour
 {
     [Header("Other scripts")]
     public DifficultSettingsController difficultSettingsController;
+    public UnitDataUI unitDataUI;
 
     [Header("Prefabs")]
     public GameObject[] units;
@@ -50,6 +51,7 @@ public class UnitSpawn : MonoBehaviour
             GameObject villagerUnit = Instantiate(units[0], userBase.transform.GetChild(0).transform);
             villagerUnit.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             villagerUnit.transform.localPosition = unitSpawnPos[i];
+            unitDataUI.AddInfoOnUnit(villagerUnit);
         }
 
         for (int j = 0; j < 2; j++)
@@ -57,6 +59,7 @@ public class UnitSpawn : MonoBehaviour
             GameObject archerUnit = Instantiate(units[1], userBase.transform.GetChild(0).transform);
             archerUnit.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             archerUnit.transform.localPosition = unitSpawnPos[j + 3];
+            unitDataUI.AddInfoOnUnit(archerUnit);
         }
     }
 

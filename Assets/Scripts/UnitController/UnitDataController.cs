@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class UnitDataController : MonoBehaviour
 {
-    public List<Object> unitsList = new List<Object>();
+    public UnitCanvasController unitCanvasController;
 
-    public void SetUnits(List<Object> units)
+    public Type unitType;
+    public Sprite unitIcon;
+    public string unitName;
+    public float unitMaxHealth;
+    public float unitHealh;
+
+    public void SetUnitsInfoInUI()
     {
-        unitsList = units;
+        unitCanvasController.SetupInfo(unitType, unitIcon, unitName, unitMaxHealth, unitHealh);
     }
-
-    //private void AddNewInfoForUnits()
-    //{
-    //    AttackUnit unit = unitsList[0];
-    //}
 }
