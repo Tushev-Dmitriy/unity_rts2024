@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Watchtower : Building
+[System.Serializable]
+public class Watchtower : ScriptableObject
 {
+    public int strength;
+    public Dictionary<string, int> constructionCost;
+    public List<string> productOfBuilding;
+    public Sprite icon;
+
     public float detectionRadius;
-    public float constructionRadius;
+    public float buildingZoneRadius;
     public int archerCapacity;
-    public float minRange;
-    public float maxRange;
+    public Dictionary<string, int> attackRange;
     public float attackDelay;
     public int damagePerArcher;
 }

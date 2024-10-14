@@ -2,9 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+[System.Serializable]
+
+public enum BuildingType
 {
-    public string buildingName;
-    public int durability;
+    Barracks,
+    House,
+    Workshop,
+    Temple,
+    Fields,
+    Mill,
+    Watchtower,
+    Warehouse,
+    TownHall,
+    Smeltery
+}
+public class Building
+{
+    public BuildingType buildingType;
+    public int strength;
     public Dictionary<string, int> constructionCost;
+    public List<string> productOfBuilding;
+    public Sprite icon;
+
+    public float buildingZoneRadius;
+
+    public bool resourceCapacityIncrease;
+
+    public float detectionRadius;
+    public int archerCapacity;
+    public Dictionary<string, int> attackRange;
+    public float attackDelay;
+    public int damagePerArcher;
+
 }

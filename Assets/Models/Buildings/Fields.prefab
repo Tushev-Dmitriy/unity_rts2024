@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8853640851821350094}
   m_Layer: 0
-  m_Name: farm_model
+  m_Name: Fields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

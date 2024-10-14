@@ -15,6 +15,7 @@ public class UnitCanvasController : MonoBehaviour
     private GameObject builderBtns;
     private GameObject unitActionBtns;
     private List<Image> activeActionsBtns = new List<Image>();
+    private List<Image> activeBuilderBtns = new List<Image>();
     private Image unitIconObj;
     private TMP_Text unitNameObj;
     private GameObject hpSliderObj;
@@ -25,11 +26,19 @@ public class UnitCanvasController : MonoBehaviour
     {
         builderBtns = unitActionObj.transform.GetChild(0).gameObject;
         unitActionBtns = unitActionObj.transform.GetChild(1).gameObject;
+        
         for (int i = 0; i < unitActionBtns.transform.childCount; i++)
         {
             if (unitActionBtns.transform.GetChild(i).childCount > 0)
             {
                 activeActionsBtns.Add(unitActionBtns.transform.GetChild(i).GetChild(0).GetComponent<Image>());
+            }
+        }
+        for (int i = 0; i < builderBtns.transform.childCount; i++)
+        {
+            if (builderBtns.transform.GetChild(i).childCount > 0)
+            {
+                activeBuilderBtns.Add(builderBtns.transform.GetChild(i).GetChild(0).GetComponent<Image>());
             }
         }
 
@@ -48,17 +57,27 @@ public class UnitCanvasController : MonoBehaviour
         unitInfoObj.SetActive(true);
         unitActionObj.SetActive(true);
 
-        if (type != Type.Builder)
-        {
-            builderBtns.SetActive(false);
-        } else
-        {
-            builderBtns.SetActive(true);
-        }
-
         SetupIconAndName(icon, name);
         SetupHp(maxHp, hpNow);
         SetupActionIcons(type);
+
+        if (type != Type.Builder)
+        {
+            builderBtns.SetActive(false);
+        }
+        else
+        {
+            SetBuildersIcons();
+            builderBtns.SetActive(true);
+        }
+    }
+
+    private void SetBuildersIcons()
+    {
+        for (int j = 0; j < activeBuilderBtns.Count; j++)
+        {
+            activeBuilderBtns[j].sprite = unitDataUI.builderIcons[j];
+        }
     }
 
     private void SetupActionIcons(Type type)

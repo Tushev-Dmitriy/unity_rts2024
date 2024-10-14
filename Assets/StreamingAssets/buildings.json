@@ -1,49 +1,114 @@
 [
-    {
-        "type": "Building",
-        "buildingName": "",
-        "durability": 0,
-        "constructionCost": {}
+  {
+    "buildingType": "Barracks",
+    "strength": 150,
+    "constructionCost": {
+      "wood": 10,
+      "rock": 10
     },
-    {
-        "type": "ResourceBuilding",
-        "buildingName": "",
-        "durability": 0,
-        "constructionCost": {},
-        "producesResource": ""
+    "productOfBuilding": [
+      "Archer",
+      "Spearman",
+      "HeavyWarrior"
+    ]
+  },
+  {
+    "buildingType": "House",
+    "strength": 100,
+    "constructionCost": {
+      "wood": 10
     },
-    {
-        "type": "Storage",
-        "buildingName": "",
-        "durability": 0,
-        "constructionCost": {},
-        "increasesResourceCapacity": false
+    "productOfBuilding": [
+      "Builder"
+    ]
+  },
+  {
+    "buildingType": "Workshop",
+    "strength": 150,
+    "constructionCost": {
+      "wood": 15,
+      "metal": 5
     },
-    {
-        "type": "TownHall",
-        "buildingName": "",
-        "durability": 0,
-        "constructionCost": {},
-        "constructionRadius": 0
+    "productOfBuilding": [
+      "Catapult",
+      "SiegeTower"
+    ]
+  },
+  {
+    "buildingType": "Temple",
+    "strength": 125,
+    "constructionCost": {
+      "wood": 10,
+      "stone": 10
     },
-    {
-        "type": "TrainingBuilding",
-        "buildingName": "",
-        "durability": 0,
-        "constructionCost": {},
-        "trainsUnits": []
+    "productOfBuilding": [
+      "Healer"
+    ]
+  },
+  {
+    "buildingType": "Fields",
+    "strength": 100,
+    "constructionCost": {
+      "wood": 5
     },
-    {
-        "type": "Watchtower",
-        "buildingName": "",
-        "durability": 0,
-        "constructionCost": {},
-        "detectionRadius": 0,
-        "constructionRadius": 0,
-        "archerCapacity": 0,
-        "minRange": 0,
-        "maxRange": 0,
-        "attackDelay": 0,
-        "damagePerArcher": 0
-    }
+    "productOfBuilding": [
+      "Grain"
+    ]
+  },
+  {
+    "buildingType": "Mill",
+    "strength": 125,
+    "constructionCost": {
+      "wood": 10
+    },
+    "productOfBuilding": [
+      "Food"
+    ]
+  },
+  {
+    "buildingType": "Watchtower",
+    "strength": 150,
+    "constructionCost": {
+      "wood": 15,
+      "rock": 10
+    },
+    "detectionRadius": 10.0,
+    "buildingZoneRadius": 15.0,
+    "archerCapacity": 5,
+    "attackRange": {
+      "min": 0,
+      "max": 8
+    },
+    "attackDelay": 2.0,
+    "damagePerArcher": 5
+  },
+  {
+    "buildingType": "Warehouse",
+    "strength": 125,
+    "constructionCost": {
+      "wood": 10,
+      "rock": 10
+    },
+    "resourceCapacityIncrease": true
+  },
+  {
+    "buildingType": "TownHall",
+    "strength": 150,
+    "constructionCost": {
+      "wood": 20,
+      "rock": 20
+    },
+    "buildingZoneRadius": 20.0
+  },
+  {
+    "buildingType": "Smeltery",
+    "strength": 125,
+    "constructionCost": {
+      "wood": 10,
+      "rock": 10
+    },
+    "productOfBuilding": [
+      "metal"
+    ]
+  }
 ]

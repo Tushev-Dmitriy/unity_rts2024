@@ -49,7 +49,7 @@
     "maxHealth": 150,
     "trainingCost": [
       {
-        "resourceName": "Metall",
+        "resourceName": "Metal",
         "amount": 10
       },
       {
@@ -72,7 +72,7 @@
     "maxHealth": 150,
     "trainingCost": [
       {
-        "resourceName": "Metall",
+        "resourceName": "Metal",
         "amount": 5
       },
       {
@@ -132,7 +132,7 @@
     "maxHealth": 500,
     "trainingCost": [
       {
-        "resourceName": "Metall",
+        "resourceName": "Metal",
         "amount": 10
       }
     ],

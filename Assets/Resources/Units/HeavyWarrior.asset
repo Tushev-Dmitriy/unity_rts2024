@@ -17,7 +17,7 @@ MonoBehaviour:
   health: 150
   maxHealth: 150
   trainingCost:
-  - resourceName: Metall
+  - resourceName: Metal
     amount: 10
   - resourceName: Wood
     amount: 5
