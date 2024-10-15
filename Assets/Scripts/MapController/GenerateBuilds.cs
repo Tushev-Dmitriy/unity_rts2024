@@ -10,10 +10,12 @@ public class GenerateBuilds : MonoBehaviour
     public GameObject townCenterPrefab;
 
     [Header("Obj in inspector")]
+    public BuildingDataUI buildingDataUI;
     public GameObject baseObject;
     public GameObject userBase;
     public GameObject enemyBase;
     public TMP_Dropdown mapEnemyCountDropdown;
+    public AI_MapController AI_MapController;
 
     private Camera cam;
     private List<Vector3> basePositions = new List<Vector3>();
@@ -29,7 +31,7 @@ public class GenerateBuilds : MonoBehaviour
     public void GenerateBuildsOnMap()
     {
         int baseCount = mapEnemyCountDropdown.value + 2;
-        float radius = 1f;
+        float radius = 7.5f;
 
         for (int i = 0; i < baseCount; i++)
         {
@@ -39,6 +41,7 @@ public class GenerateBuilds : MonoBehaviour
             {
                 townCenter = Instantiate(townCenterPrefab, userBase.transform);
                 townCenter.transform.GetChild(0).GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.1f);
+                townCenter.tag = "BuildingToUser";
                 cam.transform.SetParent(townCenter.transform);
                 cam.transform.localPosition = new Vector3(0, 80, 75);
                 cam.transform.localRotation = Quaternion.Euler(40, 180, 0);
@@ -49,6 +52,7 @@ public class GenerateBuilds : MonoBehaviour
                 townCenter.transform.GetChild(0).GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.1f);
             }
 
+            buildingDataUI.AddInfoOnBuild(townCenter);
             townCenter.transform.localScale = new Vector3(0.0023f, 1.15f, 0.0023f);
 
             Vector3 posR;
@@ -61,7 +65,8 @@ public class GenerateBuilds : MonoBehaviour
             basePositions.Add(posR);
             townCenter.transform.localPosition = posR;
 
-            Collider[] objectsInRange = Physics.OverlapSphere(townCenter.transform.position, 0.75f);
+            Collider[] objectsInRange = Physics.OverlapSphere(townCenter.transform.position, radius);
+
             foreach (Collider col in objectsInRange)
             {
                 if (col.CompareTag("MapObject"))
@@ -71,6 +76,8 @@ public class GenerateBuilds : MonoBehaviour
             }
 
             cam.transform.SetParent(baseObject.transform);
+
+            AI_MapController.NavMeshBuild();
         } 
     }
 

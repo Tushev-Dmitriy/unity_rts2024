@@ -24,18 +24,37 @@ public class UnitController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "UnitToMove")
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                if (rb != null)
+                if (hit.collider.tag == "UnitToMove")
                 {
-                    rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-                    tempUnit = null;
-                }
-                isMove = false;
-                tempUnit = hit.collider.gameObject;
-                clickPos = hit.point;
+                    if (rb != null)
+                    {
+                        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+                        tempUnit = null;
+                    }
+                    isMove = false;
+                    tempUnit = hit.collider.gameObject;
+                    clickPos = hit.point;
 
-                hit.collider.gameObject.GetComponent<UnitDataController>().SetUnitsInfoInUI();
+                    hit.collider.gameObject.GetComponent<UnitDataController>().SetUnitsInfoInUI();
+                } else if (hit.collider.tag == "BuildingToUser")
+                {
+                    tempUnit = null;
+                    isMove = false;
+                    Transform currentTransform = hit.transform;
+
+                    while (currentTransform != null)
+                    {
+                        BuildingDataController buildingDataController = currentTransform.GetComponent<BuildingDataController>();
+                        if (buildingDataController != null)
+                        {
+                            buildingDataController.SetBuildingInfoInUI();
+                            break;
+                        }
+                        currentTransform = currentTransform.parent;
+                    }
+                }
             }
         }
 

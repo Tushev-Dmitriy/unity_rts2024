@@ -597,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5281403237424375787}
   m_Layer: 0
-  m_Name: university_model
+  m_Name: Warehouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,6 +11,7 @@ public class BuildingCanvasController : MonoBehaviour
 
     [Header("Obj in canvas")]
     public GameObject buildingInfoObj;
+    public GameObject unitActionObj;
 
     private Image buildingIconObj;
     private TMP_Text buildingNameObj;
@@ -25,6 +26,15 @@ public class BuildingCanvasController : MonoBehaviour
         hpSliderObj = buildingInfoObj.transform.GetChild(2).gameObject;
         hpSlider = hpSliderObj.GetComponent<Slider>();
         hpText = hpSliderObj.transform.GetChild(3).GetComponent<TMP_Text>();
+    }
+
+    public void SetupInfo(BuildingType type, Sprite icon, string name, float maxHp, float hpNow)
+    {
+        buildingInfoObj.SetActive(true);
+        unitActionObj.SetActive(false);
+
+        SetupIconAndName(icon, name);
+        SetupHp(maxHp, hpNow);
     }
 
     private void SetupIconAndName(Sprite icon, string name)

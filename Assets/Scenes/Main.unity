@@ -2849,6 +2849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706dc5b0479e84f4bb5e75e958bffd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingCanvasController: {fileID: 206202905}
   buildingsList: []
   buildingsIcons:
   - {fileID: 21300000, guid: dbdad8c973f51e944ae97f59124817d6, type: 3}
@@ -2903,6 +2904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingDataUI: {fileID: 206202902}
   buildingInfoObj: {fileID: 100820970}
+  unitActionObj: {fileID: 1949051000}
 --- !u!1 &208877861
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,6 +3230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 271933155}
+  - component: {fileID: 271933156}
   m_Layer: 0
   m_Name: '[FIELD]'
   m_TagString: Untagged
@@ -3253,6 +3256,37 @@ Transform:
   - {fileID: 1207772392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &271933156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271933154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &272011526
 GameObject:
   m_ObjectHideFlags: 0
@@ -14359,10 +14393,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   townCenterPrefab: {fileID: 3931184038110116919, guid: 6761c410843c8c047bdf217375134437, type: 3}
+  buildingDataUI: {fileID: 206202902}
   baseObject: {fileID: 1397920585}
   userBase: {fileID: 208877861}
   enemyBase: {fileID: 1207772391}
   mapEnemyCountDropdown: {fileID: 432920780}
+  AI_MapController: {fileID: 1735377762}
 --- !u!114 &1445916318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17406,6 +17442,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728023795}
   m_CullTransparentMesh: 1
+--- !u!1 &1735377761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1735377763}
+  - component: {fileID: 1735377762}
+  m_Layer: 0
+  m_Name: AI_Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1735377762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735377761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3323969dc8a2746b7a2786e7d51ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainAIofMap: {fileID: 271933156}
+--- !u!4 &1735377763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735377761}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.061105, y: 1.795091, z: -14.127988}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1735901780
 GameObject:
   m_ObjectHideFlags: 0
@@ -21045,3 +21126,4 @@ SceneRoots:
   - {fileID: 412510868}
   - {fileID: 206202904}
   - {fileID: 555751515}
+  - {fileID: 1735377763}

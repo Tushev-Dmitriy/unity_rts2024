@@ -4,6 +4,12 @@ using UnityEngine;
 
 [System.Serializable]
 
+public class ConstructionCost
+{
+    public string resourceName;
+    public int amount;
+}
+
 public enum BuildingType
 {
     Barracks,
@@ -21,7 +27,7 @@ public class Building
 {
     public BuildingType buildingType;
     public int strength;
-    public Dictionary<string, int> constructionCost;
+    public List<ConstructionCost> constructionCost;
     public List<string> productOfBuilding;
     public Sprite icon;
 
@@ -31,7 +37,7 @@ public class Building
 
     public float detectionRadius;
     public int archerCapacity;
-    public Dictionary<string, int> attackRange;
+    public List<int> attackRange;
     public float attackDelay;
     public int damagePerArcher;
 

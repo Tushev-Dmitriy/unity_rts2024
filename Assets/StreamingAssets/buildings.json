@@ -2,10 +2,16 @@
   {
     "buildingType": "Barracks",
     "strength": 150,
-    "constructionCost": {
-      "wood": 10,
-      "rock": 10
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 10
+      },
+      {
+        "resourceName": "rock",
+        "amount": 10
+      }
+    ],
     "productOfBuilding": [
       "Archer",
       "Spearman",
@@ -15,9 +21,12 @@
   {
     "buildingType": "House",
     "strength": 100,
-    "constructionCost": {
-      "wood": 10
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 10
+      }
+    ],
     "productOfBuilding": [
       "Builder"
     ]
@@ -25,10 +34,16 @@
   {
     "buildingType": "Workshop",
     "strength": 150,
-    "constructionCost": {
-      "wood": 15,
-      "metal": 5
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 15
+      },
+      {
+        "resourceName": "metal",
+        "amount": 5
+      }
+    ],
     "productOfBuilding": [
       "Catapult",
       "SiegeTower"
@@ -37,10 +52,16 @@
   {
     "buildingType": "Temple",
     "strength": 125,
-    "constructionCost": {
-      "wood": 10,
-      "stone": 10
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 10
+      },
+      {
+        "resourceName": "stone",
+        "amount": 10
+      }
+    ],
     "productOfBuilding": [
       "Healer"
     ]
@@ -48,9 +69,12 @@
   {
     "buildingType": "Fields",
     "strength": 100,
-    "constructionCost": {
-      "wood": 5
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 5
+      }
+    ],
     "productOfBuilding": [
       "Grain"
     ]
@@ -58,9 +82,12 @@
   {
     "buildingType": "Mill",
     "strength": 125,
-    "constructionCost": {
-      "wood": 10
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 10
+      }
+    ],
     "productOfBuilding": [
       "Food"
     ]
@@ -68,45 +95,69 @@
   {
     "buildingType": "Watchtower",
     "strength": 150,
-    "constructionCost": {
-      "wood": 15,
-      "rock": 10
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 15
+      },
+      {
+        "resourceName": "stone",
+        "amount": 10
+      }
+    ],
     "detectionRadius": 10.0,
     "buildingZoneRadius": 15.0,
     "archerCapacity": 5,
-    "attackRange": {
-      "min": 0,
-      "max": 8
-    },
+    "attackRange": [
+      0,
+      8
+    ],
     "attackDelay": 2.0,
     "damagePerArcher": 5
   },
   {
     "buildingType": "Warehouse",
     "strength": 125,
-    "constructionCost": {
-      "wood": 10,
-      "rock": 10
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 10
+      },
+      {
+        "resourceName": "stone",
+        "amount": 10
+      }
+    ],
     "resourceCapacityIncrease": true
   },
   {
     "buildingType": "TownHall",
     "strength": 150,
-    "constructionCost": {
-      "wood": 20,
-      "rock": 20
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 20
+      },
+      {
+        "resourceName": "stone",
+        "amount": 20
+      }
+    ],
     "buildingZoneRadius": 20.0
   },
   {
     "buildingType": "Smeltery",
     "strength": 125,
-    "constructionCost": {
-      "wood": 10,
-      "rock": 10
-    },
+    "constructionCost": [
+      {
+        "resourceName": "wood",
+        "amount": 10
+      },
+      {
+        "resourceName": "stone",
+        "amount": 10
+      }
+    ],
     "productOfBuilding": [
       "metal"
     ]

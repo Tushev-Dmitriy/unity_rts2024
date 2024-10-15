@@ -6,7 +6,7 @@ using UnityEngine;
 public class Workshop : ScriptableObject
 {
     public int strength;
-    public Dictionary<string, int> constructionCost;
+    public List<ConstructionCost> constructionCost;
     public List<string> productOfBuilding;
     public Sprite icon;
 }

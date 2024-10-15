@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingDataUI : MonoBehaviour
 {
     [Header("Other scripts")]
-    public UnitCanvasController unitCanvasController;
+    public BuildingCanvasController buildingCanvasController;
 
     [Header("Buildings SO")]
     public List<ScriptableObject> buildingsList = new List<ScriptableObject>();
@@ -63,39 +63,39 @@ public class BuildingDataUI : MonoBehaviour
         {
             if (building is Barracks barracks && buildingType == 1)
             {
-                return building;
+                return barracks;
             }
-            else if (building is Workshop Workshop && buildingType == 2)
+            else if (building is Workshop workshop && buildingType == 2)
             {
-                return building;
+                return workshop;
             }
-            else if (building is Temple Temple && buildingType == 3)
+            else if (building is Temple temple && buildingType == 3)
             {
-                return building;
+                return temple;
             }
-            else if (building is Fields Fields && buildingType == 4)
+            else if (building is Fields fields && buildingType == 4)
             {
-                return building;
+                return fields;
             }
-            else if (building is Mill Mill && buildingType == 5)
+            else if (building is Mill mill && buildingType == 5)
             {
-                return building;
+                return mill;
             }
-            else if (building is Watchtower Watchtower && buildingType == 6)
+            else if (building is Watchtower watchtower && buildingType == 6)
             {
-                return building;
+                return watchtower;
             }
-            else if (building is Warehouse Warehouse && buildingType == 7)
+            else if (building is Warehouse warehouse && buildingType == 7)
             {
-                return building;
+                return warehouse;
             }
-            else if (building is TownHall TownHall && buildingType == 8)
+            else if (building is TownHall townHall && buildingType == 8)
             {
-                return building;
+                return townHall;
             }
-            else if (building is Smeltery Smeltery && buildingType == 9)
+            else if (building is Smeltery smeltery && buildingType == 9)
             {
-                return building;
+                return smeltery;
             }
         }
 
@@ -107,7 +107,7 @@ public class BuildingDataUI : MonoBehaviour
         string nameOfBuilding = building.name;
         BuildingDataController buildingData;
 
-        if (building.GetComponent<UnitDataController>() == null)
+        if (building.GetComponent<BuildingDataController>() == null)
         {
             buildingData = building.AddComponent<BuildingDataController>();
         }
@@ -118,63 +118,79 @@ public class BuildingDataUI : MonoBehaviour
 
         buildingData.buildingCanvasController = buildingCanvasController;
 
-        switch (nameOfUnit)
+        switch (nameOfBuilding)
         {
-            case "Archer(Clone)":
-                AttackUnit archerUnit = GetUnitInfoBySO(1) as AttackUnit;
-                unitData.unitType = Type.AttackUnit;
-                unitData.unitIcon = archerUnit.icon;
-                unitData.unitName = archerUnit.unitName;
-                unitData.unitHealh = archerUnit.health;
-                unitData.unitMaxHealth = archerUnit.maxHealth;
+            case "Barraks(Clone)":
+                Barracks barracksBuilding = GetBuildingInfoBySO(1) as Barracks;
+                buildingData.buildingType = BuildingType.Barracks;
+                buildingData.buildingIcon = barracksBuilding.icon;
+                buildingData.buildingName = BuildingType.Barracks.ToString();
+                buildingData.buildingMaxHealth = barracksBuilding.strength;
+                buildingData.buildingHealh = barracksBuilding.strength;
                 break;
-            case "Catapult(Clone)":
-                AttackUnit catapultUnit = GetUnitInfoBySO(2) as AttackUnit;
-                unitData.unitType = Type.AttackUnit;
-                unitData.unitIcon = catapultUnit.icon;
-                unitData.unitName = catapultUnit.unitName;
-                unitData.unitHealh = catapultUnit.health;
-                unitData.unitMaxHealth = catapultUnit.maxHealth;
+            case "Workshop(Clone)":
+                Workshop workshopBuilding = GetBuildingInfoBySO(2) as Workshop;
+                buildingData.buildingType = BuildingType.Workshop;
+                buildingData.buildingIcon = workshopBuilding.icon;
+                buildingData.buildingName = BuildingType.Workshop.ToString();
+                buildingData.buildingMaxHealth = workshopBuilding.strength;
+                buildingData.buildingHealh = workshopBuilding.strength;
                 break;
-            case "Heavy Warrior(Clone)":
-                AttackUnit warroirUnit = GetUnitInfoBySO(3) as AttackUnit;
-                unitData.unitType = Type.AttackUnit;
-                unitData.unitIcon = warroirUnit.icon;
-                unitData.unitName = warroirUnit.unitName;
-                unitData.unitHealh = warroirUnit.health;
-                unitData.unitMaxHealth = warroirUnit.maxHealth;
+            case "Temple(Clone)":
+                Temple templeBuilding = GetBuildingInfoBySO(3) as Temple;
+                buildingData.buildingType = BuildingType.Temple;
+                buildingData.buildingIcon = templeBuilding.icon;
+                buildingData.buildingName = BuildingType.Temple.ToString();
+                buildingData.buildingMaxHealth = templeBuilding.strength;
+                buildingData.buildingHealh = templeBuilding.strength;
                 break;
-            case "Knight(Clone)":
-                AttackUnit spearmanUnit = GetUnitInfoBySO(4) as AttackUnit;
-                unitData.unitType = Type.AttackUnit;
-                unitData.unitIcon = spearmanUnit.icon;
-                unitData.unitName = spearmanUnit.unitName;
-                unitData.unitHealh = spearmanUnit.health;
-                unitData.unitMaxHealth = spearmanUnit.maxHealth;
+            case "Fields(Clone)":
+                Fields fieldsBuilding = GetBuildingInfoBySO(4) as Fields;
+                buildingData.buildingType = BuildingType.Fields;
+                buildingData.buildingIcon = fieldsBuilding.icon;
+                buildingData.buildingName = BuildingType.Fields.ToString();
+                buildingData.buildingMaxHealth = fieldsBuilding.strength;
+                buildingData.buildingHealh = fieldsBuilding.strength;
                 break;
-            case "Villager(Clone)":
-                Builder builderUnit = GetUnitInfoBySO(5) as Builder;
-                unitData.unitType = Type.Builder;
-                unitData.unitIcon = builderUnit.icon;
-                unitData.unitName = builderUnit.unitName;
-                unitData.unitHealh = builderUnit.health;
-                unitData.unitMaxHealth = builderUnit.maxHealth;
+            case "Mill(Clone)":
+                Mill millBuilding = GetBuildingInfoBySO(5) as Mill;
+                buildingData.buildingType = BuildingType.Mill;
+                buildingData.buildingIcon = millBuilding.icon;
+                buildingData.buildingName = BuildingType.Mill.ToString();
+                buildingData.buildingMaxHealth = millBuilding.strength;
+                buildingData.buildingHealh = millBuilding.strength;
                 break;
-            case "Priest(Clone)":
-                Healer healerUnit = GetUnitInfoBySO(6) as Healer;
-                unitData.unitType = Type.Healer;
-                unitData.unitIcon = healerUnit.icon;
-                unitData.unitName = healerUnit.unitName;
-                unitData.unitHealh = healerUnit.health;
-                unitData.unitMaxHealth = healerUnit.maxHealth;
+            case "Watchtower(Clone)":
+                Watchtower watchtowerBuilding = GetBuildingInfoBySO(6) as Watchtower;
+                buildingData.buildingType = BuildingType.Watchtower;
+                buildingData.buildingIcon = watchtowerBuilding.icon;
+                buildingData.buildingName = BuildingType.Watchtower.ToString();
+                buildingData.buildingMaxHealth = watchtowerBuilding.strength;
+                buildingData.buildingHealh = watchtowerBuilding.strength;
                 break;
-            case "Archer Tower(Clone)":
-                SiegeTower towerUnit = GetUnitInfoBySO(7) as SiegeTower;
-                unitData.unitType = Type.SiegeTower;
-                unitData.unitIcon = towerUnit.icon;
-                unitData.unitName = towerUnit.unitName;
-                unitData.unitHealh = towerUnit.health;
-                unitData.unitMaxHealth = towerUnit.maxHealth;
+            case "Warehouse(Clone)":
+                Warehouse warehouseBuilding = GetBuildingInfoBySO(7) as Warehouse;
+                buildingData.buildingType = BuildingType.Warehouse;
+                buildingData.buildingIcon = warehouseBuilding.icon;
+                buildingData.buildingName = BuildingType.Warehouse.ToString();
+                buildingData.buildingMaxHealth = warehouseBuilding.strength;
+                buildingData.buildingHealh = warehouseBuilding.strength;
+                break;
+            case "TownHall(Clone)":
+                TownHall townHallBuilding = GetBuildingInfoBySO(8) as TownHall;
+                buildingData.buildingType = BuildingType.TownHall;
+                buildingData.buildingIcon = townHallBuilding.icon;
+                buildingData.buildingName = BuildingType.TownHall.ToString();
+                buildingData.buildingMaxHealth = townHallBuilding.strength;
+                buildingData.buildingHealh = townHallBuilding.strength;
+                break;
+            case "Smeltery(Clone)":
+                Smeltery smelteryBuilding = GetBuildingInfoBySO(9) as Smeltery;
+                buildingData.buildingType = BuildingType.Smeltery;
+                buildingData.buildingIcon = smelteryBuilding.icon;
+                buildingData.buildingName = BuildingType.Smeltery.ToString();
+                buildingData.buildingMaxHealth = smelteryBuilding.strength;
+                buildingData.buildingHealh = smelteryBuilding.strength;
                 break;
         }
     }

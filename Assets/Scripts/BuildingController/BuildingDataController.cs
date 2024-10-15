@@ -6,11 +6,15 @@ public class BuildingDataController : MonoBehaviour
 {
     public BuildingCanvasController buildingCanvasController;
 
-    public Type buildingType;
+    public BuildingType buildingType;
     public Sprite buildingIcon;
+    public string buildingName;
+    public int buildingMaxHealth;
+    public int buildingHealh;
 
-    //public void SetBuildingInfoInUI()
-    //{
-    //    unitCanvasController.SetupInfo(unitType, unitIcon, unitName, unitMaxHealth, unitHealh);
-    //}
+    public void SetBuildingInfoInUI()
+    {
+        buildingCanvasController.SetupInfo(buildingType, buildingIcon, buildingName, 
+            buildingMaxHealth, buildingHealh);
+    }
 }

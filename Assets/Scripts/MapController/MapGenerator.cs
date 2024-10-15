@@ -18,7 +18,7 @@ public class MapGenerator : MonoBehaviour
 
     private int mapSize;
     private int mapScale;
-    private float objectDensity = 0.6f;
+    private float objectDensity = 0.4f;
 
     public void SetupMapScale()
     {
@@ -36,39 +36,48 @@ public class MapGenerator : MonoBehaviour
 
         mapObj.transform.localScale = new Vector3(mapScale, 0.1f, mapScale);
 
-        //GenerateObjects();
+        GenerateObjects();
     }
 
     private void GenerateObjects()
     {
-        float halfWidth = mapScale / 2;
-        float halfHeight = mapScale / 2;
-        float minX = -0.45f;
-        float maxX = 0.45f;
-        float minZ = -0.45f;
-        float maxZ = 0.45f;
+        float halfWidth = mapScale / 2f - 2f;
+        float halfHeight = mapScale / 2f - 2f;
 
-        for (int x = 0; x < mapScale; x++)
+        int totalObjects = Mathf.FloorToInt(mapScale * mapScale * objectDensity);
+
+        for (int i = 0; i < totalObjects; i++)
         {
-            for (int z = 0; z < mapScale; z++)
-            {
-                float perlinValue = Mathf.PerlinNoise((x - halfWidth) / mapScale, (z - halfHeight) / mapScale);
+            float randomX = Random.Range(-halfWidth, halfWidth);
+            float randomZ = Random.Range(-halfHeight, halfHeight);
+            Vector3 position = new Vector3(randomX, 0, randomZ);
 
-                if (perlinValue > 0.42f && Random.value < objectDensity)
-                {
-                    Vector3 position = new Vector3(Random.Range(minX, maxX), 0, Random.Range(minZ, maxZ));
-                    GameObject stone = Instantiate(stonePrefab, mapObjects.transform.GetChild(0));
-                    stone.transform.localPosition = position;
-                    stone.transform.localScale = new Vector3(0.015f, 10f, 0.015f);
-                }
-                else if (perlinValue <= 0.42f && Random.value < objectDensity)
-                {
-                    Vector3 position = new Vector3(Random.Range(minX, maxX), 0, Random.Range(minZ, maxZ));
-                    GameObject tree = Instantiate(treePrefab, mapObjects.transform.GetChild(1));
-                    tree.transform.localPosition = position;
-                    tree.transform.localScale = new Vector3(0.015f, 10f, 0.015f);
-                }
+            float perlinValue = Mathf.PerlinNoise((randomX + halfWidth) / mapScale, (randomZ + halfHeight) / mapScale);
+
+            GameObject objToSpawn;
+
+            if (perlinValue > 0.37f)
+            {
+                objToSpawn = stonePrefab;
             }
+            else
+            {
+                objToSpawn = treePrefab;
+            }
+
+            GameObject spawnedObj = Instantiate(objToSpawn, position, Quaternion.identity);
+
+            if (objToSpawn == stonePrefab)
+            {
+                spawnedObj.transform.SetParent(mapObjects.transform.GetChild(0));
+            }
+            else
+            {
+                spawnedObj.transform.SetParent(mapObjects.transform.GetChild(1));
+            }
+
+            spawnedObj.transform.localScale = new Vector3(0.015f, 10f, 0.015f);
         }
     }
+
 }

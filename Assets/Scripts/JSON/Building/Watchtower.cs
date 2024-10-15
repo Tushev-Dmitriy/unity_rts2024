@@ -6,14 +6,14 @@ using UnityEngine;
 public class Watchtower : ScriptableObject
 {
     public int strength;
-    public Dictionary<string, int> constructionCost;
+    public List<ConstructionCost> constructionCost;
     public List<string> productOfBuilding;
     public Sprite icon;
 
     public float detectionRadius;
     public float buildingZoneRadius;
     public int archerCapacity;
-    public Dictionary<string, int> attackRange;
+    public List<int> attackRange;
     public float attackDelay;
     public int damagePerArcher;
 }
