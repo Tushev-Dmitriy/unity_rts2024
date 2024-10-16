@@ -105,15 +105,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentRadius: 1.9
+    agentHeight: 5.2
+    agentSlope: 15
+    agentClimb: 0.5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.6333333
     manualTileSize: 0
     tileSize: 256
     buildHeightMesh: 0
@@ -3252,6 +3252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1849102075}
+  - {fileID: 1956623969}
   - {fileID: 208877862}
   - {fileID: 1207772392}
   m_Father: {fileID: 0}
@@ -3270,23 +3271,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
   m_CollectObjects: 2
-  m_Size: {x: 10, y: 10, z: 10}
+  m_Size: {x: 50, y: 10, z: 50}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
+    m_Bits: 55
+  m_UseGeometry: 1
   m_DefaultArea: 0
-  m_GenerateLinks: 0
+  m_GenerateLinks: 1
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
+  m_BuildHeightMesh: 1
 --- !u!1 &272011526
 GameObject:
   m_ObjectHideFlags: 0
@@ -11873,7 +11874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246234277}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14398,7 +14399,6 @@ MonoBehaviour:
   userBase: {fileID: 208877861}
   enemyBase: {fileID: 1207772391}
   mapEnemyCountDropdown: {fileID: 432920780}
-  AI_MapController: {fileID: 1735377762}
 --- !u!114 &1445916318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14415,6 +14415,7 @@ MonoBehaviour:
   generateBuilds: {fileID: 1445916317}
   unitSpawn: {fileID: 1445916316}
   difficultSettingsController: {fileID: 555751514}
+  AI_MapController: {fileID: 1735377762}
 --- !u!1 &1458106611
 GameObject:
   m_ObjectHideFlags: 0
@@ -18154,7 +18155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812597093}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18280,8 +18281,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1956623969}
+  m_Children: []
   m_Father: {fileID: 271933155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1849102076
@@ -19563,12 +19563,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1246234278}
   - {fileID: 1812597094}
-  m_Father: {fileID: 1849102075}
+  m_Father: {fileID: 271933155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983145552
 GameObject:

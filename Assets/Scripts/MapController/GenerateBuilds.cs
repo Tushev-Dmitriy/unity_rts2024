@@ -15,7 +15,6 @@ public class GenerateBuilds : MonoBehaviour
     public GameObject userBase;
     public GameObject enemyBase;
     public TMP_Dropdown mapEnemyCountDropdown;
-    public AI_MapController AI_MapController;
 
     private Camera cam;
     private List<Vector3> basePositions = new List<Vector3>();
@@ -76,8 +75,6 @@ public class GenerateBuilds : MonoBehaviour
             }
 
             cam.transform.SetParent(baseObject.transform);
-
-            AI_MapController.NavMeshBuild();
         } 
     }
 

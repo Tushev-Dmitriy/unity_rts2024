@@ -9,6 +9,7 @@ public class FullMapSpawn : MonoBehaviour
     public GenerateBuilds generateBuilds;
     public UnitSpawn unitSpawn;
     public DifficultSettingsController difficultSettingsController;
+    public AI_MapController AI_MapController;
 
     public void StartSpawn()
     {
@@ -16,5 +17,12 @@ public class FullMapSpawn : MonoBehaviour
         generateBuilds.GenerateBuildsOnMap();
         difficultSettingsController.SetupDifficult();
         unitSpawn.UnitSpawner();
+        StartCoroutine(NavMeshMap());
+    }
+
+    IEnumerator NavMeshMap()
+    {
+        yield return new WaitForSeconds(0.2f);
+        AI_MapController.NavMeshBuild(generateBuilds.userBase);
     }
 }

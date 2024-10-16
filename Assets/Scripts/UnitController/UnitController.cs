@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class UnitController : MonoBehaviour
@@ -11,6 +12,7 @@ public class UnitController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 clickPos = Vector3.zero;
     private Vector3 click2Pos = Vector3.zero;
+    private Vector3 rotationPos = Vector3.zero;
 
     void Update()
     {
@@ -36,6 +38,7 @@ public class UnitController : MonoBehaviour
                     isMove = false;
                     tempUnit = hit.collider.gameObject;
                     clickPos = hit.point;
+                    rotationPos = new Vector3();
 
                     hit.collider.gameObject.GetComponent<UnitDataController>().SetUnitsInfoInUI();
                 } else if (hit.collider.tag == "BuildingToUser")
@@ -79,21 +82,23 @@ public class UnitController : MonoBehaviour
             Vector3 targetPos = target;
             Vector3 currentPos = tempUnit.transform.position;
 
+            NavMeshAgent agent = tempUnit.GetComponent<NavMeshAgent>();
+
             float dist = Vector3.Distance(currentPos, targetPos);
 
             rb = tempUnit.GetComponent<Rigidbody>();
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
-            if (dist > 0.05f)
+            if (dist > 1f)
             {
-                Vector3 directionOfTravel = target - tempUnit.transform.position;
-                directionOfTravel.Normalize();
-                rb.MovePosition(currentPos + (directionOfTravel * 5f * Time.deltaTime));
+                agent.destination = targetPos;
+                tempUnit.transform.rotation = Quaternion.LookRotation(rotationPos, agent.velocity);
             }
             else
             {
                 rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
                 rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+                agent.destination = currentPos;
                 isMove = false;
             }
         }
