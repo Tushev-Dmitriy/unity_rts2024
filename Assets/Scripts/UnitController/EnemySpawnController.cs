@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawnController : MonoBehaviour
 {
     public UnitSpawn unitSpawn;
+    public AI_MapController AImapController;
 
     public void StartSpawn(float delay)
     {
@@ -46,6 +47,7 @@ public class EnemySpawnController : MonoBehaviour
                 tempEnemyUnit.transform.localPosition = unitSpawn.unitSpawnPos[j];
             }
             tempEnemyUnit.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            AImapController.SetupNavMeshAgent(tempEnemyUnit);
         }
     }
 }

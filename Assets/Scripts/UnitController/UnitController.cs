@@ -3,16 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UnitController : MonoBehaviour
 {
-    private bool isMove = false;
+    [Header("Other scripts")]
+    public BuilderAction builderAction;
+
+    [Header("Units pick")]
+    public GameObject imgToPick;
     public GameObject tempUnit;
+    
+    private bool isMove = false;
     private Vector3 target;
     private Rigidbody rb;
     private Vector3 clickPos = Vector3.zero;
     private Vector3 click2Pos = Vector3.zero;
     private Vector3 rotationPos = Vector3.zero;
+    private LineRenderer lineRenderer;
+
+    private bool goToResource = false;
 
     void Update()
     {
@@ -30,6 +40,11 @@ public class UnitController : MonoBehaviour
             {
                 if (hit.collider.tag == "UnitToMove")
                 {
+                    if (lineRenderer != null)
+                    {
+                        lineRenderer.enabled = false;
+                    }
+
                     if (rb != null)
                     {
                         rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
@@ -41,8 +56,15 @@ public class UnitController : MonoBehaviour
                     rotationPos = new Vector3();
 
                     hit.collider.gameObject.GetComponent<UnitDataController>().SetUnitsInfoInUI();
+                    lineRenderer = hit.collider.gameObject.GetComponent<LineRenderer>();
+                    lineRenderer.enabled = true;
                 } else if (hit.collider.tag == "BuildingToUser")
                 {
+                    if (lineRenderer != null)
+                    {
+                        lineRenderer.enabled = false;
+                    }
+
                     tempUnit = null;
                     isMove = false;
                     Transform currentTransform = hit.transform;
@@ -53,6 +75,8 @@ public class UnitController : MonoBehaviour
                         if (buildingDataController != null)
                         {
                             buildingDataController.SetBuildingInfoInUI();
+                            lineRenderer = currentTransform.gameObject.GetComponent<LineRenderer>();
+                            lineRenderer.enabled = true;
                             break;
                         }
                         currentTransform = currentTransform.parent;
@@ -67,9 +91,21 @@ public class UnitController : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit))
                 {
-                    target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
-                    isMove = true;
-                    click2Pos = hit.point;
+                    if (hit.collider.tag != "MapObject")
+                    {
+                        target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
+                        isMove = true;
+                        click2Pos = hit.point;
+                    } else
+                    {
+                        if (builderAction.isGetResource)
+                        {
+                            target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
+                            isMove = true;
+                            click2Pos = hit.point;
+                            goToResource = true;
+                        }
+                    }
                 }
             }
         }
@@ -92,7 +128,7 @@ public class UnitController : MonoBehaviour
             if (dist > 1f)
             {
                 agent.destination = targetPos;
-                tempUnit.transform.rotation = Quaternion.LookRotation(rotationPos, agent.velocity);
+                tempUnit.transform.LookAt(targetPos);
             }
             else
             {
@@ -100,6 +136,11 @@ public class UnitController : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
                 agent.destination = currentPos;
                 isMove = false;
+
+                if (goToResource)
+                {
+
+                }
             }
         }
     }

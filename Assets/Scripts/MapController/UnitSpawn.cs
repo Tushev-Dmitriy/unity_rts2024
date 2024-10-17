@@ -8,6 +8,7 @@ public class UnitSpawn : MonoBehaviour
     [Header("Other scripts")]
     public DifficultSettingsController difficultSettingsController;
     public UnitDataUI unitDataUI;
+    public AI_MapController AI_MapController;
 
     [Header("Prefabs")]
     public GameObject[] units;
@@ -22,6 +23,8 @@ public class UnitSpawn : MonoBehaviour
     public int armyLimitIncrease;
     public int initialArmyLimit;
     public List<int> numOfUnitsInArray;
+
+    public List<GameObject> unitsInArray;
 
     [Header ("Pos to spawn")]
     public List<Vector3> unitSpawnPos = new List<Vector3>()
@@ -52,6 +55,7 @@ public class UnitSpawn : MonoBehaviour
             villagerUnit.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             villagerUnit.transform.localPosition = unitSpawnPos[i];
             unitDataUI.AddInfoOnUnit(villagerUnit);
+            unitsInArray.Add(villagerUnit);
         }
 
         for (int j = 0; j < 2; j++)
@@ -60,6 +64,7 @@ public class UnitSpawn : MonoBehaviour
             archerUnit.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             archerUnit.transform.localPosition = unitSpawnPos[j + 3];
             unitDataUI.AddInfoOnUnit(archerUnit);
+            unitsInArray.Add(archerUnit);
         }
     }
 
@@ -91,7 +96,8 @@ public class UnitSpawn : MonoBehaviour
         for (int i = 0; i < enemyBase.transform.childCount; i++)
         {
             enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().unitSpawn = gameObject.GetComponent<UnitSpawn>();
-            enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().StartSpawn(spawnInterval);
+            enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().AImapController = AI_MapController;
+           enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().StartSpawn(spawnInterval);
         }
     }
 }

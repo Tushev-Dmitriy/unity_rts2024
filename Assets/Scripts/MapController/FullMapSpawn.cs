@@ -22,7 +22,11 @@ public class FullMapSpawn : MonoBehaviour
 
     IEnumerator NavMeshMap()
     {
-        yield return new WaitForSeconds(0.2f);
-        AI_MapController.NavMeshBuild(generateBuilds.userBase);
+        yield return new WaitForSeconds(0.05f);
+        AI_MapController.mainAIofMap.BuildNavMesh();
+        foreach (GameObject unit in unitSpawn.unitsInArray)
+        {
+            AI_MapController.SetupNavMeshAgent(unit);
+        }
     }
 }

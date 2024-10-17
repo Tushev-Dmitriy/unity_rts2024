@@ -18,7 +18,7 @@ public class GenerateBuilds : MonoBehaviour
 
     private Camera cam;
     private List<Vector3> basePositions = new List<Vector3>();
-    private float minDistanceBetweenTowns = 0.2f;
+    private float minDistanceBetweenTowns = 0.3f;
 
     private GameObject tempObj;
 

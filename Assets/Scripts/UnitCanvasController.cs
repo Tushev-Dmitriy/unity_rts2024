@@ -7,6 +7,7 @@ public class UnitCanvasController : MonoBehaviour
 {
     [Header("Other scripts")]
     public UnitDataUI unitDataUI;
+    public BuilderAction builderAction;
 
     [Header("Obj in canvas")]
     public GameObject unitInfoObj;
@@ -21,6 +22,7 @@ public class UnitCanvasController : MonoBehaviour
     private GameObject hpSliderObj;
     private Slider hpSlider;
     private TMP_Text hpText;
+    private GameObject unitResources;
 
     private void Awake()
     {
@@ -47,6 +49,7 @@ public class UnitCanvasController : MonoBehaviour
         hpSliderObj = unitInfoObj.transform.GetChild(2).gameObject;
         hpSlider = hpSliderObj.GetComponent<Slider>();
         hpText = hpSliderObj.transform.GetChild(3).GetComponent<TMP_Text>();
+        unitResources = unitInfoObj.transform.GetChild(3).gameObject;
 
         unitInfoObj.SetActive(false);
         unitActionObj.SetActive(false);
@@ -64,11 +67,14 @@ public class UnitCanvasController : MonoBehaviour
         if (type != Type.Builder)
         {
             builderBtns.SetActive(false);
+            unitResources.SetActive(false);
         }
         else
         {
             SetBuildersIcons();
             builderBtns.SetActive(true);
+            unitResources.SetActive(true);
+            builderAction.SetBuilderActionBtns(activeActionsBtns);
         }
     }
 
