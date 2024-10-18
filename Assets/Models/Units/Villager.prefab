@@ -513,6 +513,7 @@ GameObject:
   - component: {fileID: 6199558605534592825}
   - component: {fileID: 6185467790243984542}
   - component: {fileID: -3718703880750985607}
+  - component: {fileID: 8753539143027455859}
   - component: {fileID: 704675950374157418}
   m_Layer: 0
   m_Name: Villager
@@ -658,6 +659,18 @@ MonoBehaviour:
   unitName: 
   unitMaxHealth: 0
   unitHealh: 0
+--- !u!114 &8753539143027455859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209728340417000431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249213416ee0e324296c033aff741f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &704675950374157418
 LineRenderer:
   serializedVersion: 2

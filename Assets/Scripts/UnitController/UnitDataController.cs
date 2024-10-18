@@ -16,4 +16,12 @@ public class UnitDataController : MonoBehaviour
     {
         unitCanvasController.SetupInfo(unitType, unitIcon, unitName, unitMaxHealth, unitHealh);
     }
+
+    public void SetResourceInfoInUI(GameObject unit)
+    {
+        if (unitType == Type.Builder)
+        {
+            unitCanvasController.BuilderResourcesSetup(unit);
+        }
+    }
 }

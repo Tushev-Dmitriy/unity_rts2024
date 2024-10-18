@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitDataUI : MonoBehaviour
@@ -98,16 +99,13 @@ public class UnitDataUI : MonoBehaviour
     {
         string nameOfUnit = unit.name;
         UnitDataController unitData;
-
-        if (unit.GetComponent<UnitDataController>() == null)
-        {
-            unitData = unit.AddComponent<UnitDataController>();
-        } else
-        {
-            unitData = unit.GetComponent<UnitDataController>();
-        }
-
+        unitData = unit.GetOrAddComponent<UnitDataController>();
         unitData.unitCanvasController = unitCanvasController;
+        
+        if (unit.GetComponent<BuilderResource>() != null) 
+        {
+            unit.GetComponent<BuilderResource>().unitCanvasController = unitCanvasController;
+        }
 
         switch (nameOfUnit)
         {

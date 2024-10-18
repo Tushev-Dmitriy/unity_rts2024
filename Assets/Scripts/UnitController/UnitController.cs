@@ -23,6 +23,7 @@ public class UnitController : MonoBehaviour
     private LineRenderer lineRenderer;
 
     private bool goToResource = false;
+    private GameObject resourceToGet;
 
     void Update()
     {
@@ -56,6 +57,7 @@ public class UnitController : MonoBehaviour
                     rotationPos = new Vector3();
 
                     hit.collider.gameObject.GetComponent<UnitDataController>().SetUnitsInfoInUI();
+                    hit.collider.gameObject.GetComponent<UnitDataController>().SetResourceInfoInUI(tempUnit);
                     lineRenderer = hit.collider.gameObject.GetComponent<LineRenderer>();
                     lineRenderer.enabled = true;
                 } else if (hit.collider.tag == "BuildingToUser")
@@ -104,6 +106,7 @@ public class UnitController : MonoBehaviour
                             isMove = true;
                             click2Pos = hit.point;
                             goToResource = true;
+                            resourceToGet = hit.collider.gameObject;
                         }
                     }
                 }
@@ -139,7 +142,8 @@ public class UnitController : MonoBehaviour
 
                 if (goToResource)
                 {
-
+                    builderAction.StartGetResource(resourceToGet, tempUnit);
+                    goToResource = false;
                 }
             }
         }

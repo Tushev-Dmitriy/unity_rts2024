@@ -30,13 +30,15 @@ public class ConfigManager : MonoBehaviour
             config.fullScreenMode = Screen.fullScreenMode;
             config.soundAndMusicEnabled = true;
             config.volume = 0.5f;
+            SaveConfig();
         }
     }
 
     private void SaveConfig()
     {
-        string configFilePath = Path.Combine(Application.persistentDataPath, configFileName);
+        string configFilePath = Path.Combine(Application.streamingAssetsPath, configFileName);
         string json = JsonUtility.ToJson(config);
+        Debug.Log(json);
         File.WriteAllText(configFilePath, json);
     }
 

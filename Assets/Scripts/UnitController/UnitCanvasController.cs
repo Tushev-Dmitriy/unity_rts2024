@@ -23,6 +23,7 @@ public class UnitCanvasController : MonoBehaviour
     private Slider hpSlider;
     private TMP_Text hpText;
     private GameObject unitResources;
+    private List<TMP_Text> unitResourcesText = new List<TMP_Text>();
 
     private void Awake()
     {
@@ -50,6 +51,11 @@ public class UnitCanvasController : MonoBehaviour
         hpSlider = hpSliderObj.GetComponent<Slider>();
         hpText = hpSliderObj.transform.GetChild(3).GetComponent<TMP_Text>();
         unitResources = unitInfoObj.transform.GetChild(3).gameObject;
+        
+        for (int i = 0; i < 3; i++)
+        {
+            unitResourcesText.Add(unitResources.transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>());
+        }
 
         unitInfoObj.SetActive(false);
         unitActionObj.SetActive(false);
@@ -74,8 +80,19 @@ public class UnitCanvasController : MonoBehaviour
             SetBuildersIcons();
             builderBtns.SetActive(true);
             unitResources.SetActive(true);
-            builderAction.SetBuilderActionBtns(activeActionsBtns);
         }
+    }
+
+    public void BuilderResourcesSetup(GameObject unit)
+    {
+        List<int> resCount = unit.GetComponent<BuilderResource>().resourcesCount;
+
+        for (int i = 0; i < unitResourcesText.Count; i++)
+        {
+            unitResourcesText[i].text = resCount[i].ToString();
+        }
+
+        builderAction.SetBuilderActionBtns(activeActionsBtns, unit);
     }
 
     private void SetBuildersIcons()
@@ -127,4 +144,8 @@ public class UnitCanvasController : MonoBehaviour
         hpText.text = $"{hpNow}/{maxHp}";
     }
 
+    public void IncreaseResource(int num, int count)
+    {
+        unitResourcesText[num].text = count.ToString();
+    }
 }
