@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Smeltery
   m_EditorClassIdentifier: 
   strength: 125
-  constructionCost:
-  - resourceName: wood
-    amount: 10
-  - resourceName: stone
-    amount: 10
+  items: []
   productOfBuilding:
   - metal
   icon: {fileID: 0}

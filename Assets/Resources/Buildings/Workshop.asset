@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: Workshop
   m_EditorClassIdentifier: 
   strength: 150
-  constructionCost:
-  - resourceName: wood
-    amount: 15
-  - resourceName: metal
-    amount: 5
   productOfBuilding:
   - Catapult
   - SiegeTower

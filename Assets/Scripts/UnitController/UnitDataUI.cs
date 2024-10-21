@@ -105,6 +105,9 @@ public class UnitDataUI : MonoBehaviour
         if (unit.GetComponent<BuilderResource>() != null) 
         {
             unit.GetComponent<BuilderResource>().unitCanvasController = unitCanvasController;
+        } else if(unit.GetComponent<AttackUnitResource>() != null)
+        {
+            unit.GetComponent<AttackUnitResource>().unitCanvasController = unitCanvasController;
         }
 
         switch (nameOfUnit)

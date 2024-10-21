@@ -16,11 +16,6 @@ MonoBehaviour:
   movementSpeed: 3
   health: 150
   maxHealth: 150
-  trainingCost:
-  - resourceName: Metal
-    amount: 10
-  - resourceName: Wood
-    amount: 5
   detectionRadius: 15
   icon: {fileID: 0}
   minRange: 1

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1346236144462958902}
   - component: {fileID: -7048692702451191196}
   - component: {fileID: 2731277850510644974}
+  - component: {fileID: 6057641894412697593}
   m_Layer: 0
   m_Name: Archer
   m_TagString: UnitToMove
@@ -243,6 +244,20 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &6057641894412697593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861785189790964152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442f2af13a0221345a9f9a8919f800ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitCanvasController: {fileID: 0}
+  isMoving: 0
 --- !u!1 &2638773636268526677
 GameObject:
   m_ObjectHideFlags: 0

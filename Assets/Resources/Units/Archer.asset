@@ -16,9 +16,6 @@ MonoBehaviour:
   movementSpeed: 5
   health: 100
   maxHealth: 100
-  trainingCost:
-  - resourceName: Rock
-    amount: 5
   detectionRadius: 10
   icon: {fileID: 0}
   minRange: 1

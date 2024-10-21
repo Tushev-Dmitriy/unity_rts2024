@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: Barracks
   m_EditorClassIdentifier: 
   strength: 150
-  constructionCost:
-  - resourceName: wood
-    amount: 10
-  - resourceName: rock
-    amount: 10
   productOfBuilding:
   - Archer
   - Spearman

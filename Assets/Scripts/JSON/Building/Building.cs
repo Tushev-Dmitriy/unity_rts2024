@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class BuildingItems
+{
+    public string itemName;
+    public string amount;
+}
 
 public class ConstructionCost
 {
@@ -28,6 +33,7 @@ public class Building
     public BuildingType buildingType;
     public int strength;
     public List<ConstructionCost> constructionCost;
+    public List<BuildingItems> items;
     public List<string> productOfBuilding;
     public Sprite icon;
 

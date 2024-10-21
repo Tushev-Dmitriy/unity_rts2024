@@ -22,7 +22,6 @@ public class UnitController : MonoBehaviour
     private Vector3 rotationPos = Vector3.zero;
     private LineRenderer lineRenderer;
 
-    private bool goToResource = false;
     private GameObject resourceToGet;
 
     void Update()
@@ -57,7 +56,7 @@ public class UnitController : MonoBehaviour
                     rotationPos = new Vector3();
 
                     hit.collider.gameObject.GetComponent<UnitDataController>().SetUnitsInfoInUI();
-                    hit.collider.gameObject.GetComponent<UnitDataController>().SetResourceInfoInUI(tempUnit);
+                    hit.collider.gameObject.GetComponent<UnitDataController>().SetBuilderResource(tempUnit);
                     lineRenderer = hit.collider.gameObject.GetComponent<LineRenderer>();
                     lineRenderer.enabled = true;
                 } else if (hit.collider.tag == "BuildingToUser")
@@ -98,14 +97,14 @@ public class UnitController : MonoBehaviour
                         target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
                         isMove = true;
                         click2Pos = hit.point;
-                    } else
+                    }
+                    else
                     {
-                        if (builderAction.isGetResource)
+                        if (tempUnit.GetComponent<BuilderResource>().isGetResource)
                         {
                             target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
                             isMove = true;
                             click2Pos = hit.point;
-                            goToResource = true;
                             resourceToGet = hit.collider.gameObject;
                         }
                     }
@@ -140,10 +139,9 @@ public class UnitController : MonoBehaviour
                 agent.destination = currentPos;
                 isMove = false;
 
-                if (goToResource)
+                if (tempUnit.GetComponent<BuilderResource>().isGetResource)
                 {
                     builderAction.StartGetResource(resourceToGet, tempUnit);
-                    goToResource = false;
                 }
             }
         }

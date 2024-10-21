@@ -11,6 +11,7 @@ public class BuildingDataController : MonoBehaviour
     public string buildingName;
     public int buildingMaxHealth;
     public int buildingHealh;
+    public List<BuildingItems> items;
 
     public void SetBuildingInfoInUI()
     {

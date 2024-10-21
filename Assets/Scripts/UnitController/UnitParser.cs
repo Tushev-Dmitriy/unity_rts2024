@@ -62,6 +62,7 @@ public class UnitParser : MonoBehaviour
                         builderUnit.health = unitData.health;
                         builderUnit.maxHealth = unitData.maxHealth;
                         builderUnit.trainingCost = unitData.trainingCost;
+                        builderUnit.items = unitData.items;
                         builderUnit.detectionRadius = unitData.detectionRadius;
                         builderUnit.icon = unitData.icon;
                         builderUnit.resourceGatheringSpeed = unitData.resourceGatheringSpeed;

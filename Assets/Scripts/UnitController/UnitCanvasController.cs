@@ -83,16 +83,30 @@ public class UnitCanvasController : MonoBehaviour
         }
     }
 
-    public void BuilderResourcesSetup(GameObject unit)
+    public void BuilderResourcesSetup(GameObject unit, bool updateBtns)
     {
-        List<int> resCount = unit.GetComponent<BuilderResource>().resourcesCount;
-
-        for (int i = 0; i < unitResourcesText.Count; i++)
+        List<UnitItems> unitItems = unit.GetComponent<UnitDataController>().items;
+        Dictionary<string, int> resourceAmounts = new Dictionary<string, int>
         {
-            unitResourcesText[i].text = resCount[i].ToString();
+            { "wood", 0 }, { "stone", 0 }, { "food", 0 }
+        };
+
+        foreach (UnitItems unitItem in unitItems)
+        {
+            if (resourceAmounts.ContainsKey(unitItem.itemName))
+            {
+                resourceAmounts[unitItem.itemName] += unitItem.amount;
+            }
         }
 
-        builderAction.SetBuilderActionBtns(activeActionsBtns, unit);
+        unitResourcesText[0].text = resourceAmounts["wood"].ToString();
+        unitResourcesText[1].text = resourceAmounts["stone"].ToString();
+        unitResourcesText[2].text = resourceAmounts["food"].ToString();
+
+        if (updateBtns)
+        {
+            builderAction.SetBuilderActionBtns(activeActionsBtns, unit);
+        }
     }
 
     private void SetBuildersIcons()

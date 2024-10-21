@@ -16,9 +16,7 @@ MonoBehaviour:
   movementSpeed: 3
   health: 50
   maxHealth: 50
-  trainingCost:
-  - resourceName: Wood
-    amount: 5
+  items: []
   detectionRadius: 5
   icon: {fileID: 0}
   resourceGatheringSpeed: 2

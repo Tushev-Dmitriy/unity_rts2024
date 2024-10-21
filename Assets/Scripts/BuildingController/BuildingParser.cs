@@ -78,6 +78,7 @@ public class BuildingParser : MonoBehaviour
                         var fieldsBuilding = ScriptableObject.CreateInstance<Fields>();
                         fieldsBuilding.strength = buildingData.strength;
                         fieldsBuilding.constructionCost = buildingData.constructionCost;
+                        fieldsBuilding.items = buildingData.items;
                         fieldsBuilding.productOfBuilding = buildingData.productOfBuilding;
                         createdBuildings.Add(fieldsBuilding);
                         scriptableBuilding = fieldsBuilding;
@@ -87,6 +88,7 @@ public class BuildingParser : MonoBehaviour
                         var millBuilding = ScriptableObject.CreateInstance<Mill>();
                         millBuilding.strength = buildingData.strength;
                         millBuilding.constructionCost = buildingData.constructionCost;
+                        millBuilding.items = buildingData.items;
                         millBuilding.productOfBuilding = buildingData.productOfBuilding;
                         createdBuildings.Add(millBuilding);
                         scriptableBuilding = millBuilding;
@@ -96,7 +98,6 @@ public class BuildingParser : MonoBehaviour
                         var watchTowerBuilding = ScriptableObject.CreateInstance<Watchtower>();
                         watchTowerBuilding.strength = buildingData.strength;
                         watchTowerBuilding.constructionCost = buildingData.constructionCost;
-                        watchTowerBuilding.productOfBuilding = buildingData.productOfBuilding;
                         watchTowerBuilding.detectionRadius = buildingData.detectionRadius;
                         watchTowerBuilding.buildingZoneRadius = buildingData.buildingZoneRadius;
                         watchTowerBuilding.archerCapacity = buildingData.archerCapacity;
@@ -111,7 +112,6 @@ public class BuildingParser : MonoBehaviour
                         var warehouseBuilding = ScriptableObject.CreateInstance<Warehouse>();
                         warehouseBuilding.strength = buildingData.strength;
                         warehouseBuilding.constructionCost = buildingData.constructionCost;
-                        warehouseBuilding.productOfBuilding = buildingData.productOfBuilding;
                         warehouseBuilding.resourceCapacityIncrease = buildingData.resourceCapacityIncrease;
                         createdBuildings.Add(warehouseBuilding);
                         scriptableBuilding = warehouseBuilding;
@@ -121,7 +121,7 @@ public class BuildingParser : MonoBehaviour
                         var townHallBuilding = ScriptableObject.CreateInstance<TownHall>();
                         townHallBuilding.strength = buildingData.strength;
                         townHallBuilding.constructionCost = buildingData.constructionCost;
-                        townHallBuilding.productOfBuilding = buildingData.productOfBuilding;
+                        townHallBuilding.items = buildingData.items;
                         townHallBuilding.buildingZoneRadius = buildingData.buildingZoneRadius;
                         createdBuildings.Add(townHallBuilding);
                         scriptableBuilding = townHallBuilding;
@@ -131,6 +131,7 @@ public class BuildingParser : MonoBehaviour
                         var smelteryBuilding = ScriptableObject.CreateInstance<Smeltery>();
                         smelteryBuilding.strength = buildingData.strength;
                         smelteryBuilding.constructionCost = buildingData.constructionCost;
+                        smelteryBuilding.items = buildingData.items;
                         smelteryBuilding.productOfBuilding = buildingData.productOfBuilding;
                         createdBuildings.Add(smelteryBuilding);
                         scriptableBuilding = smelteryBuilding;

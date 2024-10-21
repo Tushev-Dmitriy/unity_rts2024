@@ -11,17 +11,18 @@ public class UnitDataController : MonoBehaviour
     public string unitName;
     public float unitMaxHealth;
     public float unitHealh;
+    public List<UnitItems> items;
 
     public void SetUnitsInfoInUI()
     {
         unitCanvasController.SetupInfo(unitType, unitIcon, unitName, unitMaxHealth, unitHealh);
     }
 
-    public void SetResourceInfoInUI(GameObject unit)
+    public void SetBuilderResource(GameObject unit)
     {
         if (unitType == Type.Builder)
         {
-            unitCanvasController.BuilderResourcesSetup(unit);
+            unitCanvasController.BuilderResourcesSetup(unit, true);
         }
     }
 }

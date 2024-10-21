@@ -9,6 +9,7 @@ public class Builder : ScriptableObject
     public float health;
     public float maxHealth;
     public List<ResourceCost> trainingCost;
+    public List<UnitItems> items;
     public float detectionRadius;
     public Sprite icon;
 

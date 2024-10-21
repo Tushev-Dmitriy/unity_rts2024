@@ -2,6 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class UnitItems
+{
+    public string itemName;
+    public int amount;
+}
+
 public class ResourceCost
 {
     public string resourceName;
@@ -26,6 +32,7 @@ public class Unit
     public float health;
     public float maxHealth;
     public List<ResourceCost> trainingCost;
+    public List<UnitItems> items;
     public float detectionRadius;
     public Sprite icon;
 

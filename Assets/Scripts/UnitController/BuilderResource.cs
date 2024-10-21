@@ -8,23 +8,13 @@ public class BuilderResource : MonoBehaviour
     public UnitCanvasController unitCanvasController;
 
     [Header("Resource data")]
-    public List<int> resourcesCount = new List<int>();
     public bool isGetResource = false;
     public bool isGoToTownHall = false;
     public bool isMoving = false;
     public bool isBuilding = false;
 
-    private void Start()
+    public void UpdateBuilderResourcesCanvas()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            resourcesCount.Add(0);
-        }
-    }
-
-    public void IncreaseResource(int num)
-    {
-        resourcesCount[num]++;
-        unitCanvasController.IncreaseResource(num, resourcesCount[num]);
+        unitCanvasController.BuilderResourcesSetup(gameObject, false);
     }
 }

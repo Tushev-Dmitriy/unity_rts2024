@@ -7,13 +7,9 @@ using UnityEngine.UI;
 public class BuilderAction : MonoBehaviour
 {
     public List<GameObject> builderActionBtns;
-    public bool isMoving = false;
-    public bool isBuilding = false;
-    public bool isGetResource = false;
     public void SetBuilderActionBtns(List<Image> builderActionImg, GameObject unit)
     {
         builderActionBtns.Clear();
-        isGetResource = unit.GetComponent<BuilderResource>().isGetResource;
 
         for (int i = 0; i < builderActionImg.Count; i++)
         {
@@ -26,20 +22,28 @@ public class BuilderAction : MonoBehaviour
     }
     private void SetupMove(GameObject unit)
     {
-        isMoving = true;
-        unit.GetComponent<BuilderResource>().isMoving = true;
+        //ClearAllFlags(unit);
+        unit.GetComponent<BuilderResource>().isMoving = !unit.GetComponent<BuilderResource>().isMoving;
     }
 
     private void SetupBuilding(GameObject unit)
     {
-        isBuilding = true;
-        unit.GetComponent<BuilderResource>().isBuilding = true;
+        //ClearAllFlags(unit);
+        unit.GetComponent<BuilderResource>().isBuilding = !unit.GetComponent<BuilderResource>().isBuilding;
     }
 
     private void GetResource(GameObject unit)
     {
-        isGetResource = true;
-        unit.GetComponent<BuilderResource>().isGetResource = true;
+        //ClearAllFlags(unit);
+        unit.GetComponent<BuilderResource>().isGetResource = !unit.GetComponent<BuilderResource>().isGetResource;
+    }
+
+    private void ClearAllFlags(GameObject unit)
+    {
+        BuilderResource builderResource = unit.GetComponent<BuilderResource>();
+        builderResource.isMoving = false;
+        builderResource.isBuilding = false;
+        builderResource.isGetResource = false;
     }
 
     public void StartGetResource(GameObject resource, GameObject unit)
@@ -53,13 +57,46 @@ public class BuilderAction : MonoBehaviour
         
         if (res.name == "tree_resource_model(Clone)")
         {
-            unit.GetComponent<BuilderResource>().IncreaseResource(0);
+            CheckItemsInUnit(unit, 0);
         } else if (res.name == "Rock(Clone)")
         {
-            unit.GetComponent<BuilderResource>().IncreaseResource(1);
+            CheckItemsInUnit(unit, 1);
         }
         Destroy(res);
         unit.GetComponent<BuilderResource>().isGetResource = false;
-        isGetResource = false;
+        unit.GetComponent<BuilderResource>().UpdateBuilderResourcesCanvas();
+    }
+
+    private void CheckItemsInUnit(GameObject unit, int numOfRes)
+    {
+        List<UnitItems> items = unit.GetComponent<UnitDataController>().items;
+        UnitItems newItem = new UnitItems();
+
+        if (numOfRes == 0)
+        {
+            newItem.itemName = "wood";
+        } else if (numOfRes == 1)
+        {
+            newItem.itemName = "stone";
+        } else if (numOfRes == 2)
+        {
+            newItem.itemName = "food";
+        }
+
+        bool isAdd = false;
+        foreach (UnitItems item in items)
+        {
+            if (item.itemName == newItem.itemName)
+            {
+                item.amount++;
+                isAdd = true;
+            }
+        }
+
+        if (!isAdd)
+        {
+            newItem.amount = 1;
+            items.Add(newItem);
+        }
     }
 }
