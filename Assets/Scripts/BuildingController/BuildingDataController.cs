@@ -18,4 +18,12 @@ public class BuildingDataController : MonoBehaviour
         buildingCanvasController.SetupInfo(buildingType, buildingIcon, buildingName, 
             buildingMaxHealth, buildingHealh);
     }
+
+    public void SetupBuildingResource(GameObject building)
+    {
+        if (buildingType == BuildingType.TownHall)
+        {
+            buildingCanvasController.SetupResourceData(building);
+        }
+    }
 }

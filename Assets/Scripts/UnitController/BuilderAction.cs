@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BuilderAction : MonoBehaviour
 {
     public List<GameObject> builderActionBtns;
-    public void SetBuilderActionBtns(List<Image> builderActionImg, GameObject unit)
+    public void SetBuilderActionBtns(List<UnityEngine.UI.Image> builderActionImg, GameObject unit)
     {
         builderActionBtns.Clear();
 
@@ -16,9 +18,9 @@ public class BuilderAction : MonoBehaviour
             builderActionBtns.Add(builderActionImg[i].gameObject.transform.parent.gameObject);
         }
 
-        builderActionBtns[0].GetComponent<Button>().onClick.AddListener(delegate { SetupMove(unit); });
-        builderActionBtns[1].GetComponent<Button>().onClick.AddListener(delegate { SetupBuilding(unit); });
-        builderActionBtns[2].GetComponent<Button>().onClick.AddListener(delegate { GetResource(unit); });
+        builderActionBtns[0].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { SetupMove(unit); });
+        builderActionBtns[1].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { SetupBuilding(unit); });
+        builderActionBtns[2].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { GetResource(unit); });
     }
     private void SetupMove(GameObject unit)
     {
@@ -65,6 +67,19 @@ public class BuilderAction : MonoBehaviour
         Destroy(res);
         unit.GetComponent<BuilderResource>().isGetResource = false;
         unit.GetComponent<BuilderResource>().UpdateBuilderResourcesCanvas();
+        //GoToTownHall(unit);
+    }
+
+    private void GoToTownHall(GameObject unit)
+    {
+        Vector3 posToTownHall = new Vector3(0, unit.transform.localPosition.y, 14);
+        NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
+        Rigidbody rb = unit.GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        Debug.Log(agent);
+        Debug.Log(posToTownHall);
+        agent.destination = posToTownHall;
     }
 
     private void CheckItemsInUnit(GameObject unit, int numOfRes)

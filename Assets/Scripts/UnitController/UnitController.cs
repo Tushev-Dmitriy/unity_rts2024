@@ -49,7 +49,7 @@ public class UnitController : MonoBehaviour
                     {
                         rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
                         tempUnit = null;
-                    }
+                    } 
                     isMove = false;
                     tempUnit = hit.collider.gameObject;
                     clickPos = hit.point;
@@ -76,6 +76,7 @@ public class UnitController : MonoBehaviour
                         if (buildingDataController != null)
                         {
                             buildingDataController.SetBuildingInfoInUI();
+                            buildingDataController.SetupBuildingResource(tempUnit);
                             lineRenderer = currentTransform.gameObject.GetComponent<LineRenderer>();
                             lineRenderer.enabled = true;
                             break;

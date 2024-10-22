@@ -8,6 +8,7 @@ TagManager:
   - Minimap
   - UnitToMove
   - BuildingToUser
+  - CubeForResources
   layers:
   - Default
   - TransparentFX

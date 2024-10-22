@@ -6,7 +6,13 @@ using UnityEngine;
 public class BuildingItems
 {
     public string itemName;
-    public string amount;
+    public int amount;
+
+    public BuildingItems(string itemName, int amount)
+    {
+        this.itemName = itemName;
+        this.amount = amount;
+    }
 }
 
 public class ConstructionCost
