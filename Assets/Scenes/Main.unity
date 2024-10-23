@@ -2714,9 +2714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builderActionBtns: []
-  isMoving: 0
-  isBuilding: 0
-  isGetResource: 0
 --- !u!4 &183923791
 Transform:
   m_ObjectHideFlags: 0
@@ -2878,6 +2875,7 @@ GameObject:
   - component: {fileID: 206202903}
   - component: {fileID: 206202902}
   - component: {fileID: 206202905}
+  - component: {fileID: 206202906}
   m_Layer: 0
   m_Name: BuildingController
   m_TagString: Untagged
@@ -2953,6 +2951,29 @@ MonoBehaviour:
   buildingDataUI: {fileID: 206202902}
   buildingInfoObj: {fileID: 100820970}
   unitActionObj: {fileID: 1949051000}
+--- !u!114 &206202906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206202901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e07636006032564f8f80ebd8d536c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userBase: {fileID: 208877861}
+  buildingsObj:
+  - {fileID: 1705587607915861198, guid: b5df81b7a7f04d44193d0d4bdc14e1ab, type: 3}
+  - {fileID: 3931184038110116919, guid: 5acbb84af993e2b4f9fd2a8aecdd13e3, type: 3}
+  - {fileID: 3931184038110116919, guid: f78cde2f497c5ba41908c04b439ffb39, type: 3}
+  - {fileID: 3931184038110116919, guid: 6761c410843c8c047bdf217375134437, type: 3}
+  - {fileID: 3931184038110116919, guid: 066de02024f8f4641876b1f9f393860a, type: 3}
+  - {fileID: 2143550019348336533, guid: 9b85e60c5088c9247867bb77b3089a80, type: 3}
+  - {fileID: 1131050632274006739, guid: 866e610fc65621b4aa0bcccd07ee493f, type: 3}
+  - {fileID: 1131050632274006739, guid: eac7f7951e6c6d24c897b8d3f8cf1b72, type: 3}
+  - {fileID: 1131050632274006739, guid: 9a7d3b51deaf30a4ab3f08dddbe5e949, type: 3}
 --- !u!1 &208877861
 GameObject:
   m_ObjectHideFlags: 0
@@ -5263,6 +5284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitDataUI: {fileID: 412510865}
   builderAction: {fileID: 183923790}
+  constructionsNewBuildings: {fileID: 206202906}
   unitInfoObj: {fileID: 100820970}
   unitActionObj: {fileID: 1949051000}
 --- !u!1 &422679482

@@ -8,8 +8,9 @@ public class UnitCanvasController : MonoBehaviour
     [Header("Other scripts")]
     public UnitDataUI unitDataUI;
     public BuilderAction builderAction;
+    public ConstructionsNewBuildings constructionsNewBuildings;
 
-    [Header("Obj in canvas")]
+    [Header("Obj in game")]
     public GameObject unitInfoObj;
     public GameObject unitActionObj;
 
@@ -114,7 +115,15 @@ public class UnitCanvasController : MonoBehaviour
         for (int j = 0; j < activeBuilderBtns.Count; j++)
         {
             activeBuilderBtns[j].sprite = unitDataUI.builderIcons[j];
+            int index = j;
+            activeBuilderBtns[j].transform.parent.GetComponent<Button>().onClick.AddListener(delegate { ConstructionBuildingByBuilder(index); });
         }
+    }
+
+    private void ConstructionBuildingByBuilder(int numOfHouse)
+    {
+        int index = numOfHouse;
+        constructionsNewBuildings.ConstructionBuildings(index);
     }
 
     private void SetupActionIcons(Type type)

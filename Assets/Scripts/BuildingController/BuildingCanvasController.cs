@@ -67,17 +67,22 @@ public class BuildingCanvasController : MonoBehaviour
 
     public void SetupResourceData(GameObject building)
     {
+        buildingResources.SetActive(true);
+
         List<BuildingItems> buildingItems = building.GetComponent<BuildingDataController>().items;
         Dictionary<string, int> resourceAmounts = new Dictionary<string, int>
         {
             { "wood", 0 }, { "stone", 0 }, { "food", 0 }
         };
 
-        foreach (BuildingItems buildingItem in buildingItems)
+        if (buildingItems != null )
         {
-            if (resourceAmounts.ContainsKey(buildingItem.itemName))
+            foreach (BuildingItems buildingItem in buildingItems)
             {
-                resourceAmounts[buildingItem.itemName] += buildingItem.amount;
+                if (resourceAmounts.ContainsKey(buildingItem.itemName))
+                {
+                    resourceAmounts[buildingItem.itemName] += buildingItem.amount;
+                }
             }
         }
 

@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class BuilderAction : MonoBehaviour
 {
     public List<GameObject> builderActionBtns;
-    public void SetBuilderActionBtns(List<UnityEngine.UI.Image> builderActionImg, GameObject unit)
+
+    public void SetBuilderActionBtns(List<Image> builderActionImg, GameObject unit)
     {
         builderActionBtns.Clear();
 
@@ -18,26 +18,36 @@ public class BuilderAction : MonoBehaviour
             builderActionBtns.Add(builderActionImg[i].gameObject.transform.parent.gameObject);
         }
 
-        builderActionBtns[0].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { SetupMove(unit); });
-        builderActionBtns[1].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { SetupBuilding(unit); });
-        builderActionBtns[2].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { GetResource(unit); });
+        builderActionBtns[0].GetComponent<Button>().onClick.AddListener(delegate { SetupMove(unit); });
+        builderActionBtns[1].GetComponent<Button>().onClick.AddListener(delegate { SetupBuilding(unit); });
+        builderActionBtns[2].GetComponent<Button>().onClick.AddListener(delegate { GetResource(unit); });
     }
+
     private void SetupMove(GameObject unit)
     {
-        //ClearAllFlags(unit);
-        unit.GetComponent<BuilderResource>().isMoving = !unit.GetComponent<BuilderResource>().isMoving;
+        BuilderResource builderResource = unit.GetComponent<BuilderResource>();
+        bool currentFlag = builderResource.isMoving;
+
+        ClearAllFlags(unit);
+        builderResource.isMoving = !currentFlag;
     }
 
     private void SetupBuilding(GameObject unit)
     {
-        //ClearAllFlags(unit);
-        unit.GetComponent<BuilderResource>().isBuilding = !unit.GetComponent<BuilderResource>().isBuilding;
+        BuilderResource builderResource = unit.GetComponent<BuilderResource>();
+        bool currentFlag = builderResource.isBuilding;
+
+        ClearAllFlags(unit);
+        builderResource.isBuilding = !currentFlag;  
     }
 
     private void GetResource(GameObject unit)
     {
-        //ClearAllFlags(unit);
-        unit.GetComponent<BuilderResource>().isGetResource = !unit.GetComponent<BuilderResource>().isGetResource;
+        BuilderResource builderResource = unit.GetComponent<BuilderResource>();
+        bool currentFlag = builderResource.isGetResource;  
+
+        ClearAllFlags(unit); 
+        builderResource.isGetResource = !currentFlag; 
     }
 
     private void ClearAllFlags(GameObject unit)
@@ -55,15 +65,22 @@ public class BuilderAction : MonoBehaviour
 
     IEnumerator GetResourceAction(GameObject res, GameObject unit)
     {
+        if (res == null || unit == null)
+        {
+            yield break;
+        }
+
         yield return new WaitForSeconds(2);
-        
+
         if (res.name == "tree_resource_model(Clone)")
         {
             CheckItemsInUnit(unit, 0);
-        } else if (res.name == "Rock(Clone)")
+        }
+        else if (res.name == "Rock(Clone)")
         {
             CheckItemsInUnit(unit, 1);
         }
+
         Destroy(res);
         unit.GetComponent<BuilderResource>().isGetResource = false;
         unit.GetComponent<BuilderResource>().UpdateBuilderResourcesCanvas();
@@ -77,9 +94,8 @@ public class BuilderAction : MonoBehaviour
         Rigidbody rb = unit.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
-        Debug.Log(agent);
-        Debug.Log(posToTownHall);
         agent.destination = posToTownHall;
+        agent.Move(posToTownHall);
     }
 
     private void CheckItemsInUnit(GameObject unit, int numOfRes)
@@ -90,10 +106,12 @@ public class BuilderAction : MonoBehaviour
         if (numOfRes == 0)
         {
             newItem.itemName = "wood";
-        } else if (numOfRes == 1)
+        }
+        else if (numOfRes == 1)
         {
             newItem.itemName = "stone";
-        } else if (numOfRes == 2)
+        }
+        else if (numOfRes == 2)
         {
             newItem.itemName = "food";
         }

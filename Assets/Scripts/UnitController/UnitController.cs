@@ -13,7 +13,7 @@ public class UnitController : MonoBehaviour
     [Header("Units pick")]
     public GameObject imgToPick;
     public GameObject tempUnit;
-    
+
     private bool isMove = false;
     private Vector3 target;
     private Rigidbody rb;
@@ -49,7 +49,7 @@ public class UnitController : MonoBehaviour
                     {
                         rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
                         tempUnit = null;
-                    } 
+                    }
                     isMove = false;
                     tempUnit = hit.collider.gameObject;
                     clickPos = hit.point;
@@ -59,14 +59,14 @@ public class UnitController : MonoBehaviour
                     hit.collider.gameObject.GetComponent<UnitDataController>().SetBuilderResource(tempUnit);
                     lineRenderer = hit.collider.gameObject.GetComponent<LineRenderer>();
                     lineRenderer.enabled = true;
-                } else if (hit.collider.tag == "BuildingToUser")
+                }
+                else if (hit.collider.tag == "BuildingToUser")
                 {
                     if (lineRenderer != null)
                     {
                         lineRenderer.enabled = false;
                     }
 
-                    tempUnit = null;
                     isMove = false;
                     Transform currentTransform = hit.transform;
 
@@ -76,6 +76,7 @@ public class UnitController : MonoBehaviour
                         if (buildingDataController != null)
                         {
                             buildingDataController.SetBuildingInfoInUI();
+                            tempUnit = currentTransform.gameObject;
                             buildingDataController.SetupBuildingResource(tempUnit);
                             lineRenderer = currentTransform.gameObject.GetComponent<LineRenderer>();
                             lineRenderer.enabled = true;
@@ -89,7 +90,13 @@ public class UnitController : MonoBehaviour
 
         if (tempUnit != null)
         {
-            if (Input.GetMouseButtonDown(0))
+            var builderResource = tempUnit.GetComponent<BuilderResource>();
+            var attackUnitResource = tempUnit.GetComponent<AttackUnitResource>();
+
+            bool canMove = (builderResource != null && builderResource.isMoving) ||
+                           (attackUnitResource != null && attackUnitResource.isMoving);
+
+            if (canMove && Input.GetMouseButtonDown(0))
             {
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -101,7 +108,7 @@ public class UnitController : MonoBehaviour
                     }
                     else
                     {
-                        if (tempUnit.GetComponent<BuilderResource>().isGetResource)
+                        if (builderResource != null && builderResource.isGetResource)
                         {
                             target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
                             isMove = true;
@@ -140,7 +147,8 @@ public class UnitController : MonoBehaviour
                 agent.destination = currentPos;
                 isMove = false;
 
-                if (tempUnit.GetComponent<BuilderResource>().isGetResource)
+                var builderResource = tempUnit.GetComponent<BuilderResource>();
+                if (builderResource != null && builderResource.isGetResource)
                 {
                     builderAction.StartGetResource(resourceToGet, tempUnit);
                 }
