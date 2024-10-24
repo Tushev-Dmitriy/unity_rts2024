@@ -2963,6 +2963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e07636006032564f8f80ebd8d536c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitController: {fileID: 412510867}
+  buildingDataUI: {fileID: 206202902}
   userBase: {fileID: 208877861}
   buildingsObj:
   - {fileID: 1705587607915861198, guid: b5df81b7a7f04d44193d0d4bdc14e1ab, type: 3}
@@ -5255,6 +5257,7 @@ MonoBehaviour:
   builderAction: {fileID: 183923790}
   imgToPick: {fileID: 1721176251}
   tempUnit: {fileID: 0}
+  isBuild: 0
 --- !u!4 &412510868
 Transform:
   m_ObjectHideFlags: 0

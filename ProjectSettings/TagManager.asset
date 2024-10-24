@@ -9,6 +9,7 @@ TagManager:
   - UnitToMove
   - BuildingToUser
   - CubeForResources
+  - NewUserBuilding
   layers:
   - Default
   - TransparentFX

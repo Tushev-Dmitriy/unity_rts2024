@@ -14,12 +14,14 @@ public class UnitController : MonoBehaviour
     public GameObject imgToPick;
     public GameObject tempUnit;
 
+    public bool isBuild = false; // Флаг для режима строительства
     private bool isMove = false;
     private Vector3 target;
     private Rigidbody rb;
     private Vector3 clickPos = Vector3.zero;
     private Vector3 click2Pos = Vector3.zero;
     private Vector3 rotationPos = Vector3.zero;
+    private Vector3 mousePos = Vector3.zero;
     private LineRenderer lineRenderer;
 
     private GameObject resourceToGet;
@@ -90,25 +92,45 @@ public class UnitController : MonoBehaviour
 
         if (tempUnit != null)
         {
-            var builderResource = tempUnit.GetComponent<BuilderResource>();
-            var attackUnitResource = tempUnit.GetComponent<AttackUnitResource>();
-
-            bool canMove = (builderResource != null && builderResource.isMoving) ||
-                           (attackUnitResource != null && attackUnitResource.isMoving);
-
-            if (canMove && Input.GetMouseButtonDown(0))
+            if (isBuild)
             {
-                if (Physics.Raycast(ray, out hit))
+                if (Input.GetMouseButton(0))
                 {
-                    if (hit.collider.tag != "MapObject")
+                    if (Physics.Raycast(ray, out hit))
                     {
                         target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
-                        isMove = true;
-                        click2Pos = hit.point;
+                        tempUnit.transform.position = target; 
                     }
-                    else
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    isBuild = false;
+                    tempUnit.tag = "BuildingToUser";
+                }
+            }
+            else
+            {
+                BuilderResource builderResource = tempUnit.GetComponent<BuilderResource>();
+                AttackUnitResource attackUnitResource = tempUnit.GetComponent<AttackUnitResource>();
+
+                bool canMove = (builderResource != null && builderResource.isMoving) ||
+                               (attackUnitResource != null && attackUnitResource.isMoving);
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (Physics.Raycast(ray, out hit))
                     {
-                        if (builderResource != null && builderResource.isGetResource)
+                        if (canMove)
+                        {
+                            if (hit.collider.tag != "MapObject")
+                            {
+                                target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
+                                isMove = true;
+                                click2Pos = hit.point;
+                            }
+                        }
+                        else if (builderResource != null && builderResource.isGetResource && hit.collider.tag == "MapObject")
                         {
                             target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
                             isMove = true;

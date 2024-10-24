@@ -25,25 +25,25 @@ public class BuildingDataUI : MonoBehaviour
         {
             if (building is Barracks Barracks)
             {
-                Barracks.icon = buildingsIcons[6];
+                Barracks.icon = buildingsIcons[0];
             } else if (building is House House)
             {
-                House.icon = buildingsIcons[2];
+                House.icon = buildingsIcons[1];
             } else if (building is Workshop Workshop)
             {
-                Workshop.icon = buildingsIcons[7];
+                Workshop.icon = buildingsIcons[2];
             } else if (building is Temple Temple)
             {
-                Temple.icon = buildingsIcons[4];
+                Temple.icon = buildingsIcons[3];
             } else if (building is Fields Fields)
             {
-                Fields.icon = buildingsIcons[0];
+                Fields.icon = buildingsIcons[4];
             } else if (building is Mill Mill)
             {
-                Mill.icon = buildingsIcons[1];
+                Mill.icon = buildingsIcons[5];
             } else if (building is Watchtower Watchtower)
             {
-                Watchtower.icon = buildingsIcons[8];
+                Watchtower.icon = buildingsIcons[6];
             } else if (building is Warehouse Warehouse)
             {
                 Warehouse.icon = buildingsIcons[7];
