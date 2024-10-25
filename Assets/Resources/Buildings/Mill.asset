@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Mill
   m_EditorClassIdentifier: 
   strength: 125
+  constructionCost:
+  - resourceName: wood
+    amount: 10
   items: []
   productOfBuilding:
   - Food

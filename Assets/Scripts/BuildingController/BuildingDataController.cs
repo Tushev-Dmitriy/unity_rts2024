@@ -9,6 +9,7 @@ public class BuildingDataController : MonoBehaviour
     public BuildingType buildingType;
     public Sprite buildingIcon;
     public string buildingName;
+    public List<ConstructionCost> costList;
     public int buildingMaxHealth;
     public int buildingHealh;
     public List<BuildingItems> items;

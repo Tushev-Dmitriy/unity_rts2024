@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Temple
   m_EditorClassIdentifier: 
   strength: 125
+  constructionCost:
+  - resourceName: wood
+    amount: 10
+  - resourceName: stone
+    amount: 10
   productOfBuilding:
   - Healer
   icon: {fileID: 0}

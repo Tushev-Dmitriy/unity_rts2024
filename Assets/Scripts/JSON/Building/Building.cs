@@ -15,6 +15,7 @@ public class BuildingItems
     }
 }
 
+[System.Serializable]
 public class ConstructionCost
 {
     public string resourceName;

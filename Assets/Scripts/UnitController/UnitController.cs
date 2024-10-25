@@ -94,16 +94,13 @@ public class UnitController : MonoBehaviour
         {
             if (isBuild)
             {
-                if (Input.GetMouseButton(0))
+                if (Physics.Raycast(ray, out hit))
                 {
-                    if (Physics.Raycast(ray, out hit))
-                    {
-                        target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
-                        tempUnit.transform.position = target; 
-                    }
+                    target = new Vector3(hit.point.x, tempUnit.transform.position.y, hit.point.z);
+                    tempUnit.transform.position = target;
                 }
 
-                if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     isBuild = false;
                     tempUnit.tag = "BuildingToUser";

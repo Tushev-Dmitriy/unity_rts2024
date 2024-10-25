@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Warehouse
   m_EditorClassIdentifier: 
   strength: 125
+  constructionCost:
+  - resourceName: wood
+    amount: 10
+  - resourceName: stone
+    amount: 10
   productOfBuilding: []
   icon: {fileID: 0}
   resourceCapacityIncrease: 1

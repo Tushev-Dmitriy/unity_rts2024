@@ -659,6 +659,7 @@ MonoBehaviour:
   unitName: 
   unitMaxHealth: 0
   unitHealh: 0
+  items: []
 --- !u!114 &8753539143027455859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +672,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249213416ee0e324296c033aff741f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCanvasController: {fileID: 0}
+  isGetResource: 0
+  isGoToTownHall: 0
+  isMoving: 0
+  isBuilding: 0
 --- !u!120 &704675950374157418
 LineRenderer:
   serializedVersion: 2
@@ -692,7 +698,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 78dc61b7c3c9b8c4ebd09fdb0940a71f, type: 2}
+  - {fileID: 2100000, guid: 3f2cd0f63acf8ba4a85472a3c7f14f21, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

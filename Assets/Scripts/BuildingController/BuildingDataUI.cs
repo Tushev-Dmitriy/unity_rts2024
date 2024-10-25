@@ -125,6 +125,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Barracks;
                 buildingData.buildingIcon = barracksBuilding.icon;
                 buildingData.buildingName = BuildingType.Barracks.ToString();
+                buildingData.costList = barracksBuilding.constructionCost;
                 buildingData.buildingMaxHealth = barracksBuilding.strength;
                 buildingData.buildingHealh = barracksBuilding.strength;
                 break;
@@ -133,6 +134,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Workshop;
                 buildingData.buildingIcon = workshopBuilding.icon;
                 buildingData.buildingName = BuildingType.Workshop.ToString();
+                buildingData.costList = workshopBuilding.constructionCost;
                 buildingData.buildingMaxHealth = workshopBuilding.strength;
                 buildingData.buildingHealh = workshopBuilding.strength;
                 break;
@@ -141,6 +143,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Temple;
                 buildingData.buildingIcon = templeBuilding.icon;
                 buildingData.buildingName = BuildingType.Temple.ToString();
+                buildingData.costList = templeBuilding.constructionCost;
                 buildingData.buildingMaxHealth = templeBuilding.strength;
                 buildingData.buildingHealh = templeBuilding.strength;
                 break;
@@ -149,6 +152,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Fields;
                 buildingData.buildingIcon = fieldsBuilding.icon;
                 buildingData.buildingName = BuildingType.Fields.ToString();
+                buildingData.costList = fieldsBuilding.constructionCost;
                 buildingData.buildingMaxHealth = fieldsBuilding.strength;
                 buildingData.buildingHealh = fieldsBuilding.strength;
                 break;
@@ -157,6 +161,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Mill;
                 buildingData.buildingIcon = millBuilding.icon;
                 buildingData.buildingName = BuildingType.Mill.ToString();
+                buildingData.costList = millBuilding.constructionCost;
                 buildingData.buildingMaxHealth = millBuilding.strength;
                 buildingData.buildingHealh = millBuilding.strength;
                 break;
@@ -165,6 +170,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Watchtower;
                 buildingData.buildingIcon = watchtowerBuilding.icon;
                 buildingData.buildingName = BuildingType.Watchtower.ToString();
+                buildingData.costList = watchtowerBuilding.constructionCost;
                 buildingData.buildingMaxHealth = watchtowerBuilding.strength;
                 buildingData.buildingHealh = watchtowerBuilding.strength;
                 break;
@@ -173,6 +179,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Warehouse;
                 buildingData.buildingIcon = warehouseBuilding.icon;
                 buildingData.buildingName = BuildingType.Warehouse.ToString();
+                buildingData.costList = warehouseBuilding.constructionCost;
                 buildingData.buildingMaxHealth = warehouseBuilding.strength;
                 buildingData.buildingHealh = warehouseBuilding.strength;
                 break;
@@ -181,6 +188,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.TownHall;
                 buildingData.buildingIcon = townHallBuilding.icon;
                 buildingData.buildingName = BuildingType.TownHall.ToString();
+                buildingData.costList = townHallBuilding.constructionCost;
                 buildingData.buildingMaxHealth = townHallBuilding.strength;
                 buildingData.buildingHealh = townHallBuilding.strength;
                 break;
@@ -189,6 +197,7 @@ public class BuildingDataUI : MonoBehaviour
                 buildingData.buildingType = BuildingType.Smeltery;
                 buildingData.buildingIcon = smelteryBuilding.icon;
                 buildingData.buildingName = BuildingType.Smeltery.ToString();
+                buildingData.costList = smelteryBuilding.constructionCost;
                 buildingData.buildingMaxHealth = smelteryBuilding.strength;
                 buildingData.buildingHealh = smelteryBuilding.strength;
                 break;

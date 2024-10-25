@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: TownHall
   m_EditorClassIdentifier: 
   strength: 150
+  constructionCost:
+  - resourceName: wood
+    amount: 20
+  - resourceName: stone
+    amount: 20
   items: []
   productOfBuilding: []
   icon: {fileID: 0}

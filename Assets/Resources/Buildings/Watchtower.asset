@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Watchtower
   m_EditorClassIdentifier: 
   strength: 150
+  constructionCost:
+  - resourceName: wood
+    amount: 15
+  - resourceName: stone
+    amount: 10
   productOfBuilding: []
   icon: {fileID: 0}
   detectionRadius: 10

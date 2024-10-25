@@ -1802,6 +1802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3928290521851066025}
   - component: {fileID: 941317183172259326}
+  - component: {fileID: 8399281768848494495}
   m_Layer: 0
   m_Name: Mill
   m_TagString: Untagged
@@ -1931,6 +1932,20 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8399281768848494495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931184038110116919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d922a60bbd6b9a948be3ad791b863e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCorrect: 0
+  lineRendererMaterial: {fileID: 2100000, guid: 78dc61b7c3c9b8c4ebd09fdb0940a71f, type: 2}
 --- !u!1 &4315044987307610154
 GameObject:
   m_ObjectHideFlags: 0
