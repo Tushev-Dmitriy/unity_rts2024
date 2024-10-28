@@ -10,6 +10,7 @@ TagManager:
   - BuildingToUser
   - CubeForResources
   - NewUserBuilding
+  - Plane
   layers:
   - Default
   - TransparentFX

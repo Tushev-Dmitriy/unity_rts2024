@@ -2976,6 +2976,10 @@ MonoBehaviour:
   - {fileID: 1131050632274006739, guid: 866e610fc65621b4aa0bcccd07ee493f, type: 3}
   - {fileID: 1131050632274006739, guid: eac7f7951e6c6d24c897b8d3f8cf1b72, type: 3}
   - {fileID: 1131050632274006739, guid: 9a7d3b51deaf30a4ab3f08dddbe5e949, type: 3}
+  lineMaterials:
+  - {fileID: 2100000, guid: 78dc61b7c3c9b8c4ebd09fdb0940a71f, type: 2}
+  - {fileID: 2100000, guid: 887a39a02b55b36429d136b899367c95, type: 2}
+  - {fileID: 2100000, guid: 1c81f406672e6f1428b655433e642443, type: 2}
 --- !u!1 &208877861
 GameObject:
   m_ObjectHideFlags: 0
@@ -18460,9 +18464,10 @@ GameObject:
   - component: {fileID: 1849102078}
   - component: {fileID: 1849102077}
   - component: {fileID: 1849102076}
+  - component: {fileID: 1849102080}
   m_Layer: 0
   m_Name: Field
-  m_TagString: Untagged
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18553,6 +18558,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849102074}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1849102080
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849102074}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1849392892
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class ConstructionsNewBuildings : MonoBehaviour
     [Header("User base obj")]
     public GameObject userBase;
     public GameObject[] buildingsObj;
+    public Material[] lineMaterials;
 
     private bool canBuild = false;
 
@@ -72,6 +73,8 @@ public class ConstructionsNewBuildings : MonoBehaviour
 
             tempBuilding.transform.position = buildingPos;
             tempBuilding.transform.localScale = buildingScale;
+            tempBuilding.AddComponent<NewBuildingController>();
+            tempBuilding.GetComponent<NewBuildingController>().lineMaterials = lineMaterials;
             unitController.isBuild = true;
             unitController.tempUnit = tempBuilding;
             canBuild = false;
@@ -83,12 +86,19 @@ public class ConstructionsNewBuildings : MonoBehaviour
         foreach (ConstructionCost cost in tempCost)
         {
             BuildingItems item = tempItems.Find(i => i.itemName == cost.resourceName);
-            if (item.amount > cost.amount)
+            if (item != null)
             {
-                item.amount -= cost.amount;
-                return true;
+                if (item.amount >= cost.amount)
+                {
+                    item.amount -= cost.amount;
+                    if (item.amount == 0)
+                    {
+                        tempItems.Remove(item);
+                    }
+                    return true;
+                }
             }
         }
-        return true;
+        return false;
     }
 }

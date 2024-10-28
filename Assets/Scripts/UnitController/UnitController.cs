@@ -102,8 +102,14 @@ public class UnitController : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    isBuild = false;
-                    tempUnit.tag = "BuildingToUser";
+                    NewBuildingController tempBuilding = tempUnit.GetComponent<NewBuildingController>();
+                    if (tempBuilding.canBuild)
+                    {
+                        tempBuilding.SetMaterialToLine(0);
+                        isBuild = false;
+                        tempUnit.tag = "BuildingToUser";
+                        Destroy(tempBuilding);
+                    }
                 }
             }
             else
