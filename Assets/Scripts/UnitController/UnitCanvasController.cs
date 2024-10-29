@@ -21,6 +21,7 @@ public class UnitCanvasController : MonoBehaviour
     private Image unitIconObj;
     private TMP_Text unitNameObj;
     private GameObject hpSliderObj;
+    private GameObject buildingSliderObj;
     private Slider hpSlider;
     private TMP_Text hpText;
     private GameObject unitResources;
@@ -49,6 +50,7 @@ public class UnitCanvasController : MonoBehaviour
         unitIconObj = unitInfoObj.transform.GetChild(0).GetComponent<Image>();
         unitNameObj = unitInfoObj.transform.GetChild(1).GetComponent<TMP_Text>();
         hpSliderObj = unitInfoObj.transform.GetChild(2).gameObject;
+        buildingSliderObj = unitInfoObj.transform.GetChild(4).gameObject;
         hpSlider = hpSliderObj.GetComponent<Slider>();
         hpText = hpSliderObj.transform.GetChild(3).GetComponent<TMP_Text>();
         unitResources = unitInfoObj.transform.GetChild(3).gameObject;
@@ -66,6 +68,9 @@ public class UnitCanvasController : MonoBehaviour
     {
         unitInfoObj.SetActive(true);
         unitActionObj.SetActive(true);
+
+        hpSliderObj.SetActive(true);
+        buildingSliderObj.SetActive(false);
 
         SetupIconAndName(icon, name);
         SetupHp(maxHp, hpNow);

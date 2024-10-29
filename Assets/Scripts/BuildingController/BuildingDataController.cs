@@ -14,10 +14,10 @@ public class BuildingDataController : MonoBehaviour
     public int buildingHealh;
     public List<BuildingItems> items;
 
-    public void SetBuildingInfoInUI()
+    public void SetBuildingInfoInUI(bool isBuilding)
     {
         buildingCanvasController.SetupInfo(buildingType, buildingIcon, buildingName, 
-            buildingMaxHealth, buildingHealh);
+            buildingMaxHealth, buildingHealh, isBuilding);
     }
 
     public void SetupBuildingResource(GameObject building)

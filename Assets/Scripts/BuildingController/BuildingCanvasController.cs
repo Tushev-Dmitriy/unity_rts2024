@@ -16,8 +16,11 @@ public class BuildingCanvasController : MonoBehaviour
     private Image buildingIconObj;
     private TMP_Text buildingNameObj;
     private GameObject hpSliderObj;
+    private GameObject buildingSliderObj;
     private Slider hpSlider;
+    private Slider buildingSlider;
     private TMP_Text hpText;
+    private TMP_Text buildingText;
     private GameObject buildingResources;
     private List<TMP_Text> buildingResourcesText = new List<TMP_Text>();
 
@@ -26,8 +29,11 @@ public class BuildingCanvasController : MonoBehaviour
         buildingIconObj = buildingInfoObj.transform.GetChild(0).GetComponent<Image>();
         buildingNameObj = buildingInfoObj.transform.GetChild(1).GetComponent<TMP_Text>();
         hpSliderObj = buildingInfoObj.transform.GetChild(2).gameObject;
+        buildingSliderObj = buildingInfoObj.transform.GetChild(4).gameObject;
         hpSlider = hpSliderObj.GetComponent<Slider>();
+        buildingSlider = buildingSliderObj.GetComponent<Slider>();  
         hpText = hpSliderObj.transform.GetChild(3).GetComponent<TMP_Text>();
+        buildingText = buildingSliderObj.transform.GetChild(3).GetComponent<TMP_Text>();
 
         buildingResources = buildingInfoObj.transform.GetChild(3).gameObject;
 
@@ -37,13 +43,13 @@ public class BuildingCanvasController : MonoBehaviour
         }
     }
 
-    public void SetupInfo(BuildingType type, Sprite icon, string name, float maxHp, float hpNow)
+    public void SetupInfo(BuildingType type, Sprite icon, string name, float maxHp, float hpNow, bool isBuilding)
     {
         buildingInfoObj.SetActive(true);
         unitActionObj.SetActive(false);
 
         SetupIconAndName(icon, name);
-        SetupHp(maxHp, hpNow);
+        SetupHp(maxHp, hpNow, isBuilding);
     }
 
     private void SetupIconAndName(Sprite icon, string name)
@@ -52,17 +58,34 @@ public class BuildingCanvasController : MonoBehaviour
         buildingNameObj.text = name;
     }
 
-    private void SetupHp(float maxHp, float hpNow)
+    private void SetupHp(float maxHp, float hpNow, bool isBuilding)
     {
-        hpSlider.maxValue = maxHp;
-        hpSlider.value = hpNow;
+        if (isBuilding) 
+        {
+            hpSliderObj.SetActive(false);   
+            buildingSliderObj.SetActive(true);
+            buildingSlider.maxValue = maxHp;
+            buildingSlider.value = hpNow;
+        } else
+        {
+            hpSliderObj.SetActive(true);
+            buildingSliderObj.SetActive(false);
+            hpSlider.maxValue = maxHp;
+            hpSlider.value = hpNow;
+        }
 
-        UpdateHpText(maxHp, hpNow);
+        UpdateHpText(maxHp, hpNow, isBuilding);
     }
 
-    public void UpdateHpText(float maxHp, float hpNow)
+    public void UpdateHpText(float maxHp, float hpNow, bool isBuilding)
     {
-        hpText.text = $"{hpNow}/{maxHp}";
+        if (isBuilding)
+        {
+            buildingText.text = $"{hpNow}/{maxHp}";
+        } else
+        {
+            hpText.text = $"{hpNow}/{maxHp}";
+        }
     }
 
     public void SetupResourceData(GameObject building)

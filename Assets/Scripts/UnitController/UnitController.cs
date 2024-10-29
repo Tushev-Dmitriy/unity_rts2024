@@ -77,8 +77,17 @@ public class UnitController : MonoBehaviour
                         BuildingDataController buildingDataController = currentTransform.GetComponent<BuildingDataController>();
                         if (buildingDataController != null)
                         {
-                            buildingDataController.SetBuildingInfoInUI();
                             tempUnit = currentTransform.gameObject;
+
+                            if (tempUnit.GetComponent<NewBuildingController>() != null)
+                            {
+                                buildingDataController.SetBuildingInfoInUI(true);
+                            }
+                            else
+                            {
+                                buildingDataController.SetBuildingInfoInUI(false);
+                            }
+
                             buildingDataController.SetupBuildingResource(tempUnit);
                             lineRenderer = currentTransform.gameObject.GetComponent<LineRenderer>();
                             lineRenderer.enabled = true;
@@ -108,7 +117,7 @@ public class UnitController : MonoBehaviour
                         tempBuilding.SetMaterialToLine(0);
                         isBuild = false;
                         tempUnit.tag = "BuildingToUser";
-                        Destroy(tempBuilding);
+                        tempBuilding.StartBuilding();
                     }
                 }
             }

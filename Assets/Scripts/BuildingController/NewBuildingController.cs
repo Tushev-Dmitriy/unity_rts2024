@@ -7,9 +7,11 @@ public class NewBuildingController : MonoBehaviour
 {
     public Material[] lineMaterials;
     public bool canBuild = false;
-    private LineRenderer lineRenderer;
     public List<Collider> colliders = new List<Collider>();
     private List<Collider> GetColliders() { return colliders; }
+    private LineRenderer lineRenderer;
+    private int buildingMaxHealth;
+    private int buildingHealh;
 
     private void Start()
     {
@@ -62,5 +64,27 @@ public class NewBuildingController : MonoBehaviour
         {
             lineRenderer.enabled = false;
         }
+    }
+
+    public void StartBuilding()
+    {
+        buildingHealh = 0;
+        GetComponent<BuildingDataController>().buildingHealh = 0;
+        buildingMaxHealth = GetComponent<BuildingDataController>().buildingMaxHealth;
+        StartCoroutine(StartBuild());
+    }
+
+    IEnumerator StartBuild()
+    {
+        while (buildingHealh < buildingMaxHealth)
+        {
+            yield return new WaitForSeconds(1);
+            buildingHealh += 25;
+            GetComponent<BuildingDataController>().buildingHealh = buildingHealh;
+        }
+
+        SetMaterialToLine(0);
+        Destroy(GetComponent<NewBuildingController>());
+        yield break;
     }
 }
