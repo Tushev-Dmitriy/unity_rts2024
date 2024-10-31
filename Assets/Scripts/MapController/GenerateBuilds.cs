@@ -16,6 +16,9 @@ public class GenerateBuilds : MonoBehaviour
     public GameObject enemyBase;
     public TMP_Dropdown mapEnemyCountDropdown;
 
+    [Header("Other scripts")]
+    public InfoPanelController infoPanelController;
+
     private Camera cam;
     private List<Vector3> basePositions = new List<Vector3>();
     private float minDistanceBetweenTowns = 0.3f;
@@ -44,6 +47,7 @@ public class GenerateBuilds : MonoBehaviour
                 cam.transform.SetParent(townCenter.transform);
                 cam.transform.localPosition = new Vector3(0, 80, 75);
                 cam.transform.localRotation = Quaternion.Euler(40, 180, 0);
+                infoPanelController.userTownHall = townCenter;
             }
             else
             {

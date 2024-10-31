@@ -12,12 +12,38 @@ public class BuildingParser : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_EDITOR
         LoadBuildings();
+#elif UNITY_STANDALONE_WIN
+        List<ScriptableObject> createdBuildings = new List<ScriptableObject>();
+        ScriptableObject barracks = Resources.Load<ScriptableObject>("Buildings/Barracks");
+        ScriptableObject fields = Resources.Load<ScriptableObject>("Buildings/Fields");
+        ScriptableObject house = Resources.Load<ScriptableObject>("Buildings/House");
+        ScriptableObject mill = Resources.Load<ScriptableObject>("Buildings/Mill");
+        ScriptableObject smeltery = Resources.Load<ScriptableObject>("Buildings/Smeltery");
+        ScriptableObject temple = Resources.Load<ScriptableObject>("Buildings/Temple");
+        ScriptableObject townHall = Resources.Load<ScriptableObject>("Buildings/TownHall");
+        ScriptableObject warehouse = Resources.Load<ScriptableObject>("Buildings/Warehouse");
+        ScriptableObject watchtower = Resources.Load<ScriptableObject>("Buildings/Watchtower");
+        ScriptableObject workshop = Resources.Load<ScriptableObject>("Buildings/Workshop");
+        createdBuildings.Add(barracks);
+        createdBuildings.Add(fields);
+        createdBuildings.Add(house);
+        createdBuildings.Add(mill);
+        createdBuildings.Add(smeltery);
+        createdBuildings.Add(temple);
+        createdBuildings.Add(townHall);
+        createdBuildings.Add(warehouse);
+        createdBuildings.Add(watchtower);
+        createdBuildings.Add(workshop);
+        buildingDataUI.SetBuildings(createdBuildings);
+#endif
     }
 
     private void LoadBuildings()
     {
-        string buildingsFilePath = Path.Combine(Application.streamingAssetsPath, buildingsFileName);
+#if UNITY_EDITOR
+            string buildingsFilePath = Path.Combine(Application.streamingAssetsPath, buildingsFileName);
 
         if (File.Exists(buildingsFilePath))
         {
@@ -146,8 +172,8 @@ public class BuildingParser : MonoBehaviour
             }
 
             AssetDatabase.SaveAssets();
-
             buildingDataUI.SetBuildings(createdBuildings);
         }
+#endif
     }
 }

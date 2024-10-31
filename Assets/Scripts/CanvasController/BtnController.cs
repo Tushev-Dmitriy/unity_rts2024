@@ -17,4 +17,9 @@ public class BtnController : MonoBehaviour
             objForBtn.SetActive(true);
         }
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }

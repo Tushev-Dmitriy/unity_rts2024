@@ -14,7 +14,7 @@ public class UnitController : MonoBehaviour
     public GameObject imgToPick;
     public GameObject tempUnit;
 
-    public bool isBuild = false; // Флаг для режима строительства
+    public bool isBuild = false;
     private bool isMove = false;
     private Vector3 target;
     private Rigidbody rb;

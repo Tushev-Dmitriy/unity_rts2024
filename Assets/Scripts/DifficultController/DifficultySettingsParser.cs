@@ -14,13 +14,25 @@ public class DifficultySettingsParser : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_EDITOR
         LoadSettings();
+#elif UNITY_STANDALONE_WIN
+        List<GameDifficult> createdSettings = new List<GameDifficult>();
+        GameDifficult easyDif = Resources.Load<GameDifficult>("Difficult/Easy");
+        GameDifficult mediumDif = Resources.Load<GameDifficult>("Difficult/Medium");
+        GameDifficult hardDif = Resources.Load<GameDifficult>("Difficult/Hard");
+        createdSettings.Add(easyDif);
+        createdSettings.Add(mediumDif);
+        createdSettings.Add(hardDif);
+        difficultSettingsController.SetSettings(createdSettings);
+#endif
     }
 
     private void LoadSettings()
     {
+#if UNITY_EDITOR
         string settingsFilePath = Path.Combine(Application.streamingAssetsPath, settingsFileName);
-
+        
         if (File.Exists(settingsFilePath))
         {
             string json = File.ReadAllText(settingsFilePath);
@@ -56,8 +68,8 @@ public class DifficultySettingsParser : MonoBehaviour
             }
 
             AssetDatabase.SaveAssets();
-
             difficultSettingsController.SetSettings(createdSettings);
         }
+#endif
     }
 }

@@ -9,6 +9,7 @@ public class UnitSpawn : MonoBehaviour
     public DifficultSettingsController difficultSettingsController;
     public UnitDataUI unitDataUI;
     public AI_MapController AI_MapController;
+    public InfoPanelController infoPanelController;
 
     [Header("Prefabs")]
     public GameObject[] units;
@@ -66,6 +67,8 @@ public class UnitSpawn : MonoBehaviour
             unitDataUI.AddInfoOnUnit(archerUnit);
             unitsInArray.Add(archerUnit);
         }
+
+        StartCoroutine(infoPanelController.UpdateInfoText(0, 5, true));
     }
 
     public void EnemyBaseUnitSpawn()

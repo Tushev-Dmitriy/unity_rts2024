@@ -12,11 +12,32 @@ public class UnitParser : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_EDITOR
         LoadUnits();
+#elif UNITY_STANDALONE_WIN
+        Debug.Log(1);
+        List<ScriptableObject> createdUnits = new List<ScriptableObject>();
+        ScriptableObject archerUnit = Resources.Load<ScriptableObject>("Units/Archer");
+        ScriptableObject builderUnit = Resources.Load<ScriptableObject>("Units/Builder");
+        ScriptableObject catapultUnit = Resources.Load<ScriptableObject>("Units/Catapult");
+        ScriptableObject healerUnit = Resources.Load<ScriptableObject>("Units/Healer");
+        ScriptableObject heavyWarriorUnit = Resources.Load<ScriptableObject>("Units/HeavyWarrior");
+        ScriptableObject siegeTowerUnit = Resources.Load<ScriptableObject>("Units/SiegeTower");
+        ScriptableObject spearmanUnit = Resources.Load<ScriptableObject>("Units/Spearman");
+        createdUnits.Add(archerUnit);
+        createdUnits.Add(builderUnit);
+        createdUnits.Add(catapultUnit);
+        createdUnits.Add(healerUnit);
+        createdUnits.Add(heavyWarriorUnit);
+        createdUnits.Add(siegeTowerUnit);
+        createdUnits.Add(spearmanUnit);
+        unitDataUI.SetUnits(createdUnits);
+#endif
     }
 
     private void LoadUnits()
     {
+#if UNITY_EDITOR
         string unitsFilePath = Path.Combine(Application.streamingAssetsPath, unitsFileName);
 
         if (File.Exists(unitsFilePath))
@@ -112,8 +133,8 @@ public class UnitParser : MonoBehaviour
             }
 
             AssetDatabase.SaveAssets();
-
             unitDataUI.SetUnits(createdUnits);
         }
+#endif
     }
 }
