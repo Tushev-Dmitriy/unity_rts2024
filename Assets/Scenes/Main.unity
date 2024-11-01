@@ -2695,6 +2695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183923791}
   - component: {fileID: 183923790}
+  - component: {fileID: 183923792}
   m_Layer: 0
   m_Name: UnitActions
   m_TagString: Untagged
@@ -2730,6 +2731,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &183923792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183923789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a99ef875c1f1af44906ed43da5ca784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackUnitActionBtns: []
 --- !u!1 &187753571
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +3071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitController: {fileID: 412510867}
   buildingDataUI: {fileID: 206202902}
+  infoPanelController: {fileID: 0}
   userBase: {fileID: 208877861}
   buildingsObj:
   - {fileID: 1705587607915861198, guid: b5df81b7a7f04d44193d0d4bdc14e1ab, type: 3}
@@ -5419,6 +5434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitDataUI: {fileID: 412510865}
   builderAction: {fileID: 183923790}
+  attackUnitAction: {fileID: 183923792}
   constructionsNewBuildings: {fileID: 206202906}
   unitInfoObj: {fileID: 100820970}
   unitActionObj: {fileID: 1949051000}
@@ -14908,6 +14924,7 @@ MonoBehaviour:
   - {fileID: 73864059}
   - {fileID: 1922524768}
   userTownHall: {fileID: 0}
+  buildingItems: []
 --- !u!1 &1458106611
 GameObject:
   m_ObjectHideFlags: 0

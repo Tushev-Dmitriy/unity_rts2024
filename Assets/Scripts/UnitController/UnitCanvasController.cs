@@ -8,6 +8,7 @@ public class UnitCanvasController : MonoBehaviour
     [Header("Other scripts")]
     public UnitDataUI unitDataUI;
     public BuilderAction builderAction;
+    public AttackUnitAction attackUnitAction;
     public ConstructionsNewBuildings constructionsNewBuildings;
 
     [Header("Obj in game")]
@@ -113,6 +114,11 @@ public class UnitCanvasController : MonoBehaviour
         {
             builderAction.SetBuilderActionBtns(activeActionsBtns, unit);
         }
+    }
+
+    public void AttackUnitResourcesSetup(GameObject unit)
+    {
+        attackUnitAction.SetAttackUnitActionBtns(activeActionsBtns, unit);
     }
 
     private void SetBuildersIcons()

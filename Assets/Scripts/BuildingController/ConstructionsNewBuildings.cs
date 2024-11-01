@@ -7,6 +7,7 @@ public class ConstructionsNewBuildings : MonoBehaviour
     [Header("Other scripts")]
     public UnitController unitController;
     public BuildingDataUI buildingDataUI;
+    public InfoPanelController infoPanelController;
 
     [Header("User base obj")]
     public GameObject userBase;
@@ -83,6 +84,7 @@ public class ConstructionsNewBuildings : MonoBehaviour
 
     private bool CheckBuildingRequirements(List<ConstructionCost> tempCost, List<BuildingItems> tempItems)
     {
+        infoPanelController.CheckItemInTownHall();
         foreach (ConstructionCost cost in tempCost)
         {
             BuildingItems item = tempItems.Find(i => i.itemName == cost.resourceName);
@@ -90,6 +92,8 @@ public class ConstructionsNewBuildings : MonoBehaviour
             {
                 if (item.amount >= cost.amount)
                 {
+                    if (item.itemName == "")
+
                     item.amount -= cost.amount;
                     if (item.amount == 0)
                     {

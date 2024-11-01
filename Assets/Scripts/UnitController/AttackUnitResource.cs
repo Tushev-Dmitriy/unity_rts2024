@@ -9,4 +9,6 @@ public class AttackUnitResource : MonoBehaviour
 
     [Header("Resource data")]
     public bool isMoving = false;
+    public bool isAttacking = false;
+    public bool isPatrolling = false;
 }

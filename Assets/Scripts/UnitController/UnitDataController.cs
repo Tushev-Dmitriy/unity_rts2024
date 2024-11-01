@@ -23,6 +23,9 @@ public class UnitDataController : MonoBehaviour
         if (unitType == Type.Builder)
         {
             unitCanvasController.BuilderResourcesSetup(unit, true);
+        } else if (unitType == Type.AttackUnit)
+        {
+            unitCanvasController.AttackUnitResourcesSetup(unit);
         }
     }
 }

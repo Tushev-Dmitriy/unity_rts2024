@@ -8,7 +8,7 @@ public class InfoPanelController : MonoBehaviour
     public int[] infoCount = new int[5];
     public List<TMP_Text> userInfoText;
     public GameObject userTownHall;
-    private List<BuildingItems> buildingItems;
+    public List<BuildingItems> buildingItems;
 
     public void CheckItemInTownHall()
     {
