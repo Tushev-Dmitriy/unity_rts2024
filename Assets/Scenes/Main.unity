@@ -3071,7 +3071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitController: {fileID: 412510867}
   buildingDataUI: {fileID: 206202902}
-  infoPanelController: {fileID: 0}
+  infoPanelController: {fileID: 1445916319}
   userBase: {fileID: 208877861}
   buildingsObj:
   - {fileID: 1705587607915861198, guid: b5df81b7a7f04d44193d0d4bdc14e1ab, type: 3}

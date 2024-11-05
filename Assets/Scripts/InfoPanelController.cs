@@ -12,6 +12,7 @@ public class InfoPanelController : MonoBehaviour
 
     public void CheckItemInTownHall()
     {
+        Debug.Log(userTownHall.GetComponent<BuildingDataController>());
         buildingItems = userTownHall.GetComponent<BuildingDataController>().items;
     }
 
