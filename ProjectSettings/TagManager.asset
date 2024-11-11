@@ -11,6 +11,7 @@ TagManager:
   - CubeForResources
   - NewUserBuilding
   - Plane
+  - EnemyUnit
   layers:
   - Default
   - TransparentFX

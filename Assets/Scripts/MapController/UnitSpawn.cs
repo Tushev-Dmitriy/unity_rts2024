@@ -100,7 +100,7 @@ public class UnitSpawn : MonoBehaviour
         {
             enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().unitSpawn = gameObject.GetComponent<UnitSpawn>();
             enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().AImapController = AI_MapController;
-           enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().StartSpawn(spawnInterval);
+            enemyBase.transform.GetChild(i).GetComponent<EnemySpawnController>().StartSpawn(spawnInterval);
         }
     }
 }

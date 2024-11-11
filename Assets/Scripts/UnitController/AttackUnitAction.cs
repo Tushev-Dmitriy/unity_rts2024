@@ -47,8 +47,7 @@ public class AttackUnitAction : MonoBehaviour
 
         ClearAllFlags(unit);
         attackUnitResource.isPatrolling = !currentFlag;
-        attackUnitResource.centerPoint = unit.transform;
-        attackUnitResource.SetAgent();
+        attackUnitResource.SetAgent(unit);
     }
 
     private void ClearAllFlags(GameObject unit)

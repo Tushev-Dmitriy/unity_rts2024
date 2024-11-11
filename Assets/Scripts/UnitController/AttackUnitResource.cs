@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class AttackUnitResource : MonoBehaviour
 {
@@ -15,53 +14,50 @@ public class AttackUnitResource : MonoBehaviour
     public bool isPatrolling = false;
 
     private NavMeshAgent agent;
-    private NavMeshPath navMeshPath;
-    private float range;
-    public Transform centerPoint;
+    private Vector3 startUnitPos;
+    private Vector3 targetPoint = Vector3.zero;
+    private bool movingToTarget = true;
 
-    void Start()
-    {
-        range = 10f;
-        navMeshPath = new NavMeshPath();
-    }
+    private float targetRadius = 0.5f;
 
-    public void SetAgent()
+    public void SetAgent(GameObject unit)
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = unit.GetComponent<NavMeshAgent>();
+        startUnitPos = unit.transform.position;
     }
 
     void Update()
     {
-        if (isPatrolling)
+        if (agent != null)
         {
-            if (agent.remainingDistance <= agent.stoppingDistance + 0.5f)
+            if (EventSystem.current.IsPointerOverGameObject())
             {
-                Vector3 point;
-                centerPoint.position = new Vector3(centerPoint.position.x, 0.05f, centerPoint.position.z);
-                if (RandomPoint(centerPoint.position, range, out point))
+                return;
+            }
+
+            if (Input.GetMouseButtonDown(0) && isPatrolling)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    agent.SetDestination(point);
+                    if (hit.collider.CompareTag("Plane"))
+                    {
+                        targetPoint = hit.point;
+                        movingToTarget = true;
+                        agent.SetDestination(targetPoint);
+                    }
+                }
+            }
+
+            if (isPatrolling && targetPoint != Vector3.zero)
+            {
+                float distanceToTarget = Vector3.Distance(agent.transform.position, movingToTarget ? targetPoint : startUnitPos);
+                if (distanceToTarget <= targetRadius)
+                {
+                    movingToTarget = !movingToTarget;
+                    agent.SetDestination(movingToTarget ? targetPoint : startUnitPos);
                 }
             }
         }
     }
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
-    {
-
-        Vector3 randomPoint = center + Random.insideUnitSphere * range;
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas) && CanReachArea(randomPoint))
-        {
-            result = hit.position;
-            return true;
-        }
-
-        result = Vector3.zero;
-        return false;
-    }
-    private bool CanReachArea(Vector3 target)
-    {
-        return agent.CalculatePath(target, navMeshPath) && navMeshPath.status == NavMeshPathStatus.PathComplete;
-    }
-
 }

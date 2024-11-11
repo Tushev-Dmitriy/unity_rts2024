@@ -36,6 +36,7 @@ public class EnemySpawnController : MonoBehaviour
             }
 
             GameObject tempEnemyUnit = Instantiate(unitSpawn.units[unitSpawn.numOfUnitsInArray[tempEnemyNum]], tempEnemyBase.transform);
+            tempEnemyUnit.tag = "EnemyUnit";
             unitSpawn.unitDataUI.AddInfoOnUnit(tempEnemyUnit);
 
             if (tempEnemyNum == 2)
