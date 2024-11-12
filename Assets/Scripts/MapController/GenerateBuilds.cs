@@ -51,8 +51,19 @@ public class GenerateBuilds : MonoBehaviour
             }
             else
             {
-                townCenter = Instantiate(townCenterPrefab, enemyBase.transform);
+                townCenter = Instantiate(townCenterPrefab, enemyBase.transform);  
                 townCenter.transform.GetChild(0).GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.1f);
+                townCenter.tag = "EnemyUnit";
+                townCenter.transform.GetChild(2).tag = "EnemyUnit";
+                for (int j = 1; j < 4; j++)
+                {
+                    townCenter.transform.GetChild(2).GetChild(j).tag = "EnemyUnit";
+                }
+                townCenter.transform.GetChild(3).tag = "EnemyUnit";
+                for (int j = 1; j < 4; j++)
+                {
+                    townCenter.transform.GetChild(3).GetChild(j).tag = "EnemyUnit";
+                }
             }
 
             buildingDataUI.AddInfoOnBuild(townCenter);

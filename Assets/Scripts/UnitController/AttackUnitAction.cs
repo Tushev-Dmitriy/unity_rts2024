@@ -38,6 +38,7 @@ public class AttackUnitAction : MonoBehaviour
 
         ClearAllFlags(unit);
         attackUnitResource.isAttacking = !currentFlag;
+        attackUnitResource.SetAgent(unit);
     }
 
     private void SetupPatrolling(GameObject unit)

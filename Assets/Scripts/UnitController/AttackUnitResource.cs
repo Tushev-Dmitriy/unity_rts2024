@@ -17,8 +17,10 @@ public class AttackUnitResource : MonoBehaviour
     private Vector3 startUnitPos;
     private Vector3 targetPoint = Vector3.zero;
     private bool movingToTarget = true;
-
     private float targetRadius = 0.5f;
+
+    private GameObject enemyUnit;
+    private bool goToEnemy = false;
 
     public void SetAgent(GameObject unit)
     {
@@ -28,36 +30,68 @@ public class AttackUnitResource : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (agent != null)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                return;
-            }
-
-            if (Input.GetMouseButtonDown(0) && isPatrolling)
+            if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    if (hit.collider.CompareTag("Plane"))
+                    if (hit.collider.CompareTag("Plane") && isPatrolling)
                     {
                         targetPoint = hit.point;
                         movingToTarget = true;
                         agent.SetDestination(targetPoint);
                     }
-                }
-            }
-
-            if (isPatrolling && targetPoint != Vector3.zero)
-            {
-                float distanceToTarget = Vector3.Distance(agent.transform.position, movingToTarget ? targetPoint : startUnitPos);
-                if (distanceToTarget <= targetRadius)
-                {
-                    movingToTarget = !movingToTarget;
-                    agent.SetDestination(movingToTarget ? targetPoint : startUnitPos);
+                    else if (hit.collider.CompareTag("EnemyUnit") && isAttacking)
+                    {
+                        Debug.Log(2);
+                        enemyUnit = hit.collider.gameObject;
+                        goToEnemy = true;
+                    }
                 }
             }
         }
+
+        if (isPatrolling && targetPoint != Vector3.zero)
+        {
+            float distanceToTarget = Vector3.Distance(agent.transform.position, movingToTarget ? targetPoint : startUnitPos);
+            if (distanceToTarget <= targetRadius)
+            {
+                movingToTarget = !movingToTarget;
+                agent.SetDestination(movingToTarget ? targetPoint : startUnitPos);
+            }
+        }
+
+        if (goToEnemy)
+        {
+            PathToEnemy();
+        }
+
+        if (enemyUnit != null && isAttacking)
+        {
+            float distanceToTarget = Vector3.Distance(agent.transform.position, enemyUnit.transform.position);
+            if (distanceToTarget <= targetRadius + 2f)
+            {
+                enemyUnit = null;
+                StartAttack();
+            }
+        }
+    }
+
+    private void PathToEnemy()
+    {
+        goToEnemy = false;
+        agent.SetDestination(enemyUnit.transform.position);
+    }
+
+    private void StartAttack()
+    {
+        Debug.Log(1);
     }
 }
