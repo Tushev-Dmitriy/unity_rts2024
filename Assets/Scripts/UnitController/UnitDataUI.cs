@@ -119,6 +119,12 @@ public class UnitDataUI : MonoBehaviour
                 unitData.unitName = archerUnit.unitName;
                 unitData.unitHealh = archerUnit.health;
                 unitData.unitMaxHealth = archerUnit.maxHealth;
+                unitData.movementSpeed = archerUnit.movementSpeed;
+                unitData.detectionRadius = archerUnit.detectionRadius;
+                unitData.minRange = archerUnit.minRange;
+                unitData.maxRange = archerUnit.maxRange;
+                unitData.attackDelay = archerUnit.attackDelay;
+                unitData.damage = archerUnit.damage;
                 break;
             case "Catapult(Clone)":
                 AttackUnit catapultUnit = GetUnitInfoBySO(2) as AttackUnit;
@@ -127,6 +133,12 @@ public class UnitDataUI : MonoBehaviour
                 unitData.unitName = catapultUnit.unitName;
                 unitData.unitHealh = catapultUnit.health;
                 unitData.unitMaxHealth = catapultUnit.maxHealth;
+                unitData.movementSpeed = catapultUnit.movementSpeed;
+                unitData.detectionRadius = catapultUnit.detectionRadius;
+                unitData.minRange = catapultUnit.minRange;
+                unitData.maxRange = catapultUnit.maxRange;
+                unitData.attackDelay = catapultUnit.attackDelay;
+                unitData.damage = catapultUnit.damage;
                 break;
             case "Heavy Warrior(Clone)":
                 AttackUnit warroirUnit = GetUnitInfoBySO(3) as AttackUnit;
@@ -135,6 +147,12 @@ public class UnitDataUI : MonoBehaviour
                 unitData.unitName = warroirUnit.unitName;
                 unitData.unitHealh = warroirUnit.health;
                 unitData.unitMaxHealth = warroirUnit.maxHealth;
+                unitData.movementSpeed = warroirUnit.movementSpeed;
+                unitData.detectionRadius = warroirUnit.detectionRadius;
+                unitData.minRange = warroirUnit.minRange;
+                unitData.maxRange = warroirUnit.maxRange;
+                unitData.attackDelay = warroirUnit.attackDelay;
+                unitData.damage = warroirUnit.damage;
                 break;
             case "Knight(Clone)":
                 AttackUnit spearmanUnit = GetUnitInfoBySO(4) as AttackUnit;
@@ -143,6 +161,12 @@ public class UnitDataUI : MonoBehaviour
                 unitData.unitName = spearmanUnit.unitName;
                 unitData.unitHealh = spearmanUnit.health;
                 unitData.unitMaxHealth = spearmanUnit.maxHealth;
+                unitData.movementSpeed = spearmanUnit.movementSpeed;
+                unitData.detectionRadius = spearmanUnit.detectionRadius;
+                unitData.minRange = spearmanUnit.minRange;
+                unitData.maxRange = spearmanUnit.maxRange;
+                unitData.attackDelay = spearmanUnit.attackDelay;
+                unitData.damage = spearmanUnit.damage;
                 break;
             case "Villager(Clone)":
                 Builder builderUnit = GetUnitInfoBySO(5) as Builder;
@@ -151,6 +175,10 @@ public class UnitDataUI : MonoBehaviour
                 unitData.unitName = builderUnit.unitName;
                 unitData.unitHealh = builderUnit.health;
                 unitData.unitMaxHealth = builderUnit.maxHealth;
+                unitData.movementSpeed = builderUnit.movementSpeed;
+                unitData.detectionRadius = builderUnit.detectionRadius;
+                unitData.resourceGatheringSpeed = builderUnit.resourceGatheringSpeed;
+                unitData.repairSpeed = builderUnit.repairSpeed;
                 break;
             case "Priest(Clone)":
                 Healer healerUnit = GetUnitInfoBySO(6) as Healer;
@@ -159,6 +187,12 @@ public class UnitDataUI : MonoBehaviour
                 unitData.unitName = healerUnit.unitName;
                 unitData.unitHealh = healerUnit.health;
                 unitData.unitMaxHealth = healerUnit.maxHealth;
+                unitData.movementSpeed = healerUnit.movementSpeed;
+                unitData.detectionRadius = healerUnit.detectionRadius;
+                unitData.minDist = healerUnit.minDist;
+                unitData.maxDist = healerUnit.maxDist;
+                unitData.healDelay = healerUnit.healDelay;
+                unitData.heal = healerUnit.heal;
                 break;
             case "Archer Tower(Clone)":
                 SiegeTower towerUnit = GetUnitInfoBySO(7) as SiegeTower;
@@ -167,6 +201,9 @@ public class UnitDataUI : MonoBehaviour
                 unitData.unitName = towerUnit.unitName;
                 unitData.unitHealh = towerUnit.health;
                 unitData.unitMaxHealth = towerUnit.maxHealth;
+                unitData.movementSpeed = towerUnit.movementSpeed;
+                unitData.detectionRadius = towerUnit.detectionRadius;
+                unitData.capacity = towerUnit.capacity;
                 break;
         }
     }

@@ -50,7 +50,6 @@ public class AttackUnitResource : MonoBehaviour
                     }
                     else if (hit.collider.CompareTag("EnemyUnit") && isAttacking)
                     {
-                        Debug.Log(2);
                         enemyUnit = hit.collider.gameObject;
                         goToEnemy = true;
                     }
@@ -76,7 +75,7 @@ public class AttackUnitResource : MonoBehaviour
         if (enemyUnit != null && isAttacking)
         {
             float distanceToTarget = Vector3.Distance(agent.transform.position, enemyUnit.transform.position);
-            if (distanceToTarget <= targetRadius + 2f)
+            if (distanceToTarget <= targetRadius)
             {
                 enemyUnit = null;
                 StartAttack();
@@ -92,6 +91,6 @@ public class AttackUnitResource : MonoBehaviour
 
     private void StartAttack()
     {
-        Debug.Log(1);
+        agent.ResetPath();
     }
 }
