@@ -19,11 +19,13 @@ public class AttackUnitResource : MonoBehaviour
     private bool movingToTarget = true;
     private float targetRadius = 0.5f;
 
+    private UnitDataController userUnit;
     private GameObject enemyUnit;
     private bool goToEnemy = false;
 
     public void SetAgent(GameObject unit)
     {
+        userUnit = unit.GetComponent<UnitDataController>();
         agent = unit.GetComponent<NavMeshAgent>();
         startUnitPos = unit.transform.position;
     }
@@ -75,7 +77,7 @@ public class AttackUnitResource : MonoBehaviour
         if (enemyUnit != null && isAttacking)
         {
             float distanceToTarget = Vector3.Distance(agent.transform.position, enemyUnit.transform.position);
-            if (distanceToTarget <= targetRadius)
+            if (distanceToTarget <= userUnit.maxRange)
             {
                 enemyUnit = null;
                 StartAttack();

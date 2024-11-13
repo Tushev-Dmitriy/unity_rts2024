@@ -16,9 +16,9 @@ MonoBehaviour:
   movementSpeed: 3
   health: 80
   maxHealth: 80
-  detectionRadius: 20
+  detectionRadius: 10
   icon: {fileID: 0}
-  minRange: 5
-  maxRange: 20
+  minRange: 2.5
+  maxRange: 10
   attackDelay: 3.5
   damage: 60

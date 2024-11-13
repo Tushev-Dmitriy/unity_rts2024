@@ -16,6 +16,6 @@ MonoBehaviour:
   movementSpeed: 2
   health: 500
   maxHealth: 500
-  detectionRadius: 12
+  detectionRadius: 6
   icon: {fileID: 0}
-  capacity: 10
+  capacity: 5

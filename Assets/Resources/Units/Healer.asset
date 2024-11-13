@@ -16,9 +16,9 @@ MonoBehaviour:
   movementSpeed: 4
   health: 80
   maxHealth: 80
-  detectionRadius: 8
+  detectionRadius: 4
   icon: {fileID: 0}
-  minDist: 2
-  maxDist: 6
+  minDist: 1
+  maxDist: 3
   healDelay: 2
   heal: 15
