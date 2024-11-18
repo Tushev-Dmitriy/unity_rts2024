@@ -22,6 +22,7 @@ public class AttackUnitResource : MonoBehaviour
     private UnitDataController userUnit;
     private GameObject enemyUnit;
     private bool goToEnemy = false;
+    private bool onFight = false;
 
     public void SetAgent(GameObject unit)
     {
@@ -74,12 +75,11 @@ public class AttackUnitResource : MonoBehaviour
             PathToEnemy();
         }
 
-        if (enemyUnit != null && isAttacking)
+        if (enemyUnit != null && isAttacking && !onFight)
         {
             float distanceToTarget = Vector3.Distance(agent.transform.position, enemyUnit.transform.position);
             if (distanceToTarget <= userUnit.maxRange)
             {
-                enemyUnit = null;
                 StartAttack();
             }
         }
@@ -94,5 +94,31 @@ public class AttackUnitResource : MonoBehaviour
     private void StartAttack()
     {
         agent.ResetPath();
+        onFight = true;
+        UnitDataController enemyUnitController = enemyUnit.GetComponent<UnitDataController>();
+        ParticleSystem enemyUnitParticles = enemyUnit.GetComponent<ParticleSystem>();
+        StartCoroutine(userUnitAttack(userUnit.attackDelay, userUnit.damage, enemyUnitController, enemyUnitParticles));
+    }
+
+    private IEnumerator userUnitAttack(float delay, float damage, UnitDataController enemyUnitController, ParticleSystem enemyUnitParticles)
+    {
+        if (!isAttacking)
+        {
+            yield break;
+        }
+
+        if (enemyUnitController.unitHealh > 0)
+        {
+            enemyUnitController.unitHealh -= userUnit.damage;
+            enemyUnitParticles.Play();
+            yield return new WaitForSeconds(delay);
+            StartCoroutine(userUnitAttack(delay, damage, enemyUnitController, enemyUnitParticles));
+        }
+        else
+        {
+            Destroy(enemyUnitController.gameObject);
+            onFight = false;
+            yield break;
+        }
     }
 }
