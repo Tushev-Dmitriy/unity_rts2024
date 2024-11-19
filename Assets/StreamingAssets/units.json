@@ -57,7 +57,7 @@
         "amount": 5
       }
     ],
-    "detectionRadius": 7.5,
+    "detectionRadius": 3.0,
     "icon": null,
     "minRange": 0.5,
     "maxRange": 3,
@@ -80,7 +80,7 @@
         "amount": 5
       }
     ],
-    "detectionRadius": 20.0,
+    "detectionRadius": 15.0,
     "icon": null,
     "minRange": 1,
     "maxRange": 15,
@@ -117,7 +117,7 @@
         "amount": 5
       }
     ],
-    "detectionRadius": 4.0,
+    "detectionRadius": 3.0,
     "icon": null,
     "minDist": 1.0,
     "maxDist": 3.0,

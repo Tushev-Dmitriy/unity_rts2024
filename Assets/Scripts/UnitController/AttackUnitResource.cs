@@ -29,6 +29,7 @@ public class AttackUnitResource : MonoBehaviour
         userUnit = unit.GetComponent<UnitDataController>();
         agent = unit.GetComponent<NavMeshAgent>();
         startUnitPos = unit.transform.position;
+        agent.speed = userUnit.movementSpeed;
     }
 
     void Update()

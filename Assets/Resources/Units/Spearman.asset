@@ -16,7 +16,7 @@ MonoBehaviour:
   movementSpeed: 3
   health: 150
   maxHealth: 150
-  detectionRadius: 20
+  detectionRadius: 15
   icon: {fileID: 0}
   minRange: 1
   maxRange: 15

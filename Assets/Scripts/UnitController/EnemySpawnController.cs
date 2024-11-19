@@ -49,6 +49,9 @@ public class EnemySpawnController : MonoBehaviour
             }
             tempEnemyUnit.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             AImapController.SetupNavMeshAgent(tempEnemyUnit);
+
+            tempEnemyUnit.AddComponent<EnemyUnitResource>();
+            tempEnemyUnit.GetComponent<EnemyUnitResource>().SetEnemyUnitInfo();
         }
     }
 }

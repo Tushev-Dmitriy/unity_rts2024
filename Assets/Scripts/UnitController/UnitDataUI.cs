@@ -101,7 +101,7 @@ public class UnitDataUI : MonoBehaviour
         UnitDataController unitData;
         unitData = unit.GetOrAddComponent<UnitDataController>();
         unitData.unitCanvasController = unitCanvasController;
-        
+
         if (unit.GetComponent<BuilderResource>() != null) 
         {
             unit.GetComponent<BuilderResource>().unitCanvasController = unitCanvasController;
