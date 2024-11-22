@@ -157,7 +157,7 @@ public class UnitController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isMove)
+        if (isMove && tempUnit != null) 
         {
             Vector3 targetPos = target;
             Vector3 currentPos = tempUnit.transform.position;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class EnemyUnitResource : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class EnemyUnitResource : MonoBehaviour
     private bool isDefaultAction = false;
     private Vector3 point = Vector3.zero;
     private NavMeshPath navMeshPath;
+    private bool isFight = false;
 
     public void SetEnemyUnitInfo()
     {
@@ -51,19 +53,35 @@ public class EnemyUnitResource : MonoBehaviour
     {
         if (userUnit != null)
         {
-            isDefaultAction = false;
+            if (!isFight)
+            {
+                isDefaultAction = false;
 
-            distanceToTarget = Vector3.Distance(agent.transform.position, userUnit.transform.position);
-            if (distanceToTarget <= unitDataController.detectionRadius && )
+                distanceToTarget = Vector3.Distance(agent.transform.position, userUnit.transform.position);
+                if (distanceToTarget <= unitDataController.detectionRadius)
+                {
+                    agent.SetDestination(userUnit.transform.position);
+                    isFight = true;
+                    StartEnemyUnitAttack();
+                }
+
+                if (distanceToTarget <= unitDataController.minRange)
+                {
+                    agent.SetDestination(startUnitPos);
+                    isFight = true;
+                    StartEnemyUnitAttack();
+                }
+            } else
             {
-                agent.SetDestination(userUnit.transform.position);
+                distanceToTarget = Vector3.Distance(agent.transform.position, userUnit.transform.position);
+                if (unitDataController.detectionRadius <= distanceToTarget)
+                {
+                    userUnit = null;
+                    agent.SetDestination(startUnitPos);
+                    isFight = false;
+                }
             }
-            else
-            {
-                userUnit = null;
-                agent.SetDestination(startUnitPos);
-            }
-        }
+        } 
     }
 
     private void DefaultUnitAction()
@@ -108,5 +126,43 @@ public class EnemyUnitResource : MonoBehaviour
     public bool CanReachArea(Vector3 target)
     {
         return agent.CalculatePath(target, navMeshPath) && navMeshPath.status == NavMeshPathStatus.PathComplete;
+    }
+
+    private void StartEnemyUnitAttack()
+    {
+        float delay = unitDataController.attackDelay;
+        float damage = unitDataController.damage;
+        UnitDataController userUnitController = userUnit.GetComponent<UnitDataController>();
+        ParticleSystem userParticleSystem = userUnit.GetComponent<ParticleSystem>();
+        StartCoroutine(EnemyUnitAttack(delay, damage, userUnitController, userParticleSystem));
+    }
+
+    private IEnumerator EnemyUnitAttack(float delay, float damage, UnitDataController userUnitController, ParticleSystem userUnitParticles)
+    {
+        if (!isFight)
+        {
+            yield break;
+        }
+
+        if (userUnitController.unitHealh - damage >= 0)
+        {
+            userUnitController.unitHealh -= damage;
+            userUnitParticles.Play();
+            SetupNewUnitInfo(userUnitController);
+            yield return new WaitForSeconds(delay);
+            StartCoroutine(EnemyUnitAttack(delay, damage, userUnitController, userUnitParticles));
+        }
+        else
+        {
+            Destroy(userUnitController.gameObject);
+            isFight = false;
+            yield break;
+        }
+    }
+
+    private void SetupNewUnitInfo(UnitDataController userUnit)
+    {
+        userUnit.SetUnitsInfoInUI();
+        userUnit.SetBuilderResource(userUnit.gameObject);
     }
 }

@@ -108,10 +108,11 @@ public class AttackUnitResource : MonoBehaviour
             yield break;
         }
 
-        if (enemyUnitController.unitHealh > 0)
+        if (enemyUnitController.unitHealh - damage >= 0)
         {
-            enemyUnitController.unitHealh -= userUnit.damage;
+            enemyUnitController.unitHealh -= damage;
             enemyUnitParticles.Play();
+            SetupNewUnitInfo(enemyUnitController);
             yield return new WaitForSeconds(delay);
             StartCoroutine(userUnitAttack(delay, damage, enemyUnitController, enemyUnitParticles));
         }
@@ -121,5 +122,11 @@ public class AttackUnitResource : MonoBehaviour
             onFight = false;
             yield break;
         }
+    }
+
+    private void SetupNewUnitInfo(UnitDataController userUnit)
+    {
+        userUnit.SetUnitsInfoInUI();
+        userUnit.SetBuilderResource(userUnit.gameObject);
     }
 }

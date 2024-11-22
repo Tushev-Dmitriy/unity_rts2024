@@ -13,7 +13,7 @@
     ],
     "detectionRadius": 5.0,
     "icon": null,
-    "minRange": 0.5,
+    "minRange": 1.0,
     "maxRange": 5,
     "attackDelay": 1.5,
     "damage": 20
@@ -59,7 +59,7 @@
     ],
     "detectionRadius": 3.0,
     "icon": null,
-    "minRange": 0.5,
+    "minRange": 1.0,
     "maxRange": 3,
     "attackDelay": 2.0,
     "damage": 40
@@ -82,7 +82,7 @@
     ],
     "detectionRadius": 15.0,
     "icon": null,
-    "minRange": 1,
+    "minRange": 1.0,
     "maxRange": 15,
     "attackDelay": 2.0,
     "damage": 30
