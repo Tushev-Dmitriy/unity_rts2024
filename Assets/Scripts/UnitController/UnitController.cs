@@ -9,6 +9,7 @@ public class UnitController : MonoBehaviour
 {
     [Header("Other scripts")]
     public BuilderAction builderAction;
+    public UnitCanvasController canvasController;
 
     [Header("Units pick")]
     public GameObject imgToPick;
@@ -152,6 +153,9 @@ public class UnitController : MonoBehaviour
                     }
                 }
             }
+        } else
+        {
+            canvasController.ClearUnitInfo();
         }
     }
 

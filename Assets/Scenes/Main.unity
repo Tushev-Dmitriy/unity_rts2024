@@ -5402,6 +5402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builderAction: {fileID: 183923790}
+  canvasController: {fileID: 412510870}
   imgToPick: {fileID: 1721176251}
   tempUnit: {fileID: 0}
   isBuild: 0

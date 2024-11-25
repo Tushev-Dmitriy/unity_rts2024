@@ -182,4 +182,10 @@ public class UnitCanvasController : MonoBehaviour
     {
         unitResourcesText[num].text = count.ToString();
     }
+
+    public void ClearUnitInfo()
+    {
+        unitInfoObj.SetActive(false);
+        unitActionObj.SetActive(false); 
+    }
 }

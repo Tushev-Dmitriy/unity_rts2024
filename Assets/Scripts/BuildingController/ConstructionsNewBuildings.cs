@@ -76,6 +76,7 @@ public class ConstructionsNewBuildings : MonoBehaviour
             tempBuilding.transform.localScale = buildingScale;
             tempBuilding.AddComponent<NewBuildingController>();
             tempBuilding.GetComponent<NewBuildingController>().lineMaterials = lineMaterials;
+            tempBuilding.GetComponent<NewBuildingController>().userBase = userBase.transform.GetChild(0).gameObject;
             unitController.isBuild = true;
             unitController.tempUnit = tempBuilding;
             canBuild = false;

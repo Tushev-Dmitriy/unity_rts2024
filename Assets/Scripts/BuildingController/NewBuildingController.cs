@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NewBuildingController : MonoBehaviour
 {
+    public GameObject userBase;
     public Material[] lineMaterials;
     public bool canBuild = false;
     public List<Collider> colliders = new List<Collider>();
@@ -12,6 +13,7 @@ public class NewBuildingController : MonoBehaviour
     private LineRenderer lineRenderer;
     private int buildingMaxHealth;
     private int buildingHealh;
+    private float distance;
 
     private void Start()
     {
@@ -21,11 +23,12 @@ public class NewBuildingController : MonoBehaviour
 
     private void Update()
     {
+        distance = Vector3.Distance(transform.position, userBase.transform.position);
         if (GetColliders().Count != 0)
         {
             if (GetColliders().Count == 1)
             {
-                if (colliders[0].tag == "Plane")
+                if (colliders[0].tag == "Plane" && distance < 10f)
                 {
                     SetMaterialToLine(2);
                     canBuild = true;
