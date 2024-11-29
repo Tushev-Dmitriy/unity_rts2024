@@ -22,6 +22,21 @@ public class AttackUnitAction : MonoBehaviour
         attackUnitActionBtns[2].GetComponent<Button>().onClick.AddListener(delegate { SetupPatrolling(unit); });
     }
 
+    public void SetupActions(int numOfAction, GameObject unit)
+    {
+        switch (numOfAction) 
+        {
+            case 0:
+                SetupMove(unit);
+                break;
+            case 1:
+                SetupAttack(unit);
+                break;
+            case 2:
+                SetupPatrolling(unit);
+                break;
+        }
+    }
     private void SetupMove(GameObject unit)
     {
         AttackUnitResource attackUnitResource = unit.GetComponent<AttackUnitResource>();
@@ -29,6 +44,7 @@ public class AttackUnitAction : MonoBehaviour
 
         ClearAllFlags(unit);
         attackUnitResource.isMoving = !currentFlag;
+        attackUnitResource.SetAgent(unit, GetComponent<AttackUnitAction>());
     }
 
     private void SetupAttack(GameObject unit)
@@ -38,7 +54,7 @@ public class AttackUnitAction : MonoBehaviour
 
         ClearAllFlags(unit);
         attackUnitResource.isAttacking = !currentFlag;
-        attackUnitResource.SetAgent(unit);
+        attackUnitResource.SetAgent(unit, GetComponent<AttackUnitAction>());
     }
 
     private void SetupPatrolling(GameObject unit)
@@ -48,7 +64,7 @@ public class AttackUnitAction : MonoBehaviour
 
         ClearAllFlags(unit);
         attackUnitResource.isPatrolling = !currentFlag;
-        attackUnitResource.SetAgent(unit);
+        attackUnitResource.SetAgent(unit, GetComponent<AttackUnitAction>());
     }
 
     private void ClearAllFlags(GameObject unit)
